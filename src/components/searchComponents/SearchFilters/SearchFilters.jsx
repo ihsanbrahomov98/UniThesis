@@ -1,5 +1,6 @@
 import React from "react";
 import CardFilter from "../../CardFilter/CardFilter";
+import Sitters from "../Sitters/Sitters";
 
 const SearchFilters = () => {
   return (
@@ -11,6 +12,9 @@ const SearchFilters = () => {
         </div>
       </div>
       <CardFilter isHeaderHidden={true} />
+      <Sitters />
+      <Sitters />
+      <Sitters />
     </div>
   );
 };
