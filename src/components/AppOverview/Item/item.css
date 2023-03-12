@@ -1,0 +1,6 @@
+.AppOverviewItem {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid black;
+}
