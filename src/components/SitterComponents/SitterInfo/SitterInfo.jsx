@@ -3,6 +3,7 @@ import { GeoAltFill } from "react-bootstrap-icons";
 import Button from "../../CardFilter/Button/Button";
 import UserReviews from "../../UserReviews/UserReviews";
 import SitterAccommodation from "../SitterAccommodation/SitterAccommodation";
+import SitterCalendar from "../SitterCalendar/SitterCalendar";
 import SitterDetails from "../SitterDetails/SitterDetails";
 import SitterHomeAndPets from "../SitterHomeAndPets/SitterHomeAndPets";
 
@@ -16,6 +17,7 @@ const SitterInfo = () => {
 
       <SitterAccommodation />
       <SitterHomeAndPets />
+      <SitterCalendar />
     </>
   );
 };
