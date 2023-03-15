@@ -1,0 +1,8 @@
+.SitterInfo {
+  height: 8rem;
+  width: 8rem;
+  border-radius: 50%;
+}
+.SitterInfoFontSizeDescription {
+  font-size: 0.8rem;
+}

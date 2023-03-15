@@ -11,7 +11,7 @@ const CardFilter = ({ isHeaderHidden }) => {
         <div className="container h-50 CardFilter border p-4 mt-5">
           {isHeaderHidden ? "" : <Header />}
           <Body />
-          <Button />
+          <Button text={"търси"} />
         </div>
       </div>
     </>
