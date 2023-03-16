@@ -3,7 +3,7 @@ import React from "react";
 const SitterHomeAndPets = () => {
   return (
     <>
-      <div className="container d-flex w-50 mt-3 flex-column border">
+      <div className="container d-flex w-50 mt-3 flex-column border pb-3 mb-3">
         <div className="fw-bolder fs-4 mb-2">Домашните любимци на Ихсан</div>
         <div className="d-flex flex-column">
           <div className="d-flex">
