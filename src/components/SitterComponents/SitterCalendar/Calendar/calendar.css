@@ -21,9 +21,11 @@
   border-right-color: #ccc;
   left: 1em;
 }
+
 .react-datepicker__day--in-range {
-  background-color: rgb(42, 186, 126);
+  background-color: #5bb85c;
 }
+
 .react-datepicker__navigation--previous {
   border-right-color: black;
   font-size: 2rem !important;
@@ -35,12 +37,14 @@
   right: 1em;
 }
 .react-datepicker__day--disabled {
-  background-color: red;
+  background-color: #f5630f;
   color: white;
+  cursor: pointer;
 }
 .react-datepicker__day--disabled:hover {
-  background-color: red;
+  background-color: rgb(242, 142, 3);
   color: black;
+  cursor: pointer;
 }
 .react-datepicker__navigation {
   font-size: 2rem !important;

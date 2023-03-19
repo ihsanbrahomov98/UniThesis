@@ -1,5 +1,15 @@
 .SitterCalendarLegendsBoxAvailable {
   height: 2rem;
   width: 2rem;
-  background-color: rgb(42, 186, 126);
+  background-color: #e0f2d8;
+}
+.SitterCalendarLegendsBoxSelected {
+  height: 2rem;
+  width: 2rem;
+  background-color: #5bb85c;
+}
+.SitterCalendarLegendsBoxUnAvailable {
+  height: 2rem;
+  width: 2rem;
+  background-color: #f5630f;
 }
