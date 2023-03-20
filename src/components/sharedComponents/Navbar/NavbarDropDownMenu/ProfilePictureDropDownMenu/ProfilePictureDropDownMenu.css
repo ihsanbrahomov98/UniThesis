@@ -1,0 +1,33 @@
+.ProfilePictureDropDownMenu_ProfilePicture {
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  cursor: pointer;
+}
+img {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50px;
+}
+.ProfilePictureDropDownMenu_Name {
+  padding-left: 1rem;
+}
+.ProfilePictureDropDownMenu_ProfilePicture:hover {
+  background-color: #3a3b3c;
+  border-radius: 10px;
+  padding-left: 1rem;
+}
+.ProfilePictureDropDownMenu_ViewAll {
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  color: red;
+  cursor: pointer;
+}
+.ProfilePictureDropDownMenu_ViewAll:hover {
+  background-color: #3a3b3c;
+  border-radius: 10px;
+  padding-left: 1rem;
+}

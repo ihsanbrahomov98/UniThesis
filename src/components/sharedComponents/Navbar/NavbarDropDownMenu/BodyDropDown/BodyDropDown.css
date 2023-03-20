@@ -1,0 +1,16 @@
+.BodyDropDown_container {
+  position: relative;
+  display: flex;
+  width: 17.5rem;
+  flex-direction: column;
+  padding: 1rem;
+  right: 12rem;
+  overflow: hidden;
+  background-color: #212223;
+  color: white;
+  z-index: 1;
+}
+.BodyDropDown_Text {
+  font-size: 10px;
+  color: grey;
+}

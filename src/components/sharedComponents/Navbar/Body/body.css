@@ -1,3 +1,20 @@
-.BodyAliceblue {
+.NavbarBodyAliceblue {
   background-color: aliceblue;
+}
+.NavbarBodyBrLine {
+  height: 1.2px;
+  background-color: gray;
+}
+.NavbarBodyPointer {
+  cursor: pointer;
+}
+.NavbarBodyWidth {
+  width: 100px;
+}
+.NavbarBodyHover {
+  color: black;
+}
+.NavbarBodyHover:hover {
+  background-color: aquamarine;
+  color: white;
 }
