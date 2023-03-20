@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./error-page";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import SitterPage from "./pages/SitterPage/SitterPage";
+import DogWalkingPage from "./pages/DogWalkingPage/DogWalkingPage";
 
 export const router = createBrowserRouter([
   {
@@ -19,6 +20,11 @@ export const router = createBrowserRouter([
   {
     path: "/sitter",
     element: <SitterPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/walking",
+    element: <DogWalkingPage />,
     errorElement: <ErrorPage />,
   },
 ]);
