@@ -5,6 +5,7 @@ import ErrorPage from "./error-page";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import SitterPage from "./pages/SitterPage/SitterPage";
 import DogWalkingPage from "./pages/DogWalkingPage/DogWalkingPage";
+import DogSittingPage from "./pages/DogSittingPage/DogSittingPage";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,11 @@ export const router = createBrowserRouter([
   {
     path: "/walking",
     element: <DogWalkingPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/sitting",
+    element: <DogSittingPage />,
     errorElement: <ErrorPage />,
   },
 ]);
