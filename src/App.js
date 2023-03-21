@@ -6,6 +6,8 @@ import SearchPage from "./pages/SearchPage/SearchPage";
 import SitterPage from "./pages/SitterPage/SitterPage";
 import DogWalkingPage from "./pages/DogWalkingPage/DogWalkingPage";
 import DogSittingPage from "./pages/DogSittingPage/DogSittingPage";
+import DogBoardingPage from "./pages/DogBoradingPage/DogBoardingPage";
+import DogVetExaminingPage from "./pages/DogVetExaminingPage/DogVetExaminingPage";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +33,21 @@ export const router = createBrowserRouter([
   {
     path: "/sitting",
     element: <DogSittingPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/boarding",
+    element: <DogBoardingPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/training",
+    element: <DogBoardingPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/examining",
+    element: <DogVetExaminingPage />,
     errorElement: <ErrorPage />,
   },
 ]);

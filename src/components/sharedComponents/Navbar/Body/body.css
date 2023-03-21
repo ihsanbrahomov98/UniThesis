@@ -1,5 +1,5 @@
 .NavbarBodyAliceblue {
-  background-color: aliceblue;
+  background-color: white;
 }
 .NavbarBodyBrLine {
   height: 1.2px;
@@ -17,4 +17,9 @@
 .NavbarBodyHover:hover {
   background-color: aquamarine;
   color: white;
+}
+.NavbarBodyImage {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 0;
 }
