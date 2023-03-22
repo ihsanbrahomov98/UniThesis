@@ -1,0 +1,16 @@
+.CardFilterItemImage {
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 0;
+}
+.CardFilterItemIcon {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 0;
+}
+.CardFilterItemCursor {
+  cursor: pointer;
+}
+.CardFilterItemWidth {
+  width: 90%;
+}
