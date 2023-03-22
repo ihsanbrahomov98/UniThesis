@@ -5,30 +5,30 @@ import Label from "./Label/Label";
 const AppOverview = () => {
   return (
     <>
-      <div className="container mt-2">
+      <div className="container mt-5">
         <div>
-          <div className="d-flex justify-content-center align-items-center">
-            <Label text={"Label"} />
+          <div className="d-flex justify-content-start align-items-start  ">
+            <Label text={"Как рабити нашето приложение"} />
             <Label />
             <Label />
           </div>
-          <div className="d-flex justify-content-center align-items-center ">
-            <Item number={"1"} text={"text"} title={"title"} />
-            <Item number={"1"} text={"text"} title={"title"} />
-            <Item number={"1"} text={"text"} title={"title"} />
+          <div className="d-flex justify-content-start align-items-start  ">
+            <Item number={"1"} text={"Поплъни полетата"} title={"Поплъни"} />
+            <Item number={"2"} text={"Поплъни полетата"} title={"Поплъни"} />
+            <Item number={"3"} text={"Поплъни полетата"} title={"Поплъни"} />
           </div>
         </div>
 
         <div className="mt-4">
-          <div className="d-flex justify-content-center align-items-center">
-            <Label text={"Label"} />
+          <div className="d-flex justify-content-start align-items-start">
+            <Label text={"Защо да избереш нас"} />
             <Label />
             <Label />
           </div>
-          <div className="d-flex justify-content-center align-items-center ">
-            <Item number={"1"} text={"text"} title={"title"} />
-            <Item number={"1"} text={"text"} title={"title"} />
-            <Item number={"1"} text={"text"} title={"title"} />
+          <div className="d-flex justify-content-start align-items-start ">
+            <Item number={"1"} text={"Поплъни полетата"} title={"Поплъни"} />
+            <Item number={"2"} text={"Поплъни полетата"} title={"Поплъни"} />
+            <Item number={"3"} text={"Поплъни полетата"} title={"Поплъни"} />
           </div>
         </div>
       </div>

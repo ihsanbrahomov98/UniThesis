@@ -6,3 +6,7 @@
   -moz-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
+.UserReviewsImage {
+  border-radius: 0;
+  height: 35rem;
+}

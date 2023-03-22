@@ -35,9 +35,8 @@ const UserReviews = () => {
           <div className="carousel-item active">
             <img
               src="https://www.princeton.edu/sites/default/files/styles/scale_1440/public/images/2022/02/KOA_Nassau_2697x1517.jpg?itok=lA8UuoHt"
-              className="d-block w-100"
+              className="d-block w-100 UserReviewsImage"
               alt="..."
-              style={{ height: "35rem" }}
             />
             <div className="carousel-caption d-none d-md-block UserReviews">
               <h5>First slide label</h5>
@@ -49,9 +48,8 @@ const UserReviews = () => {
           <div className="carousel-item">
             <img
               src="https://www.princeton.edu/sites/default/files/styles/scale_1440/public/images/2022/02/KOA_Nassau_2697x1517.jpg?itok=lA8UuoHt"
-              className="d-block w-100"
+              className="d-block w-100 UserReviewsImage"
               alt="..."
-              style={{ height: "35rem" }}
             />
             <div className="carousel-caption d-none d-md-block UserReviews">
               <h5>Second slide label</h5>
@@ -63,9 +61,8 @@ const UserReviews = () => {
           <div className="carousel-item">
             <img
               src="https://www.princeton.edu/sites/default/files/styles/scale_1440/public/images/2022/02/KOA_Nassau_2697x1517.jpg?itok=lA8UuoHt"
-              className="d-block w-100"
+              className="d-block w-100 UserReviewsImage"
               alt="..."
-              style={{ height: "35rem" }}
             />
             <div className="carousel-caption d-none d-md-block UserReviews">
               <h5>Third slide label</h5>
