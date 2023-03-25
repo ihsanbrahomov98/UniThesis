@@ -8,6 +8,10 @@ import DogWalkingPage from "./pages/DogWalkingPage/DogWalkingPage";
 import DogSittingPage from "./pages/DogSittingPage/DogSittingPage";
 import DogBoardingPage from "./pages/DogBoradingPage/DogBoardingPage";
 import DogVetExaminingPage from "./pages/DogVetExaminingPage/DogVetExaminingPage";
+import AdminDashBoardPage from "./pages/AdminDashBoradAdminsPage/AdminDashBoardAdminsPage";
+import AdminDashBoardAdminsPage from "./pages/AdminDashBoradAdminsPage/AdminDashBoardAdminsPage";
+import AdminDashBoardUsersPage from "./pages/AdminDashBoardUsersPage/AdminDashBoardUsersPage";
+import AdminDashBoardSittersPage from "./pages/AdminDashBoardSittersPage/AdminDashBoardSittersPage";
 
 export const router = createBrowserRouter([
   {
@@ -48,6 +52,21 @@ export const router = createBrowserRouter([
   {
     path: "/examining",
     element: <DogVetExaminingPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/admindashboard/admins",
+    element: <AdminDashBoardAdminsPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/admindashboard/users",
+    element: <AdminDashBoardUsersPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/admindashboard/sitters",
+    element: <AdminDashBoardSittersPage />,
     errorElement: <ErrorPage />,
   },
 ]);

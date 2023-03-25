@@ -12,13 +12,8 @@ const Item = () => {
   const [selectedIcon, setSelectedIcon] = useState("");
   const [selectedText, setSelectedText] = useState("Избери услуга");
   const [selectedDates, setSelectedDates] = useState("Избери дати");
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(null);
-  const onChange = (dates) => {
-    const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
-  };
+  const [dateRange, setDateRange] = useState([null, null]);
+  const [startDate, endDate] = dateRange;
 
   const setIconAndText = (text, icon) => {
     setSelectedIcon(icon);
@@ -189,10 +184,33 @@ const Item = () => {
         >
           <div className="d-flex">
             <div className="">
-              <span>{startDate.getDate()}</span>
-              {""}
-              <span>{"." + (startDate.getMonth() + 1)}</span>
-              <span>{"." + startDate.getFullYear()}</span>
+              <span className="">
+                {endDate ? (
+                  <span>
+                    <span>{startDate && startDate.getDate()}</span>
+                    <span>.</span>
+                    <span>{startDate && startDate.getMonth() + 1}</span>
+                    <span>.</span>
+                    <span>{startDate && startDate.getFullYear()}</span>
+                  </span>
+                ) : (
+                  "Изберете дни"
+                )}
+              </span>
+              <span className="">
+                {endDate ? (
+                  <span>
+                    <span>{" - "}</span>
+                    <span>{endDate && endDate.getDate()}</span>
+                    <span>.</span>
+                    <span>{endDate && endDate.getMonth() + 1}</span>
+                    <span>.</span>
+                    <span>{endDate && endDate.getFullYear()}</span>
+                  </span>
+                ) : (
+                  ""
+                )}
+              </span>
             </div>
             <div className=""></div>
           </div>
@@ -209,9 +227,12 @@ const Item = () => {
             <div className="d-flex justify-content-center mt-4">
               <div className="mt-3">
                 <DatePicker
-                  dateFormat="MMMM d"
                   selected={startDate}
-                  onChange={onChange}
+                  onChange={(update) => {
+                    console.log(update);
+
+                    setDateRange(update);
+                  }}
                   startDate={startDate}
                   endDate={endDate}
                   excludeDates={[
