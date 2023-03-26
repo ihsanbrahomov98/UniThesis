@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import BottomNavbar from "./BottomNavbar/BottomNavbar";
 import TopNavbar from "./TopNavbar/TopNavbar";
 
-const Navbars = ({ table }) => {
+const Navbars = () => {
   return (
     <>
       <TopNavbar />

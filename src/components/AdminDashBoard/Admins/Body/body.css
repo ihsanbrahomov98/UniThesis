@@ -4,6 +4,10 @@
   cursor: pointer;
   background-color: orange;
 }
+.adminDashBoardMainBodyBlackColorAndWhiteBg {
+  color: black;
+  background-color: white;
+}
 .adminDashBoardMainBodyBlackColor {
   background-color: black;
   text-decoration: none !important;
