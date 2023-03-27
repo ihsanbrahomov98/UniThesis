@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import { addDays } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
@@ -21,6 +21,8 @@ import {
 } from "../../../utils/Utils";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { addSearchParams } from "../../../redux/SearchSlice/SearchSlice";
+import { CityArray } from "../../../Enums/CityEnum/CityEnum";
 
 const Item = () => {
   const [toggleCalendar, setToggleCalendar] = useState(false);
@@ -34,8 +36,11 @@ const Item = () => {
     city: "",
     startingDate: "",
     endingDate: "",
+    selectedIcon,
   });
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const searchDataRedux = useSelector((state) => state.search);
 
   const filterSearchData = (dataInfo, dataType) => {
     setData((prevState) => ({
@@ -48,6 +53,7 @@ const Item = () => {
   const setIconAndText = (text, icon) => {
     setSelectedIcon(icon);
     filterSearchData(text, "offeredServices");
+    filterSearchData(icon, "selectedIcon");
     setSelectedText(text);
   };
 
@@ -57,8 +63,16 @@ const Item = () => {
         SEARCH_URL +
         `/getAll/${data.offeredServices}/${data.city}/${data.startingDate}/${data.endingDate}`
     );
+    console.log(data);
+    dispatch(addSearchParams(data));
     navigate(`/search/${data.offeredServices}/${data.city}`);
   };
+  useEffect(() => {
+    if (searchDataRedux) {
+      setData(searchDataRedux);
+    }
+  }, [window.location]);
+
   return (
     <>
       <div className="">Търся услуга</div>
@@ -81,17 +95,17 @@ const Item = () => {
         >
           <div className="d-flex flew-row">
             <div className="">
-              {selectedIcon ? (
+              {data.selectedIcon ? (
                 <img
                   className="CardFilterItemImage me-2"
-                  alt=""
-                  src={selectedIcon}
+                  alt="d"
+                  src={data.selectedIcon}
                 />
               ) : (
-                ""
+                "Изберете услуга"
               )}
             </div>
-            <div>{selectedText}</div>
+            <div>{data.offeredServices}</div>
           </div>
           <div className="">
             <ChevronDown />
@@ -192,21 +206,78 @@ const Item = () => {
         className="input-group mb-1
       "
       >
-        <div className="d-flex justify-content-center align-items-center">
+        {/* <div className="d-flex justify-content-center align-items-center">
           <div className="input-group-text" id="basic-addon1">
             <div className="">
               <Building />
             </div>
           </div>
-        </div>
-        <input
+        </div> */}
+        {/* <input
           onChange={(e) => filterSearchData(e.target.value, "city")}
           type="text"
           className="form-control"
           placeholder="Град*"
           aria-label="Username"
           aria-describedby="basic-addon1"
-        />
+          value={data.city}
+        /> */}
+        {/* <div className="">Търся услуга</div> */}
+        <div className="d-flex flex-row dropdown mt-1 w-100">
+          <div className="">
+            <div className="input-group-text " id="basic-addon1">
+              <div className="">
+                <Building />
+              </div>
+            </div>
+          </div>
+          <button
+            type="button"
+            className="d-flex justify-content-between btn border  w-100"
+            data-bs-toggle="dropdown"
+          >
+            <div className="d-flex flew-row">
+              <div className="">{data.city ? data.city : "Изберете Град"}</div>
+            </div>
+            <div className="">
+              <ChevronDown />
+            </div>
+          </button>
+
+          <ul className="dropdown-menu CardFilterItemWidth">
+            <li
+              className="dropdown-item w-100 d-flex CardFilterItemCursor"
+              onClick={() => filterSearchData(CityArray.SOFIA, "city")}
+            >
+              {CityArray.SOFIA}
+            </li>
+            <li
+              className="dropdown-item w-100 d-flex CardFilterItemCursor"
+              onClick={() => filterSearchData(CityArray.PLOVDIV, "city")}
+            >
+              {CityArray.PLOVDIV}
+            </li>
+            <li
+              className="dropdown-item w-100 d-flex CardFilterItemCursor"
+              onClick={() => filterSearchData(CityArray.BURGAS, "city")}
+            >
+              {CityArray.BURGAS}
+            </li>
+
+            <li
+              className="dropdown-item w-100 d-flex CardFilterItemCursor"
+              onClick={() => filterSearchData(CityArray.VARNA, "city")}
+            >
+              {CityArray.VARNA}
+            </li>
+            <li
+              className="dropdown-item w-100 d-flex CardFilterItemCursor"
+              onClick={() => filterSearchData(CityArray.SMOLYAN, "city")}
+            >
+              {CityArray.SMOLYAN}
+            </li>
+          </ul>
+        </div>
       </div>
       <div className="">Търся услуга</div>
       <div
@@ -226,27 +297,37 @@ const Item = () => {
           <div className="d-flex">
             <div className="">
               <span className="">
-                {endDate ? (
+                {data.endingDate ? (
                   <span>
-                    <span>{startDate && startDate.getDate()}</span>
+                    <span>
+                      {data.startingDate && data.startingDate.getDate()}
+                    </span>
                     <span>.</span>
-                    <span>{startDate && startDate.getMonth() + 1}</span>
+                    <span>
+                      {data.startingDate && data.startingDate.getMonth() + 1}
+                    </span>
                     <span>.</span>
-                    <span>{startDate && startDate.getFullYear()}</span>
+                    <span>
+                      {data.startingDate && data.startingDate.getFullYear()}
+                    </span>
                   </span>
                 ) : (
                   "Изберете дни"
                 )}
               </span>
               <span className="">
-                {endDate ? (
+                {data.endingDate ? (
                   <span>
                     <span>{" - "}</span>
-                    <span>{endDate && endDate.getDate()}</span>
+                    <span>{data.endingDate && data.endingDate.getDate()}</span>
                     <span>.</span>
-                    <span>{endDate && endDate.getMonth() + 1}</span>
+                    <span>
+                      {data.endingDate && data.endingDate.getMonth() + 1}
+                    </span>
                     <span>.</span>
-                    <span>{endDate && endDate.getFullYear()}</span>
+                    <span>
+                      {data.endingDate && data.endingDate.getFullYear()}
+                    </span>
                   </span>
                 ) : (
                   ""
