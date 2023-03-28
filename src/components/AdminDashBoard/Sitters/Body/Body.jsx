@@ -52,12 +52,19 @@ const Body = () => {
     deleteItem();
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = (idOfSitter) => {
     const update = async () => {
       await axios.put(BACK_END_BASE_URL + SITTERS_URL + `/update`, {
+        id: idOfSitter,
         name: data.name,
+        surName: data.surName,
+        image: data.image,
+        description: data.description,
+        price: data.price,
         email: data.email,
-        id: e,
+        telephone: data.telephone,
+        startingDate: data.startingDate,
+        endingDate: data.endingDate,
       });
       fetchItems();
     };
@@ -94,6 +101,25 @@ const Body = () => {
     fetchItems();
   }, []);
 
+  const calculateTakenDates = (takenDates) => {
+    let arrayOfTakenDate = [];
+    let firstIndex = takenDates && takenDates.split("|");
+    if (firstIndex) {
+      for (let index = 1; index < firstIndex.length; index++) {
+        let start = firstIndex[index].split(";")[0];
+        let end = firstIndex[index].split(";")[1];
+        arrayOfTakenDate.push(addDays(new Date(start), 0));
+        arrayOfTakenDate.push(addDays(new Date(end), 0));
+      }
+    }
+
+    return arrayOfTakenDate;
+  };
+
+  // [addDays(new Date(), 1),
+  // addDays(new Date(), 5),
+  // addDays(new Date(), 2),
+  // addDays(new Date(), 4]
   return (
     <>
       <div className="container border-start border-end border-top">
@@ -244,49 +270,6 @@ const Body = () => {
                         />
                       </div>
                     </div>
-                    <div
-                      onClick={() => setToggleCalendar(true)}
-                      className="d-flex flex-row position-relative dropdown mt-1"
-                    >
-                      <div className="input-group-text" id="basic-addon1">
-                        <div className="">
-                          <CalendarCheck />
-                        </div>
-                      </div>
-                    </div>
-
-                    <span
-                      onMouseLeave={() => setToggleCalendar(false)}
-                      className="position-absolute "
-                    >
-                      {toggleCalendar ? (
-                        <div className="d-flex justify-content-center mt-4">
-                          <div className="mt-3">
-                            <DatePicker
-                              selected={startDate}
-                              onChange={(update) => {
-                                validate(update[0], "startingDate");
-                                validate(update[1], "endingDate");
-                                setDateRange(update);
-                              }}
-                              startDate={startDate}
-                              endDate={endDate}
-                              excludeDates={[
-                                addDays(new Date(), 1),
-                                addDays(new Date(), 5),
-                                addDays(new Date(), 2),
-                                addDays(new Date(), 4),
-                              ]}
-                              selectsRange
-                              selectsDisabledDaysInRange
-                              inline
-                            />
-                          </div>
-                        </div>
-                      ) : (
-                        ""
-                      )}
-                    </span>
                     <div className="d-flex justify-content-center">
                       <button
                         onClick={() => onSubmitCreate(data)}
@@ -419,6 +402,50 @@ const Body = () => {
                                     />
                                   </div>
                                 </div>
+                                <div
+                                  onClick={() => setToggleCalendar(true)}
+                                  className="d-flex flex-row position-relative dropdown mt-1"
+                                >
+                                  <div
+                                    className="input-group-text"
+                                    id="basic-addon1"
+                                  >
+                                    <div className="">
+                                      <CalendarCheck />
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <span
+                                  onMouseLeave={() => setToggleCalendar(false)}
+                                  className="position-absolute "
+                                >
+                                  {toggleCalendar ? (
+                                    <div className="d-flex justify-content-center mt-4">
+                                      <div className="mt-3">
+                                        <DatePicker
+                                          selected={startDate}
+                                          onChange={(update) => {
+                                            console.log(update);
+                                            validate(update[0], "startingDate");
+                                            validate(update[1], "endingDate");
+                                            setDateRange(update);
+                                          }}
+                                          startDate={startDate}
+                                          endDate={endDate}
+                                          excludeDates={calculateTakenDates(
+                                            e.takenDates
+                                          )}
+                                          selectsRange
+                                          selectsDisabledDaysInRange
+                                          inline
+                                        />
+                                      </div>
+                                    </div>
+                                  ) : (
+                                    ""
+                                  )}
+                                </span>
                                 <div className="d-flex justify-content-center">
                                   <button
                                     onClick={() => onSubmit(e.id)}
