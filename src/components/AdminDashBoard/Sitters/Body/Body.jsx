@@ -1,4 +1,9 @@
 import React, { useState, useEffect } from "react";
+import DatePicker from "react-datepicker";
+import { CalendarCheck } from "react-bootstrap-icons";
+import { addDays } from "date-fns";
+import "react-datepicker/dist/react-datepicker.css";
+import bg from "../../../../assets/i18n/bg.json";
 import "./body.css";
 import axios from "axios";
 import { BACK_END_BASE_URL } from "../../../../utils/Utils";
@@ -6,21 +11,20 @@ import { SITTERS_URL } from "../../../../utils/Utils";
 const Body = () => {
   const [products, setProducts] = useState([]);
   const [data, setData] = useState({
+    id: "",
     name: "",
-    img: "",
+    surName: "",
+    image: "",
     description: "",
     price: "",
-    category: "man",
-    color: "",
-    size: "",
-    amount: "",
-    season: "",
-    user: 1,
     email: "",
-    userId: "",
-    adminId: "2",
+    telephone: "",
+    startingDate: "",
+    endingDate: "",
   });
-
+  const [toggleCalendar, setToggleCalendar] = useState(false);
+  const [dateRange, setDateRange] = useState([null, null]);
+  const [startDate, endDate] = dateRange;
   const fetchItems = async () => {
     const { data } = await axios.get(BACK_END_BASE_URL + SITTERS_URL + `/all`);
     setProducts(data);
@@ -61,11 +65,18 @@ const Body = () => {
   };
 
   const onSubmitCreate = (data) => {
+    console.log(data);
     const create = async () => {
       await axios.post(BACK_END_BASE_URL + SITTERS_URL + `/create`, {
         name: data.name,
+        surName: data.surName,
+        image: data.image,
+        description: data.description,
+        price: data.price,
         email: data.email,
-        adminId: data.adminId,
+        telephone: data.telephone,
+        startingDate: data.startingDate,
+        endingDate: data.endingDate,
       });
       fetchItems();
     };
@@ -133,32 +144,149 @@ const Body = () => {
                   <div className="modal-body">
                     <div class="input-group mb-3">
                       <div className="col-3 d-flex justify-content-start align-items-center">
-                        Username
+                        {bg.adminDashBoard.name}
                       </div>
                       <div className="col-9">
                         <input
                           onChange={(e) => validate(e.target.value, "name")}
                           type="text"
                           class="form-control"
-                          placeholder="Username"
-                          aria-label="Username"
+                          placeholder={bg.adminDashBoard.name}
+                          aria-label={bg.adminDashBoard.name}
                         />
                       </div>
                     </div>
                     <div class="input-group mb-3">
                       <div className="col-3 d-flex justify-content-start align-items-center">
-                        Username
+                        {bg.adminDashBoard.surName}
+                      </div>
+                      <div className="col-9">
+                        <input
+                          onChange={(e) => validate(e.target.value, "surName")}
+                          type="text"
+                          class="form-control"
+                          placeholder={bg.adminDashBoard.surName}
+                          aria-label={bg.adminDashBoard.surName}
+                        />
+                      </div>
+                    </div>
+                    <div class="input-group mb-3">
+                      <div className="col-3 d-flex justify-content-start align-items-center">
+                        {bg.adminDashBoard.image}
+                      </div>
+                      <div className="col-9">
+                        <input
+                          onChange={(e) => validate(e.target.value, "image")}
+                          type="text"
+                          class="form-control"
+                          placeholder={bg.adminDashBoard.image}
+                          aria-label={bg.adminDashBoard.image}
+                        />
+                      </div>
+                    </div>
+                    <div class="input-group mb-3">
+                      <div className="col-3 d-flex justify-content-start align-items-center">
+                        {bg.adminDashBoard.description}
+                      </div>
+                      <div className="col-9">
+                        <input
+                          onChange={(e) =>
+                            validate(e.target.value, "description")
+                          }
+                          type="text"
+                          class="form-control"
+                          placeholder={bg.adminDashBoard.description}
+                          aria-label={bg.adminDashBoard.description}
+                        />
+                      </div>
+                    </div>
+                    <div class="input-group mb-3">
+                      <div className="col-3 d-flex justify-content-start align-items-center">
+                        {bg.adminDashBoard.email}
                       </div>
                       <div className="col-9">
                         <input
                           onChange={(e) => validate(e.target.value, "email")}
                           type="text"
                           class="form-control"
-                          placeholder="Username"
-                          aria-label="Username"
+                          placeholder={bg.adminDashBoard.email}
+                          aria-label={bg.adminDashBoard.email}
                         />
                       </div>
                     </div>
+                    <div class="input-group mb-3">
+                      <div className="col-3 d-flex justify-content-start align-items-center">
+                        {bg.adminDashBoard.telephone}
+                      </div>
+                      <div className="col-9">
+                        <input
+                          onChange={(e) =>
+                            validate(e.target.value, "telephone")
+                          }
+                          type="text"
+                          class="form-control"
+                          placeholder={bg.adminDashBoard.telephone}
+                          aria-label={bg.adminDashBoard.telephone}
+                        />
+                      </div>
+                    </div>
+                    <div class="input-group mb-3">
+                      <div className="col-3 d-flex justify-content-start align-items-center">
+                        {bg.adminDashBoard.price}
+                      </div>
+                      <div className="col-9">
+                        <input
+                          onChange={(e) => validate(e.target.value, "price")}
+                          type="text"
+                          class="form-control"
+                          placeholder={bg.adminDashBoard.price}
+                          aria-label={bg.adminDashBoard.price}
+                        />
+                      </div>
+                    </div>
+                    <div
+                      onClick={() => setToggleCalendar(true)}
+                      className="d-flex flex-row position-relative dropdown mt-1"
+                    >
+                      <div className="input-group-text" id="basic-addon1">
+                        <div className="">
+                          <CalendarCheck />
+                        </div>
+                      </div>
+                    </div>
+
+                    <span
+                      onMouseLeave={() => setToggleCalendar(false)}
+                      className="position-absolute "
+                    >
+                      {toggleCalendar ? (
+                        <div className="d-flex justify-content-center mt-4">
+                          <div className="mt-3">
+                            <DatePicker
+                              selected={startDate}
+                              onChange={(update) => {
+                                validate(update[0], "startingDate");
+                                validate(update[1], "endingDate");
+                                setDateRange(update);
+                              }}
+                              startDate={startDate}
+                              endDate={endDate}
+                              excludeDates={[
+                                addDays(new Date(), 1),
+                                addDays(new Date(), 5),
+                                addDays(new Date(), 2),
+                                addDays(new Date(), 4),
+                              ]}
+                              selectsRange
+                              selectsDisabledDaysInRange
+                              inline
+                            />
+                          </div>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                    </span>
                     <div className="d-flex justify-content-center">
                       <button
                         onClick={() => onSubmitCreate(data)}

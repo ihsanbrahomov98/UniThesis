@@ -1,0 +1,11 @@
+{
+  "adminDashBoard": {
+    "image": "Снимка",
+    "name": "Име",
+    "surName": "Фамилия",
+    "email": "Емайл",
+    "description": "Описание",
+    "telephone": "Телефон",
+    "price": "Цена"
+  }
+}
