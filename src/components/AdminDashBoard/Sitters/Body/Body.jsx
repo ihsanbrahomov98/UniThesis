@@ -69,6 +69,8 @@ const Body = () => {
       fetchItems();
     };
     update();
+    calculateTakenDates();
+    setData("");
   };
 
   const onSubmitCreate = (data) => {
@@ -103,13 +105,26 @@ const Body = () => {
 
   const calculateTakenDates = (takenDates) => {
     let arrayOfTakenDate = [];
+    let firstTakenDate;
+    let lastTakenDate;
+
+    let endDatCasted;
+    let dateCasted;
     let firstIndex = takenDates && takenDates.split("|");
     if (firstIndex) {
       for (let index = 1; index < firstIndex.length; index++) {
-        let start = firstIndex[index].split(";")[0];
-        let end = firstIndex[index].split(";")[1];
-        arrayOfTakenDate.push(addDays(new Date(start), 0));
-        arrayOfTakenDate.push(addDays(new Date(end), 0));
+        firstTakenDate = firstIndex[index].split(";")[0];
+        lastTakenDate = firstIndex[index].split(";")[1];
+        arrayOfTakenDate.push(addDays(new Date(firstTakenDate), 0));
+        arrayOfTakenDate.push(addDays(new Date(lastTakenDate), 0));
+
+        dateCasted = new Date(firstTakenDate);
+        endDatCasted = new Date(lastTakenDate);
+        while (dateCasted <= endDatCasted) {
+          console.log("date:", dateCasted);
+          arrayOfTakenDate.push(new Date(dateCasted));
+          dateCasted.setDate(dateCasted.getDate() + 1);
+        }
       }
     }
 
