@@ -20,7 +20,8 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/search/:episode/:ep2",
+    // :episode/:ep2:episode/:ep2"
+    path: "/search",
     element: <SearchPage />,
     errorElement: <ErrorPage />,
   },

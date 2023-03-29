@@ -22,6 +22,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addSearchParams } from "../../../redux/SearchSlice/SearchSlice";
+import { setSitters } from "../../../redux/SitterSlice/SitterSlice";
 import { CityArray } from "../../../Enums/CityEnum/CityEnum";
 
 const Item = () => {
@@ -58,14 +59,15 @@ const Item = () => {
   };
 
   const getSitters = () => {
-    axios.get(
+    const { sitters } = axios.get(
       BACK_END_BASE_URL +
         SEARCH_URL +
-        `/getAll/${data.offeredServices}/${data.city}/${data.startingDate}/${data.endingDate}`
+        `/getAll//${data.city}/${data.startingDate}/${data.endingDate}/${data.offeredServices}`
     );
-    console.log(data);
     dispatch(addSearchParams(data));
-    navigate(`/search/${data.offeredServices}/${data.city}`);
+    navigate(`/search`);
+    dispatch(setSitters(sitters));
+    console.log(sitters);
   };
   useEffect(() => {
     if (searchDataRedux) {

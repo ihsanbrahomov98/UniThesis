@@ -6,6 +6,7 @@
     "email": "Емайл",
     "description": "Описание",
     "telephone": "Телефон",
-    "price": "Цена"
+    "price": "Цена",
+    "address": "Адрес"
   }
 }

@@ -21,6 +21,7 @@ const Body = () => {
     telephone: "",
     startingDate: "",
     endingDate: "",
+    address: "",
   });
   const [toggleCalendar, setToggleCalendar] = useState(false);
   const [dateRange, setDateRange] = useState([null, null]);
@@ -65,12 +66,14 @@ const Body = () => {
         telephone: data.telephone,
         startingDate: data.startingDate,
         endingDate: data.endingDate,
+        address: data.address,
       });
+
       fetchItems();
     };
     update();
     calculateTakenDates();
-    setData("");
+    setData({});
   };
 
   const onSubmitCreate = (data) => {
@@ -86,6 +89,7 @@ const Body = () => {
         telephone: data.telephone,
         startingDate: data.startingDate,
         endingDate: data.endingDate,
+        address: data.address,
       });
       fetchItems();
     };
@@ -115,8 +119,6 @@ const Body = () => {
       for (let index = 1; index < firstIndex.length; index++) {
         firstTakenDate = firstIndex[index].split(";")[0];
         lastTakenDate = firstIndex[index].split(";")[1];
-        arrayOfTakenDate.push(addDays(new Date(firstTakenDate), 0));
-        arrayOfTakenDate.push(addDays(new Date(lastTakenDate), 0));
 
         dateCasted = new Date(firstTakenDate);
         endDatCasted = new Date(lastTakenDate);
@@ -282,6 +284,20 @@ const Body = () => {
                           class="form-control"
                           placeholder={bg.adminDashBoard.price}
                           aria-label={bg.adminDashBoard.price}
+                        />
+                      </div>
+                    </div>
+                    <div class="input-group mb-3">
+                      <div className="col-3 d-flex justify-content-start align-items-center">
+                        {bg.adminDashBoard.address}
+                      </div>
+                      <div className="col-9">
+                        <input
+                          onChange={(e) => validate(e.target.value, "address")}
+                          type="text"
+                          class="form-control"
+                          placeholder={bg.adminDashBoard.address}
+                          aria-label={bg.adminDashBoard.address}
                         />
                       </div>
                     </div>
