@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import CardFilter from "../../CardFilter/CardFilter";
 import Sitters from "../Sitters/Sitters";
+import { useSelector } from "react-redux";
 
 const SearchFilters = () => {
+  const [sittersForMapping, setSittersForMapping] = useState([]);
+  const sitters = useSelector((state) => state.sitter.sitters);
+
+  useEffect(() => {
+    setSittersForMapping(sitters);
+  }, [sitters]);
+
   return (
     <div style={{ width: "40vw" }} className="">
       <div className="container">
@@ -12,9 +20,8 @@ const SearchFilters = () => {
         </div>
       </div>
       <CardFilter isHeaderHidden={true} />
-      <Sitters />
-      <Sitters />
-      <Sitters />
+      {sittersForMapping &&
+        sittersForMapping.map(() => <div className="">1</div>)}
     </div>
   );
 };

@@ -59,11 +59,25 @@ const Item = () => {
   };
 
   const getSitters = () => {
-    const { sitters } = axios.get(
-      BACK_END_BASE_URL +
-        SEARCH_URL +
-        `/getAll//${data.city}/${data.startingDate}/${data.endingDate}/${data.offeredServices}`
-    );
+    const { sitters } = axios
+      .post(
+        BACK_END_BASE_URL + SEARCH_URL + "/all",
+        {
+          city: data.city,
+          startingDate: data.startingDate,
+          endingDate: data.endingDate,
+          offeredServices: data.offeredServices,
+        }
+        // `/getAll//${
+        //   data.city
+        // }/${data.startingDate.toString()}/${data.endingDate.toString()}/${
+        //   data.offeredServices
+        // }`
+      )
+      .then((response) => {
+        dispatch(setSitters(response.data));
+      });
+    console.log(sitters);
     dispatch(addSearchParams(data));
     navigate(`/search`);
     dispatch(setSitters(sitters));
@@ -354,8 +368,10 @@ const Item = () => {
                   selected={startDate}
                   onChange={(update) => {
                     console.log(update);
-                    filterSearchData(update[0], "startingDate");
-                    filterSearchData(update[1], "endingDate");
+
+                    filterSearchData(new Date(update[0]), "startingDate");
+                    console.log(update[0]);
+                    filterSearchData(new Date(update[1]), "endingDate");
                     setDateRange(update);
                   }}
                   startDate={startDate}

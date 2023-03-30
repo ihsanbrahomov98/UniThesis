@@ -54,6 +54,7 @@ const Body = () => {
   };
 
   const onSubmit = (idOfSitter) => {
+    console.log("data.end:", data.endingDate);
     const update = async () => {
       await axios.put(BACK_END_BASE_URL + SITTERS_URL + `/update`, {
         id: idOfSitter,
