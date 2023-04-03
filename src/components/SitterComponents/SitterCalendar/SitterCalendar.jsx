@@ -6,7 +6,6 @@ const SitterCalendar = () => {
   return (
     <>
       <Calendar />
-      <CalendarLegend />
     </>
   );
 };

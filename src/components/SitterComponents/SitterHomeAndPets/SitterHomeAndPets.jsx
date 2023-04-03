@@ -1,6 +1,6 @@
 import React from "react";
 
-const SitterHomeAndPets = () => {
+const SitterHomeAndPets = ({ item }) => {
   return (
     <>
       <div className="container d-flex w-50 mt-3 flex-column border pb-3 mb-3">

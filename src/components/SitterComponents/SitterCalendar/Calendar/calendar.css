@@ -1,4 +1,4 @@
-/* .react-datepicker {
+.react-datepicker {
   font-size: 1.5em;
 }
 .react-datepicker__header {
@@ -50,4 +50,19 @@
   font-size: 2rem !important;
   color: black !important;
   margin-top: 2rem !important;
-} */
+}
+.SitterCalendarLegendsBoxAvailable {
+  height: 2rem;
+  width: 2rem;
+  background-color: #e0f2d8;
+}
+.SitterCalendarLegendsBoxSelected {
+  height: 2rem;
+  width: 2rem;
+  background-color: #5bb85c;
+}
+.SitterCalendarLegendsBoxUnAvailable {
+  height: 2rem;
+  width: 2rem;
+  background-color: #f5630f;
+}

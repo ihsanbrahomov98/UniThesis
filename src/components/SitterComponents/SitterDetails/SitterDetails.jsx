@@ -3,7 +3,7 @@ import Button from "../../CardFilter/Button/Button";
 import { GeoAltFill } from "react-bootstrap-icons";
 import "./sitterDetails.css";
 
-const SitterDetails = () => {
+const SitterDetails = ({ item }) => {
   return (
     <>
       <div className="container d-flex w-50 mt-5">
@@ -17,19 +17,23 @@ const SitterDetails = () => {
 
         <div className="d-flex w-100 align-items-center flex-row ms-3 justify-content-between">
           <div className="">
-            <div className="mt-1">Ihsan Brahomov</div>
+            <div className="mt-1">
+              <span className="">{item.name}</span>
+              <span className="">{item.surName}</span>
+            </div>
             <div className="d-flex">
               <div className="">
                 {" "}
                 <GeoAltFill />{" "}
               </div>
-              <div className="ms-2 "> Madan,Bulgaria</div>
+              <div className="ms-2 ">
+                <span className="">{item.address}</span>
+                <span className="">,</span>
+                <span className="">{item.country}</span>
+              </div>
             </div>
             <div className="SitterDetailsFontSizeDescription mt-2">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
-              expedita, tenetur quibusdam alias vel ab consequuntur possimus
-              corrupti animi quasi suscipit laboriosam ratione itaque voluptatem
-              perferendis nesciunt deserunt in ullam.
+              {item.description}
             </div>
           </div>
           <div className="h-100 d-flex align-items-start">

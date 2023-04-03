@@ -3,3 +3,11 @@
   width: 8rem;
   border-radius: 50%;
 }
+.SittersTextDecorationNone {
+  text-decoration: none !important;
+  color: black;
+}
+.SittersTextDecorationNone:hover {
+  text-decoration: none !important;
+  color: black;
+}

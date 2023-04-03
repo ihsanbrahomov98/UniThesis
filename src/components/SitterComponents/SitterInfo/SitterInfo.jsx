@@ -7,17 +7,17 @@ import SitterCalendar from "../SitterCalendar/SitterCalendar";
 import SitterDetails from "../SitterDetails/SitterDetails";
 import SitterHomeAndPets from "../SitterHomeAndPets/SitterHomeAndPets";
 
-const SitterInfo = () => {
+const SitterInfo = ({ item }) => {
   return (
     <>
-      <SitterDetails />
+      <SitterDetails item={item} />
       <div className="container w-50">
-        <UserReviews />
+        <UserReviews item={item} />
       </div>
 
-      <SitterAccommodation />
-      <SitterHomeAndPets />
-      <SitterCalendar />
+      <SitterAccommodation item={item} />
+      <SitterHomeAndPets item={item} />
+      <SitterCalendar item={item} />
     </>
   );
 };

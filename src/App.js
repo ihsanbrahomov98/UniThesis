@@ -26,7 +26,7 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/sitter",
+    path: "/sitter/:id",
     element: <SitterPage />,
     errorElement: <ErrorPage />,
   },

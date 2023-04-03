@@ -1,5 +1,6 @@
 import React from "react";
 import "./calendarLegends.css";
+import Button from "./../../../CardFilter/Button/Button";
 
 const CalendarLegend = () => {
   return (

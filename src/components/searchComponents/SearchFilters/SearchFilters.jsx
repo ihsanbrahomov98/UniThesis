@@ -9,8 +9,12 @@ const SearchFilters = () => {
 
   useEffect(() => {
     setSittersForMapping(sitters);
+    console.log(sittersForMapping);
   }, [sitters]);
 
+  const ratingChanged = (newRating) => {
+    console.log(newRating);
+  };
   return (
     <div style={{ width: "40vw" }} className="">
       <div className="container">
@@ -21,7 +25,7 @@ const SearchFilters = () => {
       </div>
       <CardFilter isHeaderHidden={true} />
       {sittersForMapping &&
-        sittersForMapping.map(() => <div className="">1</div>)}
+        sittersForMapping.map((item) => <Sitters item={item} />)}
     </div>
   );
 };
