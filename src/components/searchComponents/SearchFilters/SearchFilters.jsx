@@ -9,12 +9,8 @@ const SearchFilters = () => {
 
   useEffect(() => {
     setSittersForMapping(sitters);
-    console.log(sittersForMapping);
   }, [sitters]);
 
-  const ratingChanged = (newRating) => {
-    console.log(newRating);
-  };
   return (
     <div style={{ width: "40vw" }} className="">
       <div className="container">

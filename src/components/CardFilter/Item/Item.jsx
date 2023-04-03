@@ -37,7 +37,7 @@ const Item = () => {
     city: "",
     startingDate: "",
     endingDate: "",
-    selectedIcon,
+    selectedIcon: "",
   });
   const navigate = useNavigate();
   const dispatch = useDispatch();

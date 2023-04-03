@@ -1,10 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./sitters.css";
 import { Link } from "react-router-dom";
 import StarPicker from "react-star-picker";
 import Button from "./../../CardFilter/Button/Button";
+import {
+  BACK_END_BASE_URL,
+  SEARCH_URL,
+  BOOK_ONE_SITTER,
+} from "../../../utils/Utils";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 const Sitters = ({ item }) => {
+  const searchDataRedux = useSelector((state) => state.search);
+  const [data, setData] = useState({
+    offeredServices: "",
+    city: "",
+    startingDate: "",
+    endingDate: "",
+    selectedIcon: "",
+  });
+
+  const getSitters = () => {
+    axios.post(BACK_END_BASE_URL + SEARCH_URL + BOOK_ONE_SITTER + item.id, {
+      city: data.city,
+      startingDate: data.startingDate,
+      endingDate: data.endingDate,
+      offeredServices: data.offeredServices,
+    });
+  };
+  useEffect(() => {
+    if (searchDataRedux) {
+      setData(searchDataRedux);
+    }
+  }, [window.location]);
+
   return (
     <>
       <Link className="SittersTextDecorationNone" to={`/sitter/:` + item.id}>
@@ -32,8 +62,8 @@ const Sitters = ({ item }) => {
         </div>
       </Link>
       <div className="">
-        <div className="d-flex ">
-          <Button text={"поръчай"} />
+        <div onClick={() => getSitters()} className="d-flex ">
+          <Button text={"поръчай2"} />
         </div>
       </div>
     </>
