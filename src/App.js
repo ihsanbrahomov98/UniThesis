@@ -12,6 +12,7 @@ import AdminDashBoardPage from "./pages/AdminDashBoradAdminsPage/AdminDashBoardA
 import AdminDashBoardAdminsPage from "./pages/AdminDashBoradAdminsPage/AdminDashBoardAdminsPage";
 import AdminDashBoardUsersPage from "./pages/AdminDashBoardUsersPage/AdminDashBoardUsersPage";
 import AdminDashBoardSittersPage from "./pages/AdminDashBoardSittersPage/AdminDashBoardSittersPage";
+import SitterDashBoardPage from "./pages/SitterDashBoardPage/SitterDashBoardPage";
 
 export const router = createBrowserRouter([
   {
@@ -68,6 +69,21 @@ export const router = createBrowserRouter([
   {
     path: "/admindashboard/sitters",
     element: <AdminDashBoardSittersPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/sitterdashboard/pending",
+    element: <SitterDashBoardPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/sitterdashboard/accepted",
+    element: <SitterDashBoardPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/sitterdashboard/history",
+    element: <SitterDashBoardPage />,
     errorElement: <ErrorPage />,
   },
 ]);

@@ -7,6 +7,14 @@
     "description": "Описание",
     "telephone": "Телефон",
     "price": "Цена",
-    "address": "Адрес"
+    "address": "Адрес",
+    "offeredService": "Услуга",
+    "startingDate": "Начална дата",
+    "endingDate": "Крайна дата",
+    "accept": "Потвърди",
+    "delete": "Откажи",
+    "pending": "Неприети",
+    "accepted": "Приети",
+    "history": "История"
   }
 }
