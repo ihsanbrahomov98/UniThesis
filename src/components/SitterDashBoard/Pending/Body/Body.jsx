@@ -8,8 +8,10 @@ import bg from "../../../../assets/i18n/bg.json";
 import "./body.css";
 import axios from "axios";
 import {
+  ACCEPT,
   BACK_END_BASE_URL,
   FIND_ONE_SITTER,
+  SEARCH_URL,
   SITTERS_URL,
 } from "../../../../utils/Utils";
 
@@ -62,11 +64,15 @@ const Body = () => {
     deleteItem();
   };
 
-  const validate = (dataInfo, dataType) => {
-    setData((prevState) => ({
-      ...prevState,
-      [dataType]: dataInfo,
-    }));
+  const acceptJob = (e) => {
+    console.log(e);
+    const accept = async () => {
+      await axios.post(BACK_END_BASE_URL + SEARCH_URL + ACCEPT + "356", {
+        id: e.id,
+      });
+      getOne();
+    };
+    accept();
   };
 
   useEffect(() => {
@@ -103,14 +109,7 @@ const Body = () => {
     <>
       <div className="container border-start border-end border-top">
         <div className="row container pb-3 pt-3 d-flex align-items-center">
-          <div className="col-1">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-            ></input>
-          </div>
+          <div className="col-2 ms-1 ">Име</div>
           <div className="col-2 ms-1">{bg.adminDashBoard.telephone}</div>
           <div className="col-2 ms-1">{bg.adminDashBoard.offeredService}</div>
           <div className="col-2 ms-1">{bg.adminDashBoard.startingDate}</div>
@@ -129,15 +128,8 @@ const Body = () => {
                     key={e.id}
                     className="row border-bottom pb-3 pt-3 d-flex align-items-center"
                   >
-                    <div className="col-1">
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckDefault"
-                        ></input>
-                      </div>
+                    <div className="col-2">
+                      <div>Името на еди кой си</div>
                     </div>
                     <div className="col-2 ">{e.telephone}</div>
                     <div className="col-2">
@@ -161,10 +153,14 @@ const Body = () => {
                     <div className="col-2 " style={{ color: "green" }}>
                       {e.endingDate.split("T")[0]}
                     </div>
-                    <div className="col-3">
+                    <div className="col-2">
                       <div className=" d-flex align-items- justify-content-start flex-row">
                         <span className="adminDashBoardMainBody ps-2 pe-2 me-3">
-                          <div type="button" className="modalCursor p-1 ">
+                          <div
+                            onClick={() => acceptJob(e)}
+                            type="button"
+                            className="modalCursor p-1 "
+                          >
                             {bg.adminDashBoard.accept}
                           </div>
                         </span>

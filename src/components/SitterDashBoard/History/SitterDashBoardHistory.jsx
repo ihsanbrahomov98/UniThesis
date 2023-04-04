@@ -2,7 +2,7 @@ import React from "react";
 import Navbars from "../Navbars/Navbars";
 import Body from "./Body/Body";
 
-const SitterDashBoardPending = () => {
+const SitterDashBoardHistory = () => {
   return (
     <>
       {" "}
@@ -12,4 +12,4 @@ const SitterDashBoardPending = () => {
   );
 };
 
-export default SitterDashBoardPending;
+export default SitterDashBoardHistory;

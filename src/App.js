@@ -8,11 +8,12 @@ import DogWalkingPage from "./pages/DogWalkingPage/DogWalkingPage";
 import DogSittingPage from "./pages/DogSittingPage/DogSittingPage";
 import DogBoardingPage from "./pages/DogBoradingPage/DogBoardingPage";
 import DogVetExaminingPage from "./pages/DogVetExaminingPage/DogVetExaminingPage";
-import AdminDashBoardPage from "./pages/AdminDashBoradAdminsPage/AdminDashBoardAdminsPage";
 import AdminDashBoardAdminsPage from "./pages/AdminDashBoradAdminsPage/AdminDashBoardAdminsPage";
 import AdminDashBoardUsersPage from "./pages/AdminDashBoardUsersPage/AdminDashBoardUsersPage";
 import AdminDashBoardSittersPage from "./pages/AdminDashBoardSittersPage/AdminDashBoardSittersPage";
-import SitterDashBoardPage from "./pages/SitterDashBoardPage/SitterDashBoardPage";
+import SitterDashBoardPendingPage from "./pages/SitterDashBoardPendingPage/SitterDashBoardPendingPage";
+import SitterDashBoardAcceptedPage from "./pages/SitterDashBoardAcceptedPage/SitterDashBoardAcceptedPage";
+import SitterDashBoardHistoryPage from "./pages/SitterDashBoardHistoryPage/SitterDashBoardHistoryPage";
 
 export const router = createBrowserRouter([
   {
@@ -73,17 +74,17 @@ export const router = createBrowserRouter([
   },
   {
     path: "/sitterdashboard/pending",
-    element: <SitterDashBoardPage />,
+    element: <SitterDashBoardPendingPage />,
     errorElement: <ErrorPage />,
   },
   {
     path: "/sitterdashboard/accepted",
-    element: <SitterDashBoardPage />,
+    element: <SitterDashBoardAcceptedPage />,
     errorElement: <ErrorPage />,
   },
   {
     path: "/sitterdashboard/history",
-    element: <SitterDashBoardPage />,
+    element: <SitterDashBoardHistoryPage />,
     errorElement: <ErrorPage />,
   },
 ]);

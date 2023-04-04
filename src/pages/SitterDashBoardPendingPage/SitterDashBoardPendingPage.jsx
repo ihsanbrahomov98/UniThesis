@@ -1,7 +1,7 @@
 import React from "react";
 import SitterDashBoardPending from "../../components/SitterDashBoard/Pending/SitterDashBoardPending";
 
-const SitterDashBoardPage = () => {
+const SitterDashBoardPendingPage = () => {
   return (
     <div>
       <SitterDashBoardPending />
@@ -9,4 +9,4 @@ const SitterDashBoardPage = () => {
   );
 };
 
-export default SitterDashBoardPage;
+export default SitterDashBoardPendingPage;
