@@ -59,3 +59,15 @@
   cursor: pointer;
   background-color: red;
 }
+.sitterDashBoardHistoryDecline {
+  background-color: #f5630f;
+  border-bottom: solid black 1px;
+  border-left: solid black 1px;
+  border-right: solid black 1px;
+}
+.sitterDashBoardHistoryFinished {
+  background-color: #e0f2d8;
+  border-bottom: solid black 1px;
+  border-left: solid black 1px;
+  border-right: solid black 1px;
+}

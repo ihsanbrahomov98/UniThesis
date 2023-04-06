@@ -12,9 +12,10 @@
     "startingDate": "Начална дата",
     "endingDate": "Крайна дата",
     "accept": "Потвърди",
-    "delete": "Откажи",
+    "delete": "Изтрий",
     "pending": "Неприети",
     "accepted": "Приети",
-    "history": "История"
+    "history": "История",
+    "decline": "Откажи"
   }
 }

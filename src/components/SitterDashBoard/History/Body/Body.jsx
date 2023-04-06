@@ -36,8 +36,26 @@ const Body = () => {
     const { data } = await axios.get(
       BACK_END_BASE_URL + SITTERS_URL + FIND_ONE_SITTER + "356"
     );
-    setProducts(data.jobs);
     console.log(data);
+    let filtredData = data.jobs.filter((e) => e.jobStatus === "decline");
+    console.log(filtredData);
+    filtredData.jobs = checkIfJobIsFinished(filtredData);
+    setProducts(filtredData);
+  };
+
+  const checkIfJobIsFinished = (jobs) => {
+    let jobsFilter = [];
+
+    console.log(new Date());
+    for (let index = 0; index < jobs.length; index++) {
+      if (new Date(jobs[index].endingDate) > new Date()) {
+        jobs[index].jobStatus = "decline";
+        jobsFilter.push(jobs[index]);
+      } else {
+        jobs[index].jobStatus = "finished";
+        jobsFilter.push(jobs[index]);
+      }
+    }
   };
 
   const deleteProduct = (e) => {
@@ -113,14 +131,18 @@ const Body = () => {
       </div>
 
       <div className="container border ">
-        <div className=" container">
+        <div className="">
           <div className="">
             <div className="">
               {products &&
                 products.map((e) => (
                   <div
                     key={e.id}
-                    className="row border-bottom pb-3 pt-3 d-flex align-items-center"
+                    className={`row border-bottom pb-3 pt-3 d-flex align-items-center ${
+                      e.jobStatus === "decline"
+                        ? "sitterDashBoardHistoryDecline"
+                        : "sitterDashBoardHistoryFinished"
+                    }`}
                   >
                     <div className="col-2">
                       <div>Името на еди кой си</div>

@@ -10,7 +10,9 @@ import axios from "axios";
 import {
   ACCEPT,
   BACK_END_BASE_URL,
+  DECLINE,
   FIND_ONE_SITTER,
+  PENDING,
   SEARCH_URL,
   SITTERS_URL,
 } from "../../../../utils/Utils";
@@ -38,36 +40,31 @@ const Body = () => {
     const { data } = await axios.get(
       BACK_END_BASE_URL + SITTERS_URL + FIND_ONE_SITTER + "356"
     );
-    setProducts(data.jobs);
-    console.log(data);
+
+    let filtredData = data.jobs.filter(
+      (e) => e.jobStatus !== "accepted" && e.jobStatus !== "history"
+    );
+    setProducts(filtredData);
+    console.log(filtredData);
   };
 
-  const deleteProduct = (e) => {
-    const deleteItem = async () => {
-      await axios.delete(
-        BACK_END_BASE_URL + SITTERS_URL + `/delete`,
-        {
-          data: {
-            id: e.id,
-          },
-        },
-        {
-          headers: {
-            Accept: "application/json; charset=utf-8",
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        }
-      );
+  const declineJob = (e) => {
+    const decline = async () => {
+      console.log(e);
+      await axios.post(BACK_END_BASE_URL + SEARCH_URL + DECLINE + "356", {
+        // TODO
+        id: e.id,
+      });
       getOne();
     };
-    deleteItem();
+    decline();
   };
 
   const acceptJob = (e) => {
     console.log(e);
     const accept = async () => {
       await axios.post(BACK_END_BASE_URL + SEARCH_URL + ACCEPT + "356", {
+        // TODO
         id: e.id,
       });
       getOne();
@@ -119,7 +116,7 @@ const Body = () => {
       </div>
 
       <div className="container border ">
-        <div className=" container">
+        <div className="">
           <div className="">
             <div className="">
               {products &&
@@ -166,9 +163,9 @@ const Body = () => {
                         </span>
                         <span
                           className="adminDashBoardRedButton ps-2 pe-2 d-flex justify-content-center align-items-center "
-                          onClick={() => deleteProduct(e)}
+                          onClick={() => declineJob(e)}
                         >
-                          {bg.adminDashBoard.delete}{" "}
+                          {bg.adminDashBoard.decline}{" "}
                         </span>
                       </div>
                     </div>

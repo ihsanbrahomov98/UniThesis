@@ -38,13 +38,13 @@
   color: white;
   background-color: orange;
 }
-.adminDashBoardRedButton {
+.sitterDashBoardDeclineButton {
   color: red;
   border: 2px solid black;
 
   cursor: pointer;
 }
-.adminDashBoardRedButton:hover {
+.sitterDashBoardDeclineButton:hover {
   color: white;
   background-color: red;
 }
@@ -58,4 +58,10 @@
   color: white;
   cursor: pointer;
   background-color: red;
+}
+.sitterDashBoardAccepted {
+  background-color: #e0f2d8;
+  border-bottom: solid black 1px;
+  border-left: solid black 1px;
+  border-right: solid black 1px;
 }

@@ -36,7 +36,9 @@ const Body = () => {
     const { data } = await axios.get(
       BACK_END_BASE_URL + SITTERS_URL + FIND_ONE_SITTER + "356"
     );
-    setProducts(data.jobs);
+    console.log("here");
+    let filtredData = data.jobs.filter((e) => e.jobStatus === "accepted");
+    setProducts(filtredData);
     console.log(data);
   };
 
@@ -102,8 +104,8 @@ const Body = () => {
 
   return (
     <>
-      <div className="container border-start border-end border-top">
-        <div className="row container pb-3 pt-3 d-flex align-items-center">
+      <div className="container border-start border-end border-top sitterDashBoardAccepted  ">
+        <div className="row container  pb-3 pt-3 d-flex align-items-center ">
           <div className="col-2 ms-1 ">Име</div>
           <div className="col-2 ms-1">{bg.adminDashBoard.telephone}</div>
           <div className="col-2 ms-1">{bg.adminDashBoard.offeredService}</div>
@@ -114,14 +116,14 @@ const Body = () => {
       </div>
 
       <div className="container border ">
-        <div className=" container">
+        <div className="">
           <div className="">
             <div className="">
               {products &&
                 products.map((e) => (
                   <div
                     key={e.id}
-                    className="row border-bottom pb-3 pt-3 d-flex align-items-center"
+                    className="row pb-3 pt-3 d-flex align-items-center sitterDashBoardAccepted"
                   >
                     <div className="col-2">
                       <div>Името на еди кой си</div>
@@ -150,13 +152,8 @@ const Body = () => {
                     </div>
                     <div className="col-2">
                       <div className=" d-flex align-items- justify-content-start flex-row">
-                        <span className="adminDashBoardMainBody ps-2 pe-2 me-3">
-                          <div type="button" className="modalCursor p-1 ">
-                            {bg.adminDashBoard.accept}
-                          </div>
-                        </span>
                         <span
-                          className="adminDashBoardRedButton ps-2 pe-2 d-flex justify-content-center align-items-center "
+                          className="sitterDashBoardDeclineButton p-2 d-flex justify-content-center align-items-center "
                           onClick={() => deleteProduct(e)}
                         >
                           {bg.adminDashBoard.delete}{" "}

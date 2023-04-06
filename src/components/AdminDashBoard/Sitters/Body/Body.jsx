@@ -328,7 +328,7 @@ const Body = () => {
         </div>
       </div>
       <div className="container border ">
-        <div className=" container">
+        <div className="">
           <div className="">
             <div className="">
               {products.map((e) => (

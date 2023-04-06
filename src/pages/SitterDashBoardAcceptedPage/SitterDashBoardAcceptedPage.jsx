@@ -1,5 +1,5 @@
 import React from "react";
-import SitterDashBoardAccepted from "../../components/SitterDashBoard/History/SitterDashBoardHistory";
+import SitterDashBoardAccepted from "../../components/SitterDashBoard/Accepted/SitterDashBoardAccepted";
 
 const SitterDashBoardAcceptedPage = () => {
   return (
