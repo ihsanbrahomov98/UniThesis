@@ -3,7 +3,10 @@ import DatePicker from "react-datepicker";
 import { addDays } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 import { ChevronDown } from "react-bootstrap-icons";
+import { Telephone } from "react-bootstrap-icons";
 import { Building } from "react-bootstrap-icons";
+import { Person } from "react-bootstrap-icons";
+
 import { CalendarCheck } from "react-bootstrap-icons";
 import {
   WALKING,
@@ -38,6 +41,8 @@ const Item = () => {
     startingDate: "",
     endingDate: "",
     selectedIcon: "",
+    telephone: "",
+    name: "",
   });
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -219,26 +224,9 @@ const Item = () => {
       </div>
       <div className="mb-1">Избери град</div>
       <div
-        className="input-group mb-1
+        className="input-group 
       "
       >
-        {/* <div className="d-flex justify-content-center align-items-center">
-          <div className="input-group-text" id="basic-addon1">
-            <div className="">
-              <Building />
-            </div>
-          </div>
-        </div> */}
-        {/* <input
-          onChange={(e) => filterSearchData(e.target.value, "city")}
-          type="text"
-          className="form-control"
-          placeholder="Град*"
-          aria-label="Username"
-          aria-describedby="basic-addon1"
-          value={data.city}
-        /> */}
-        {/* <div className="">Търся услуга</div> */}
         <div className="d-flex flex-row dropdown mt-1 w-100">
           <div className="">
             <div className="input-group-text " id="basic-addon1">
@@ -295,10 +283,59 @@ const Item = () => {
           </ul>
         </div>
       </div>
-      <div className="">Търся услуга</div>
+      <div className="mb-1">Въведи номер</div>
+      <div
+        className="input-group mb-1
+      "
+      >
+        <div className="d-flex flex-row dropdown mt-1 w-100">
+          <div className="">
+            <div className="input-group-text " id="basic-addon1">
+              <div className="">
+                <Telephone />
+              </div>
+            </div>
+          </div>
+          <input
+            onChange={(e) => filterSearchData(e.target.value, "telephone")}
+            type="text"
+            className="form-control"
+            placeholder="Телефон*"
+            aria-label="Телефон"
+            aria-describedby="basic-addon1"
+            value={data.telephone}
+          />
+        </div>
+        <div className="mb-1">Въведи име и фамилия</div>
+      </div>
+
+      <div
+        className="input-group
+      "
+      >
+        <div className="d-flex flex-row dropdown w-100">
+          <div className="">
+            <div className="input-group-text " id="basic-addon1">
+              <div className="">
+                <Person />
+              </div>
+            </div>
+          </div>
+          <input
+            onChange={(e) => filterSearchData(e.target.value, "name")}
+            type="text"
+            className="form-control"
+            placeholder="Име*"
+            aria-label="Име"
+            aria-describedby="basic-addon1"
+            value={data.name}
+          />
+        </div>
+      </div>
+      <div className="mb-2">Търся услуга</div>
       <div
         onClick={() => setToggleCalendar(true)}
-        className="d-flex flex-row position-relative dropdown mt-1"
+        className="d-flex flex-row position-relative dropdown "
       >
         <div className="input-group-text" id="basic-addon1">
           <div className="">
@@ -376,12 +413,7 @@ const Item = () => {
                   }}
                   startDate={startDate}
                   endDate={endDate}
-                  excludeDates={[
-                    addDays(new Date(), 1),
-                    addDays(new Date(), 5),
-                    addDays(new Date(), 2),
-                    addDays(new Date(), 4),
-                  ]}
+                  excludeDates={[]}
                   selectsRange
                   selectsDisabledDaysInRange
                   inline

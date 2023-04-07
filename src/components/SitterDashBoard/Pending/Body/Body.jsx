@@ -42,7 +42,10 @@ const Body = () => {
     );
 
     let filtredData = data.jobs.filter(
-      (e) => e.jobStatus !== "accepted" && e.jobStatus !== "history"
+      (e) =>
+        e.jobStatus !== "accepted" &&
+        e.jobStatus !== "history" &&
+        e.jobStatus !== "decline"
     );
     setProducts(filtredData);
     console.log(filtredData);

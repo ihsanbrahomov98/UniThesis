@@ -48,13 +48,23 @@ const Body = () => {
 
     console.log(new Date());
     for (let index = 0; index < jobs.length; index++) {
-      if (new Date(jobs[index].endingDate) > new Date()) {
+      console.log(new Date());
+      console.log(new Date(jobs[index].endingDate));
+
+      if (new Date(jobs[index].endingDate) < new Date()) {
         jobs[index].jobStatus = "decline";
         jobsFilter.push(jobs[index]);
       } else {
         jobs[index].jobStatus = "finished";
         jobsFilter.push(jobs[index]);
       }
+      // if (
+      //   new Date(jobs[index].endingDate) > new Date() &&
+      //   jobs[index].jobStatus !== "decline"
+      // ) {
+      //   jobs[index].jobStatus = "finished";
+      //   jobsFilter.push(jobs[index]);
+      // }
     }
   };
 
@@ -168,21 +178,6 @@ const Body = () => {
                     <div className="col-2">{e.startingDate.split("T")[0]}</div>
                     <div className="col-2 " style={{ color: "green" }}>
                       {e.endingDate.split("T")[0]}
-                    </div>
-                    <div className="col-2">
-                      <div className=" d-flex align-items- justify-content-start flex-row">
-                        <span className="adminDashBoardMainBody ps-2 pe-2 me-3">
-                          <div type="button" className="modalCursor p-1 ">
-                            {bg.adminDashBoard.accept}
-                          </div>
-                        </span>
-                        <span
-                          className="adminDashBoardRedButton ps-2 pe-2 d-flex justify-content-center align-items-center "
-                          onClick={() => deleteProduct(e)}
-                        >
-                          {bg.adminDashBoard.delete}{" "}
-                        </span>
-                      </div>
                     </div>
                   </div>
                 ))}

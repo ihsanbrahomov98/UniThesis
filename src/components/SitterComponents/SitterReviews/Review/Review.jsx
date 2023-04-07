@@ -1,10 +1,10 @@
 import React from "react";
 import "./review.css";
-
+import StarPicker from "react-star-picker";
 const Review = () => {
   return (
     <div className="d-flex justify-content-center mt-2 ">
-      <div className="d-flex justify-content-between w-50 border p-3">
+      <div className="d-flex justify-content-between w-75 border p-3">
         <div className="d-flex">
           <div className="">
             {" "}
@@ -26,7 +26,9 @@ const Review = () => {
             </div>
           </div>
         </div>
-        <div className="">Звезди</div>
+        <div className="d-flex SitterReviewStarts ">
+          <StarPicker size={15} value={5} />
+        </div>
         {/* TODO */}
       </div>
     </div>

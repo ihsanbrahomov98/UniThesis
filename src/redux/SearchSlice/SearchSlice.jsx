@@ -6,6 +6,8 @@ const initialState = {
   startingDate: "",
   endingDate: "",
   selectedIcon: "",
+  telephone: "",
+  name: "",
 };
 export const searchSlice = createSlice({
   name: "search",
@@ -17,6 +19,8 @@ export const searchSlice = createSlice({
       state.startingDate = action.payload.startingDate;
       state.endingDate = action.payload.endingDate;
       state.selectedIcon = action.payload.selectedIcon;
+      state.telephone = action.payload.telephone;
+      state.name = action.payload.name;
       console.log(state);
     },
   },

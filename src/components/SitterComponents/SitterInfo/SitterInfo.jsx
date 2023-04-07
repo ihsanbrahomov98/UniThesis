@@ -11,7 +11,7 @@ const SitterInfo = ({ item }) => {
   return (
     <>
       <SitterDetails item={item} />
-      <div className="container w-50">
+      <div className="container w-75">
         <UserReviews item={item} />
       </div>
 

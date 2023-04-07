@@ -53,9 +53,9 @@ const Calendar = () => {
         </div>
         <div className="d-flex justify-content-center">
           <div className={"container"}>
-            <div className="d-flex justify-content-center mt-1 pe-3 ps-3 py-2 ms-2 CardFilterButton ">
+            {/* <div className="d-flex justify-content-center mt-1 pe-3 ps-3 py-2 ms-2 CardFilterButton ">
               {"поръчай"}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

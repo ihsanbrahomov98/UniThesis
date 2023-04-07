@@ -9,7 +9,9 @@ import "./body.css";
 import axios from "axios";
 import {
   BACK_END_BASE_URL,
+  DECLINE,
   FIND_ONE_SITTER,
+  SEARCH_URL,
   SITTERS_URL,
 } from "../../../../utils/Utils";
 
@@ -42,27 +44,16 @@ const Body = () => {
     console.log(data);
   };
 
-  const deleteProduct = (e) => {
-    const deleteItem = async () => {
-      await axios.delete(
-        BACK_END_BASE_URL + SITTERS_URL + `/delete`,
-        {
-          data: {
-            id: e.id,
-            //TODO
-          },
-        },
-        {
-          headers: {
-            Accept: "application/json; charset=utf-8",
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        }
-      );
+  const declineJob = (e) => {
+    const decline = async () => {
+      console.log(e);
+      await axios.post(BACK_END_BASE_URL + SEARCH_URL + DECLINE + "356", {
+        // TODO
+        id: e.id,
+      });
       getOne();
     };
-    deleteItem();
+    decline();
   };
 
   const validate = (dataInfo, dataType) => {
@@ -104,7 +95,7 @@ const Body = () => {
 
   return (
     <>
-      <div className="container border-start border-end border-top sitterDashBoardAccepted  ">
+      <div className="container border-start border-end border-top   ">
         <div className="row container  pb-3 pt-3 d-flex align-items-center ">
           <div className="col-2 ms-1 ">Име</div>
           <div className="col-2 ms-1">{bg.adminDashBoard.telephone}</div>
@@ -154,7 +145,7 @@ const Body = () => {
                       <div className=" d-flex align-items- justify-content-start flex-row">
                         <span
                           className="sitterDashBoardDeclineButton p-2 d-flex justify-content-center align-items-center "
-                          onClick={() => deleteProduct(e)}
+                          onClick={() => declineJob(e)}
                         >
                           {bg.adminDashBoard.delete}{" "}
                         </span>

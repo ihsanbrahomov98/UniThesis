@@ -13,12 +13,7 @@ const SearchFilters = () => {
 
   return (
     <div style={{ width: "40vw" }} className="">
-      <div className="container">
-        <div className="fs-5 fw-bold">
-          Доверете се на нас! Доверете се на нас! Доверете се на нас! Доверете
-          се на нас!
-        </div>
-      </div>
+      <div className="container"></div>
       <CardFilter isHeaderHidden={true} />
       {sittersForMapping &&
         sittersForMapping.map((item) => <Sitters item={item} />)}

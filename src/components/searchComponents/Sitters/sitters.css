@@ -1,6 +1,6 @@
 .Sitters {
-  height: 8rem;
-  width: 8rem;
+  height: 5rem;
+  width: 5rem;
   border-radius: 50%;
 }
 .SittersTextDecorationNone {
@@ -10,4 +10,8 @@
 .SittersTextDecorationNone:hover {
   text-decoration: none !important;
   color: black;
+}
+.SitterReviewBox:hover {
+  background-color: #eff7fc;
+  cursor: pointer;
 }
