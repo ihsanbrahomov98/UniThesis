@@ -1,0 +1,22 @@
+.RegisterBody {
+  position: absolute;
+  top: 51%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  background-color: white;
+  height: 57vh;
+  width: 22vw;
+  background: white;
+  border-radius: 35px;
+  box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px,
+    rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+}
+.RegisterBodyButton {
+  background-color: #fdc886;
+  border-radius: 35px;
+}
+.RegisterBodyButton:hover {
+  color: rgb(36, 34, 34);
+  background-color: #fcd29e;
+}

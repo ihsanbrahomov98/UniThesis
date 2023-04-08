@@ -14,6 +14,8 @@ import AdminDashBoardSittersPage from "./pages/AdminDashBoardSittersPage/AdminDa
 import SitterDashBoardPendingPage from "./pages/SitterDashBoardPendingPage/SitterDashBoardPendingPage";
 import SitterDashBoardAcceptedPage from "./pages/SitterDashBoardAcceptedPage/SitterDashBoardAcceptedPage";
 import SitterDashBoardHistoryPage from "./pages/SitterDashBoardHistoryPage/SitterDashBoardHistoryPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 export const router = createBrowserRouter([
   {
@@ -85,6 +87,16 @@ export const router = createBrowserRouter([
   {
     path: "/sitterdashboard/history",
     element: <SitterDashBoardHistoryPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/login",
+    element: <LoginPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/register",
+    element: <RegisterPage />,
     errorElement: <ErrorPage />,
   },
 ]);
