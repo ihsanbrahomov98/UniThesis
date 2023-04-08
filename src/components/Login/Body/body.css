@@ -15,8 +15,17 @@
 .loginBodyButton {
   background-color: #fdc886;
   border-radius: 35px;
+  cursor: pointer;
 }
 .loginBodyButton:hover {
+  cursor: pointer;
   color: rgb(36, 34, 34);
   background-color: #fcd29e;
+}
+.loginTextFs {
+  font-size: 14px;
+}
+.loginTextDecorationNone {
+  text-decoration: none !important;
+  color: black;
 }

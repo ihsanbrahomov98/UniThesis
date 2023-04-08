@@ -1,4 +1,4 @@
-.RegisterBody {
+.RegisterSitterBody {
   position: absolute;
   top: 56.8%;
   left: 50%;
@@ -6,21 +6,21 @@
   color: black;
   background-color: white;
   height: 70vh;
-  width: 25vw;
+  width: 45vw;
   background: white;
   border-radius: 35px;
   box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px,
     rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
 }
-.RegisterBodyButton {
+.RegisterSitterBodyButton {
   background-color: #fdc886;
   border-radius: 35px;
 }
-.RegisterBodyButton:hover {
+.RegisterSitterBodyButton:hover {
   color: rgb(36, 34, 34);
   background-color: #fcd29e;
 }
-.RegisterTextDecorationNone {
+.RegisterSitterTextDecorationNone {
   text-decoration: none !important;
   color: black;
 }
