@@ -3,41 +3,78 @@ import "./body.css";
 import { Link } from "react-router-dom";
 
 const Body = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [errors, setErrors] = useState({});
+  const [formState, setFormState] = useState({
+    name: "",
+    surName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    image: "",
+    description: "",
+    telephone: "",
+    city: "",
+    address: "",
+    housing: "",
+    price: "",
+  });
+  const [validationState, setValidationState] = useState({
+    name: "",
+    surName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    image: "",
+    description: "",
+    telephone: "",
+    city: "",
+    address: "",
+    housing: "",
+    price: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormState((prevState) => ({ ...prevState, [name]: value }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // validate form data
-    let errors = {};
-    if (!name.trim()) {
+
+    const {
+      name,
+      email,
+      password,
+      surName,
+      confirmPassword,
+      image,
+      description,
+      telephone,
+      price,
+      address,
+      housing,
+      city,
+    } = formState;
+    const errors = {};
+    if (!name) {
       errors.name = "Name is required";
     }
-    if (!email.trim()) {
+    if (!email) {
       errors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       errors.email = "Email is invalid";
     }
     if (!password) {
       errors.password = "Password is required";
-    } else if (password.length < 6) {
-      errors.password = "Password must be at least 6 characters";
+    } else if (password.length < 8) {
+      errors.password = "Password must be at least 8 characters";
     }
-    if (confirmPassword !== password) {
-      errors.confirmPassword = "Passwords do not match";
-    }
-    // set errors or submit form
+
+    // Update validation state
+    setValidationState(errors);
+
+    // If there are no errors, submit the form
     if (Object.keys(errors).length === 0) {
-      console.log("Form submitted successfully");
-      setName("");
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
-      setErrors({});
-    } else {
-      setErrors(errors);
+      // Submit the form
     }
   };
   return (
@@ -55,143 +92,100 @@ const Body = () => {
             с нас 0893234212
           </div>
         </div>
-        <div className="d-flex flex-row">
-          <div className="col-6">
-            {" "}
-            <div className=" d-flex justify-content-start align-items-center flex-column p-4">
-              <form
-                onSubmit={handleSubmit}
-                className="needs-validation"
-                noValidate
-              >
-                <div className="mb-3">
-                  <label htmlFor="name" className="form-label">
-                    Name:
-                  </label>
+        <form onSubmit={handleSubmit}>
+          <div className="d-flex flex-row">
+            <div className="col-6">
+              {" "}
+              <div className=" d-flex justify-content-start align-items-center flex-column p-4">
+                <div className="mb-1">
                   <input
                     type="text"
+                    className={`form-control ${
+                      validationState.name ? "is-invalid" : ""
+                    }`}
                     id="name"
                     name="name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    className={`form-control ${
-                      errors.name ? "is-invalid" : ""
-                    }`}
-                    required
+                    value={formState.name}
+                    onChange={handleChange}
                   />
                 </div>
-                <div className="mb-3">
-                  <label htmlFor="email" className="form-label">
-                    Email:
-                  </label>
+                <div className="mb-1">
                   <input
                     type="email"
+                    className={`form-control ${
+                      validationState.email ? "is-invalid" : ""
+                    }`}
                     id="email"
                     name="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className={`form-control ${
-                      errors.email ? "is-invalid" : ""
-                    }`}
-                    required
+                    value={formState.email}
+                    onChange={handleChange}
                   />
-                  {errors.email && (
-                    <div className="invalid-feedback">{errors.email}</div>
-                  )}
                 </div>
-                <div className="mb-3">
-                  <label htmlFor="password" className="form-label">
-                    Password:
-                  </label>
+                <div className="mb-1">
                   <input
                     type="password"
+                    className={`form-control ${
+                      validationState.password ? "is-invalid" : ""
+                    }`}
                     id="password"
                     name="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className={`form-control ${
-                      errors.password ? "is-invalid" : ""
-                    }`}
-                    required
+                    value={formState.password}
+                    onChange={handleChange}
                   />
-                  {errors.password && (
-                    <div className="invalid-feedback">{errors.password}</div>
-                  )}
                 </div>
-                <div className="mb-3">
-                  <label htmlFor="confirmPassword" className="form-label">
-                    Confirm Password:
-                  </label>
-                  <input
-                    type="password"
-                    id="confirmPassword"
-                    name="confirmPassword"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    className={`form-control ${
-                      errors.confirmPassword ? "is-invalid" : ""
-                    }`}
-                    required
-                  />
-                  {errors.confirmPassword && (
-                    <div className="invalid-feedback">
-                      {errors.confirmPassword}
-                    </div>
-                  )}
-                </div>
-                <button type="submit" className="btn btn-primary">
-                  Submit
-                </button>
-              </form>
+              </div>
+            </div>
+            <div className="col-6">
+              {" "}
+              <div className="d-flex justify-content-start align-items-center flex-column p-4">
+                <input
+                  type="text"
+                  className="form-control mb-1"
+                  placeholder="Потребителско име"
+                  aria-label="Потребителс"
+                />
+                <input
+                  type="password"
+                  className="form-control mb-1"
+                  placeholder="Парола"
+                  aria-label="Парола"
+                />
+                <input
+                  type="password"
+                  className="form-control mb-1"
+                  placeholder="Потвърди парола"
+                  aria-label="Потвърди парола"
+                />{" "}
+                <input
+                  type="email"
+                  className="form-control mb-1"
+                  placeholder="Емайл"
+                  aria-label="Емайл"
+                />{" "}
+                <input
+                  type="text"
+                  className="form-control mb-1"
+                  placeholder="Телефон"
+                  aria-label="Телефон"
+                />
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Телефон"
+                  aria-label="Телефон"
+                />
+              </div>
             </div>
           </div>
-          <div className="col-6">
-            {" "}
-            <div className="d-flex justify-content-start align-items-center flex-column p-4">
-              <input
-                type="text"
-                className="form-control mb-1"
-                placeholder="Потребителско име"
-                aria-label="Потребителс"
-              />
-              <input
-                type="password"
-                className="form-control mb-1"
-                placeholder="Парола"
-                aria-label="Парола"
-              />
-              <input
-                type="password"
-                className="form-control mb-1"
-                placeholder="Потвърди парола"
-                aria-label="Потвърди парола"
-              />{" "}
-              <input
-                type="email"
-                className="form-control mb-1"
-                placeholder="Емайл"
-                aria-label="Емайл"
-              />{" "}
-              <input
-                type="text"
-                className="form-control mb-1"
-                placeholder="Телефон"
-                aria-label="Телефон"
-              />
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Телефон"
-                aria-label="Телефон"
-              />
-            </div>
+          <div className="w-100 d-flex justify-content-center">
+            <button
+              type="submit"
+              className="RegisterSitterBodyButton d-flex  w-75 py-3  fw-bold justify-content-center align-items-center"
+            >
+              Регистрирай се
+            </button>
           </div>
-        </div>
-        <div className="w-100 d-flex justify-content-center">
-          <div className="RegisterSitterBodyButton d-flex  w-75 py-3  fw-bold justify-content-center align-items-center">
-            Регистрирай се
-          </div>
-        </div>
+        </form>
         <div
           style={{ textAlign: "center" }}
           className="mt-1 d-flex flex-column"
