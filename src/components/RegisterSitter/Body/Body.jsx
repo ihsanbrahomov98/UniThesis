@@ -191,41 +191,53 @@ const Body = () => {
             <div className="col-6">
               {" "}
               <div className="d-flex justify-content-start align-items-center flex-column p-4">
-                <div className="mb-1 w-100">
-                  <input
-                    type="text"
-                    className={`form-control ${
-                      validationState.name ? "is-invalid" : ""
+                <div class="input-group mb-1  w-100">
+                  <label
+                    tabindex="0"
+                    style={{
+                      height: "37.6px",
+                      color: formState.image ? "black" : "grey",
+                    }}
+                    className={`form-control
                     }`}
-                    placeholder="Име"
-                    id="name"
-                    name="name"
-                    value={formState.name}
-                    onChange={handleChange}
-                  />
+                  >
+                    {formState.image ? formState.image : "Снимка"}
+                    <input
+                      className={`invisible form-control ${
+                        validationState.image ? "is-invalid" : ""
+                      }`}
+                      onChange={handleChange}
+                      value={formState.image}
+                      id="image"
+                      name="image"
+                      type="file"
+                    />
+                  </label>
                 </div>
+
                 <div className="mb-1 w-100">
                   <input
-                    type="text"
+                    type="number"
                     className={`form-control ${
-                      validationState.name ? "is-invalid" : ""
+                      validationState.price ? "is-invalid" : ""
                     }`}
-                    placeholder="Име"
-                    id="name"
-                    name="name"
-                    value={formState.name}
+                    placeholder="Цена на час"
+                    id="price"
+                    name="price"
+                    value={formState.price}
                     onChange={handleChange}
                   />
                 </div>
 
-                <div className="d-flex flex-row dropdown mt-1 w-100 ">
+                <div className="d-flex flex-row dropdown w-100 mb-1 ">
                   <button
                     type="button"
                     className="d-flex justify-content-between btn border w-100 "
                     data-bs-toggle="dropdown"
                     value={formState.city}
+                    style={{ color: formState.city ? "black" : "grey" }}
                   >
-                    {formState.city}
+                    {formState.city ? formState.city : "Населено място"}
                     <div className="d-flex flew-row"></div>
                     <div className="">
                       <ChevronDown />
@@ -266,6 +278,45 @@ const Body = () => {
                     </li>
                   </ul>
                 </div>
+                <div className="mb-1 w-100">
+                  <input
+                    type="text"
+                    className={`form-control ${
+                      validationState.address ? "is-invalid" : ""
+                    }`}
+                    placeholder="Пълен адрес"
+                    id="address"
+                    name="address"
+                    value={formState.address}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="mb-1 w-100">
+                  <input
+                    type="number"
+                    className={`form-control ${
+                      validationState.housing ? "is-invalid" : ""
+                    }`}
+                    placeholder="Квадратура на жилището"
+                    id="housing"
+                    name="housing"
+                    value={formState.housing}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="w-100">
+                  <input
+                    type="text"
+                    className={`form-control ${
+                      validationState.description ? "is-invalid" : ""
+                    }`}
+                    placeholder="Кратко описание"
+                    id="description"
+                    name="description"
+                    value={formState.description}
+                    onChange={handleChange}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -273,7 +324,7 @@ const Body = () => {
           <div className="w-100 d-flex justify-content-center">
             <button
               type="submit"
-              className="RegisterSitterBodyButton d-flex  w-75 py-3  fw-bold justify-content-center align-items-center"
+              className="RegisterSitterBodyButton d-flex  w-75 py-2  fw-bold justify-content-center align-items-center"
             >
               Регистрирай се
             </button>

@@ -1,8 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import "./body.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import {
+  AUTH_USER,
+  BACK_END_BASE_URL,
+  USER_LOGIN,
+  USER_REGISTER,
+} from "../../../utils/Utils";
 
 const Body = () => {
+  const [data, setData] = useState({
+    password: "",
+    username: "",
+  });
+  const validate = (dataInfo, dataType) => {
+    setData((prevState) => ({
+      ...prevState,
+      [dataType]: dataInfo,
+    }));
+  };
+
+  const loginUser = () => {
+    console.log(data);
+    const login = async () => {
+      const { user } = await axios.post(
+        BACK_END_BASE_URL + AUTH_USER + USER_LOGIN,
+        {
+          password: data.password,
+          confirmPassword: data.confirmPassword,
+          username: data.username,
+          email: data.email,
+          telephone: data.telephone,
+        }
+      );
+      console.log(user);
+    };
+    login();
+  };
+
   return (
     <>
       <div className="loginBody d-flex justify-content-start align-items-center flex-column p-4">
@@ -15,19 +51,24 @@ const Body = () => {
         </div>
 
         <input
+          onChange={(e) => validate(e.target.value, "username")}
           type="text"
           className="form-control mb-3 mt-2"
           placeholder="Потребителско име или телефон"
           aria-label="Потребителско име или телефон"
         />
         <input
+          onChange={(e) => validate(e.target.value, "password")}
           type="password"
           className="form-control"
           placeholder="Парола"
           aria-label="Парола"
         />
 
-        <div className="loginBodyButton  d-flex w-100 py-2 mt-4 fw-bold justify-content-center align-items-center">
+        <div
+          onClick={() => loginUser()}
+          className="loginBodyButton  d-flex w-100 py-2 mt-4 fw-bold justify-content-center align-items-center"
+        >
           Влез
         </div>
         <div

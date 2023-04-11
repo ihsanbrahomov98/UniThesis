@@ -1,11 +1,11 @@
 .RegisterSitterBody {
   position: absolute;
-  top: 56.8%;
+  top: 59%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: black;
   background-color: white;
-  height: 72vh;
+  height: 71vh;
   width: 45vw;
   background: white;
   border-radius: 35px;
