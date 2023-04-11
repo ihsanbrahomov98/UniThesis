@@ -12,10 +12,6 @@ const ProfilePictureDropDownMenu = (props) => {
           <span className="ProfilePictureDropDownMenu_Name">{props.name}</span>
         </span>
       </div>
-
-      <div className="ProfilePictureDropDownMenu_ViewAll">
-        View all profiles
-      </div>
     </>
   );
 };

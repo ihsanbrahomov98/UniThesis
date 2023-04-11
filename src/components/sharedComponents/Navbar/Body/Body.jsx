@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Item from "./item/Item";
 import { ChevronDown } from "react-bootstrap-icons";
 import { Envelope } from "react-bootstrap-icons";
@@ -8,10 +8,12 @@ import "./body.css";
 import ButtonDropDown from "./../NavbarDropDownMenu/ButtonDropDown/ButtonDropDown";
 import { Link } from "react-router-dom";
 
+import { useSelector, useDispatch } from "react-redux";
 const Body = () => {
+  const userDataRedux = useSelector((state) => state.user);
   const [hoveredNavBarItem, sethoveredNavBarItemNavBarItem] = useState("");
   const [hoveredAccount, setHoveredAccount] = useState("");
-
+  const [user, setUser] = useState({ username: "няма" });
   const handleMouseOverForNavbarItem = () => {
     sethoveredNavBarItemNavBarItem(true);
   };
@@ -26,6 +28,20 @@ const Body = () => {
   const handleMouseOutForAccount = () => {
     setHoveredAccount(false);
   };
+  useEffect(() => {
+    if (userDataRedux && userDataRedux.role === "USER") {
+      console.log(userDataRedux);
+      setUser(userDataRedux);
+    }
+    if (userDataRedux && userDataRedux.role === "SITTER") {
+      console.log(userDataRedux);
+      setUser(userDataRedux);
+    }
+    if (userDataRedux && userDataRedux.role === "ADMIN") {
+      console.log(userDataRedux);
+      setUser(userDataRedux);
+    }
+  }, [userDataRedux]);
   return (
     <>
       <div className="d-flex flex-column">
@@ -91,7 +107,12 @@ const Body = () => {
                   </div>
                   <div className="">
                     {" "}
-                    <Item text={"kuche"} icon={"nqma"} />{" "}
+                    <Item
+                      text={
+                        user.username && user.username ? user.username : "няма"
+                      }
+                      icon={"nqma"}
+                    />{" "}
                   </div>
 
                   <div className="mx-1">

@@ -6,9 +6,10 @@
   padding: 1rem;
   right: 12rem;
   overflow: hidden;
-  background-color: #212223;
-  color: white;
+  background-color: white;
+  color: #212223;
   z-index: 1;
+  border-radius: 25px;
 }
 .BodyDropDown_Text {
   font-size: 10px;

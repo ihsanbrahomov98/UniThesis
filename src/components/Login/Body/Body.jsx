@@ -8,8 +8,11 @@ import {
   USER_LOGIN,
   USER_REGISTER,
 } from "../../../utils/Utils";
+import { setUser } from "../../../redux/UserSlice/UserSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 const Body = () => {
+  const dispatch = useDispatch();
   const [data, setData] = useState({
     password: "",
     username: "",
@@ -24,17 +27,16 @@ const Body = () => {
   const loginUser = () => {
     console.log(data);
     const login = async () => {
-      const { user } = await axios.post(
-        BACK_END_BASE_URL + AUTH_USER + USER_LOGIN,
-        {
+      const { user } = await axios
+        .post(BACK_END_BASE_URL + AUTH_USER + USER_LOGIN, {
           password: data.password,
-          confirmPassword: data.confirmPassword,
+
           username: data.username,
-          email: data.email,
-          telephone: data.telephone,
-        }
-      );
-      console.log(user);
+        })
+        .then((response) => {
+          console.log(response.data);
+          dispatch(setUser(response.data));
+        });
     };
     login();
   };
