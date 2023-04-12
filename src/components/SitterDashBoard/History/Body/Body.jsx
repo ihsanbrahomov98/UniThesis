@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import { CalendarCheck } from "react-bootstrap-icons";
 import { addDays } from "date-fns";
-
 import "react-datepicker/dist/react-datepicker.css";
 import bg from "../../../../assets/i18n/bg.json";
 import "./body.css";
@@ -57,7 +56,6 @@ const Body = () => {
         jobs[index].jobStatus = "decline";
         jobsFilter.push(jobs[index]);
       } else {
-        jobs[index].jobStatus = "finished";
         jobsFilter.push(jobs[index]);
       }
       // if (

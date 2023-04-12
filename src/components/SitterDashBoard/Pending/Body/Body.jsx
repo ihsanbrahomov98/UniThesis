@@ -15,10 +15,13 @@ import {
   PENDING,
   SEARCH_URL,
   SITTERS_URL,
+  UPDATE_CALENDAR,
 } from "../../../../utils/Utils";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setTakenDate, setUser } from "../../../../redux/UserSlice/UserSlice";
 
 const Body = () => {
+  const dispatch = useDispatch();
   const searchDataRedux = useSelector((state) => state.user);
   const [products, setProducts] = useState([]);
   const [data, setData] = useState({
@@ -42,7 +45,6 @@ const Body = () => {
     const { data } = await axios.get(
       BACK_END_BASE_URL + SITTERS_URL + FIND_ONE_SITTER + searchDataRedux.id
     );
-
     let filtredData = data.jobs.filter(
       (e) =>
         e.jobStatus !== "accepted" &&
@@ -50,9 +52,14 @@ const Body = () => {
         e.jobStatus !== "decline"
     );
     setProducts(filtredData);
-    console.log(filtredData);
   };
 
+  const validate = (dataInfo, dataType) => {
+    setData((prevState) => ({
+      ...prevState,
+      [dataType]: dataInfo,
+    }));
+  };
   const declineJob = (e) => {
     const decline = async () => {
       console.log(e);
@@ -84,10 +91,36 @@ const Body = () => {
   };
 
   useEffect(() => {
+    onSubmit();
     getOne();
   }, []);
 
+  const onSubmit = (idOfSitter) => {
+    console.log("searchDataRedux.id", searchDataRedux.id);
+    const update = async () => {
+      await axios
+        .put(BACK_END_BASE_URL + SITTERS_URL + UPDATE_CALENDAR, {
+          id: searchDataRedux.id,
+          name: data.name,
+          surName: data.surName,
+          image: data.image,
+          description: data.description,
+          price: data.price,
+          email: data.email,
+          telephone: data.telephone,
+          startingDate: data.startingDate,
+          endingDate: data.endingDate,
+          address: data.address,
+        })
+        .then((response) => {
+          console.log("reponse:", response);
+          dispatch(setTakenDate(response.data));
+        });
+    };
+    update();
+  };
   const calculateTakenDates = (takenDates) => {
+    console.log(takenDates);
     let arrayOfTakenDate = [];
     let firstTakenDate;
     let lastTakenDate;
@@ -122,7 +155,66 @@ const Body = () => {
           <div className="col-2 ms-1">{bg.adminDashBoard.offeredService}</div>
           <div className="col-2 ms-1">{bg.adminDashBoard.startingDate}</div>
           <div className="col-2 ms-1">{bg.adminDashBoard.endingDate}</div>
-          <div className="col-1 ">callendar</div>
+          <div className="col-1 ">
+            <div
+              onClick={() => {
+                setToggleCalendar(true);
+              }}
+              className="d-flex flex-row position-relative dropdown mt-1"
+            >
+              <div
+                className="input-group-text adminDashBoardWhiteBg"
+                id="basic-addon1"
+              >
+                <div className="">
+                  <CalendarCheck />
+                </div>
+              </div>
+            </div>
+            <span
+              onMouseLeave={() => setToggleCalendar(false)}
+              className="position-absolute adminDashBoardPositionCalendar "
+            >
+              {toggleCalendar ? (
+                <div className="d-flex justify-content-center mt-4">
+                  <div className="mt-3">
+                    <DatePicker
+                      selected={startDate}
+                      onChange={(update) => {
+                        console.log(update);
+                        validate(update[0], "startingDate");
+                        validate(update[1], "endingDate");
+                        setDateRange(update);
+                      }}
+                      startDate={startDate}
+                      endDate={endDate}
+                      excludeDates={calculateTakenDates(
+                        searchDataRedux.takenDates
+                      )}
+                      selectsRange
+                      selectsDisabledDaysInRange
+                      inline
+                    />
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
+              <div className="d-flex justify-content-center">
+                {toggleCalendar === true ? (
+                  <button
+                    onClick={() => onSubmit(searchDataRedux.id)}
+                    type="button"
+                    className="btn btn-primary adminDashBoardRedButtonCalendar px-5"
+                  >
+                    Промени
+                  </button>
+                ) : (
+                  ""
+                )}
+              </div>
+            </span>
+          </div>
         </div>
       </div>
 

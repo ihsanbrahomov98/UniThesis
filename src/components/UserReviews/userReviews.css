@@ -6,7 +6,11 @@
   -moz-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
-.UserReviewsImage {
+.UserReviewsImageHomePage {
   border-radius: 0;
   height: 35rem;
+}
+.UserReviewsImageSitterPage {
+  border-radius: 0;
+  height: 20rem;
 }

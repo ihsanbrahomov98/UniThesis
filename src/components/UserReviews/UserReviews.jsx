@@ -1,7 +1,7 @@
 import React from "react";
 import "./userReviews.css";
 
-const UserReviews = () => {
+const UserReviews = ({ isSitter }) => {
   return (
     <>
       <div
@@ -35,7 +35,11 @@ const UserReviews = () => {
           <div className="carousel-item active">
             <img
               src="https://www.princeton.edu/sites/default/files/styles/scale_1440/public/images/2022/02/KOA_Nassau_2697x1517.jpg?itok=lA8UuoHt"
-              className="d-block w-100 UserReviewsImage"
+              className={`d-block w-100 ${
+                isSitter
+                  ? "UserReviewsImageSitterPage"
+                  : "UserReviewsImageHomePage"
+              }`}
               alt="..."
             />
             <div className="carousel-caption d-none d-md-block UserReviews">
@@ -48,7 +52,11 @@ const UserReviews = () => {
           <div className="carousel-item">
             <img
               src="https://www.princeton.edu/sites/default/files/styles/scale_1440/public/images/2022/02/KOA_Nassau_2697x1517.jpg?itok=lA8UuoHt"
-              className="d-block w-100 UserReviewsImage"
+              className={`d-block w-100 ${
+                isSitter
+                  ? "UserReviewsImageSitterPage"
+                  : "UserReviewsImageHomePage"
+              }`}
               alt="..."
             />
             <div className="carousel-caption d-none d-md-block UserReviews">
@@ -61,7 +69,11 @@ const UserReviews = () => {
           <div className="carousel-item">
             <img
               src="https://www.princeton.edu/sites/default/files/styles/scale_1440/public/images/2022/02/KOA_Nassau_2697x1517.jpg?itok=lA8UuoHt"
-              className="d-block w-100 UserReviewsImage"
+              className={`d-block w-100 ${
+                isSitter
+                  ? "UserReviewsImageSitterPage"
+                  : "UserReviewsImageHomePage"
+              }`}
               alt="..."
             />
             <div className="carousel-caption d-none d-md-block UserReviews">

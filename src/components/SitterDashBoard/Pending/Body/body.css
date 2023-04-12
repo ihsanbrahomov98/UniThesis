@@ -59,3 +59,23 @@
   cursor: pointer;
   background-color: red;
 }
+.adminDashBoardWhiteBg {
+  background-color: white;
+}
+.adminDashBoardPositionCalendar {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.adminDashBoardRedButtonCalendar {
+  color: black;
+  border: 2px solid black;
+  background-color: white;
+  cursor: pointer;
+}
+.adminDashBoardRedButtonCalendar:hover {
+  background-color: red;
+}

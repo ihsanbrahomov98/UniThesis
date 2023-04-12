@@ -12,7 +12,7 @@ const SitterInfo = ({ item }) => {
     <>
       <SitterDetails item={item} />
       <div className="container w-75">
-        <UserReviews item={item} />
+        <UserReviews item={item} isSitter={true} />
       </div>
 
       <SitterAccommodation item={item} />
