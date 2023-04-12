@@ -17,6 +17,7 @@ import SitterDashBoardHistoryPage from "./pages/SitterDashBoardHistoryPage/Sitte
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import RegisterSitterPage from "./pages/RegisterSitterPage/RegisterSitterPage";
+import LoginSitterPage from "./pages/LoginSitterPage/LoginSitterPage";
 
 export const router = createBrowserRouter([
   {
@@ -93,6 +94,11 @@ export const router = createBrowserRouter([
   {
     path: "/login",
     element: <LoginPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/login/sitter",
+    element: <LoginSitterPage />,
     errorElement: <ErrorPage />,
   },
   {

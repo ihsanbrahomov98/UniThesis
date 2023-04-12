@@ -8,6 +8,7 @@ import {
   USER_REGISTER,
 } from "../../../utils/Utils";
 import { useNavigate } from "react-router-dom";
+
 const Body = () => {
   const navigate = useNavigate();
   const [data, setData] = useState({

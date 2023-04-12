@@ -3,8 +3,16 @@ import "./body.css";
 import { Link } from "react-router-dom";
 import { ChevronDown } from "react-bootstrap-icons";
 import { CityArray } from "../../../Enums/CityEnum/CityEnum";
-
+import axios from "axios";
+import {
+  AUTH_SITTER,
+  AUTH_USER,
+  BACK_END_BASE_URL,
+  USER_REGISTER,
+} from "../../../utils/Utils";
+import { useNavigate } from "react-router-dom";
 const Body = () => {
+  const navigate = useNavigate();
   const [formState, setFormState] = useState({
     name: "",
     surName: "",
@@ -85,7 +93,22 @@ const Body = () => {
 
     // If there are no errors, submit the form
     if (Object.keys(errors).length === 0) {
-      // Submit the form
+      const register = async () => {
+        console.log();
+        await axios
+          .post(BACK_END_BASE_URL + AUTH_SITTER + USER_REGISTER, {
+            password: formState.password,
+            username: formState.username,
+            email: formState.email,
+            telephone: formState.telephone,
+          })
+          .then((response) => {
+            if (response.data === "Sitter registered successfully!") {
+              navigate("/");
+            }
+          });
+      };
+      register();
     }
   };
   return (

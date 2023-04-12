@@ -12,8 +12,11 @@ export const ACCEPT = "/accept/";
 export const DECLINE = "/decline/";
 export const HISTORY = "/history/";
 export const AUTH_USER = "/auth/user";
+export const AUTH_SITTER = "/auth/sitter";
 export const USER_REGISTER = "/register";
 export const USER_LOGIN = "/login";
+export const REGISTER = "/register";
+export const LOGIN = "/login";
 export const fetchAllItems = async (URL) => {
   const { data } = await axios.get(BACK_END_BASE_URL + URL);
   console.log(BACK_END_BASE_URL + URL);
