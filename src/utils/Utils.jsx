@@ -13,6 +13,7 @@ export const DECLINE = "/decline/";
 export const HISTORY = "/history/";
 export const AUTH_USER = "/auth/user";
 export const AUTH_SITTER = "/auth/sitter";
+export const AUTH_ADMIN = "/auth/admin";
 export const USER_REGISTER = "/register";
 export const USER_LOGIN = "/login";
 export const REGISTER = "/register";

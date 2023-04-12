@@ -10,8 +10,11 @@ import {
   BACK_END_BASE_URL,
   USER_REGISTER,
 } from "../../../utils/Utils";
+import { setUser } from "../../../redux/UserSlice/UserSlice";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 const Body = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [formState, setFormState] = useState({
     name: "",
@@ -103,7 +106,8 @@ const Body = () => {
             telephone: formState.telephone,
           })
           .then((response) => {
-            if (response.data === "Sitter registered successfully!") {
+            if (response.data.email) {
+              dispatch(setUser(response.data));
               navigate("/");
             }
           });

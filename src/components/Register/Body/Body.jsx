@@ -7,9 +7,12 @@ import {
   BACK_END_BASE_URL,
   USER_REGISTER,
 } from "../../../utils/Utils";
+import { setUser } from "../../../redux/UserSlice/UserSlice";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 const Body = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [data, setData] = useState({
     password: "",
@@ -37,7 +40,8 @@ const Body = () => {
           telephone: data.telephone,
         })
         .then((response) => {
-          if (response.data === "User registered successfully!") {
+          if (response.data.username) {
+            dispatch(setUser(response.data));
             navigate("/");
           }
         });

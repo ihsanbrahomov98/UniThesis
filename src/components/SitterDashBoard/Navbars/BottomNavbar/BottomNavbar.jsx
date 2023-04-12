@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import bg from "../../../../assets/i18n/bg.json";
+import { useSelector } from "react-redux";
 
 const BottomNavbar = () => {
   const [selected, setSelected] = useState("pending");
+  const searchDataRedux = useSelector((state) => state.user);
   let location = useLocation();
   useEffect(() => {
     setSelected(location.pathname.split("/")[2]);
@@ -22,7 +24,7 @@ const BottomNavbar = () => {
                     textDecoration: "none",
                     color: selected === "pending" ? "black" : "white",
                   }}
-                  to={"/sitterdashboard/pending"}
+                  to={`/sitterdashboard/pending/:${searchDataRedux.id}`}
                   className={"fs-5 col-4 pe-0 "}
                 >
                   <div
@@ -41,7 +43,7 @@ const BottomNavbar = () => {
                     textDecoration: "none",
                     color: selected === "accepted" ? "black" : "white",
                   }}
-                  to={"/sitterdashboard/accepted"}
+                  to={`/sitterdashboard/accepted/:${searchDataRedux.id}`}
                 >
                   <div
                     className={
@@ -59,7 +61,7 @@ const BottomNavbar = () => {
                     textDecoration: "none",
                     color: selected === "history" ? "black" : "white",
                   }}
-                  to={"/sitterdashboard/history"}
+                  to={`/sitterdashboard/history/:${searchDataRedux.id}`}
                 >
                   <div
                     className={

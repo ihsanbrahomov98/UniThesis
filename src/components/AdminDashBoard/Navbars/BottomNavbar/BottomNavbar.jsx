@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import "../../Admins/Body/body.css";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const BottomNavbar = () => {
   const [selected, setSelected] = useState("sitters");
+  const searchDataRedux = useSelector((state) => state.user);
   let location = useLocation();
   useEffect(() => {
     setSelected(location.pathname.split("/")[2]);
@@ -22,7 +24,7 @@ const BottomNavbar = () => {
                     textDecoration: "none",
                     color: selected === "sitters" ? "black" : "white",
                   }}
-                  to={"/admindashboard/sitters"}
+                  to={`/admindashboard/sitters/:${searchDataRedux.id}`}
                   className={"fs-5 col-4 pe-0 "}
                 >
                   <div
@@ -41,7 +43,7 @@ const BottomNavbar = () => {
                     textDecoration: "none",
                     color: selected === "users" ? "black" : "white",
                   }}
-                  to={"/admindashboard/users"}
+                  to={`/admindashboard/users/:${searchDataRedux.id}`}
                 >
                   <div
                     className={
@@ -59,7 +61,7 @@ const BottomNavbar = () => {
                     textDecoration: "none",
                     color: selected === "admins" ? "black" : "white",
                   }}
-                  to={"/admindashboard/admins"}
+                  to={`/admindashboard/admins/:${searchDataRedux.id}`}
                 >
                   <div
                     className={

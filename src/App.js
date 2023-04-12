@@ -18,6 +18,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import RegisterSitterPage from "./pages/RegisterSitterPage/RegisterSitterPage";
 import LoginSitterPage from "./pages/LoginSitterPage/LoginSitterPage";
+import LoginAdminPage from "./pages/LoginAdminPage/LoginAdminPage";
 
 export const router = createBrowserRouter([
   {
@@ -67,7 +68,7 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/admindashboard/users",
+    path: "/admindashboard/users/:id",
     element: <AdminDashBoardUsersPage />,
     errorElement: <ErrorPage />,
   },
@@ -82,12 +83,12 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/sitterdashboard/accepted",
+    path: "/sitterdashboard/accepted/:id",
     element: <SitterDashBoardAcceptedPage />,
     errorElement: <ErrorPage />,
   },
   {
-    path: "/sitterdashboard/history",
+    path: "/sitterdashboard/history/:id",
     element: <SitterDashBoardHistoryPage />,
     errorElement: <ErrorPage />,
   },
@@ -99,6 +100,11 @@ export const router = createBrowserRouter([
   {
     path: "/login/sitter",
     element: <LoginSitterPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/login/admin",
+    element: <LoginAdminPage />,
     errorElement: <ErrorPage />,
   },
   {

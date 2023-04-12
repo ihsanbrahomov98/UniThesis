@@ -12,8 +12,10 @@ import {
   FIND_ONE_SITTER,
   SITTERS_URL,
 } from "../../../../utils/Utils";
+import { useSelector } from "react-redux";
 
 const Body = () => {
+  const searchDataRedux = useSelector((state) => state.user);
   const [products, setProducts] = useState([]);
   const [data, setData] = useState({
     id: "",
@@ -34,7 +36,7 @@ const Body = () => {
 
   const getOne = async () => {
     const { data } = await axios.get(
-      BACK_END_BASE_URL + SITTERS_URL + FIND_ONE_SITTER + "356"
+      BACK_END_BASE_URL + SITTERS_URL + FIND_ONE_SITTER + searchDataRedux.id
     );
     console.log(data);
     let filtredData = data.jobs.filter((e) => e.jobStatus === "decline");

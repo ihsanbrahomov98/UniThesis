@@ -16,8 +16,10 @@ import {
   SEARCH_URL,
   SITTERS_URL,
 } from "../../../../utils/Utils";
+import { useSelector } from "react-redux";
 
 const Body = () => {
+  const searchDataRedux = useSelector((state) => state.user);
   const [products, setProducts] = useState([]);
   const [data, setData] = useState({
     id: "",
@@ -38,7 +40,7 @@ const Body = () => {
 
   const getOne = async () => {
     const { data } = await axios.get(
-      BACK_END_BASE_URL + SITTERS_URL + FIND_ONE_SITTER + "356"
+      BACK_END_BASE_URL + SITTERS_URL + FIND_ONE_SITTER + searchDataRedux.id
     );
 
     let filtredData = data.jobs.filter(
@@ -54,10 +56,13 @@ const Body = () => {
   const declineJob = (e) => {
     const decline = async () => {
       console.log(e);
-      await axios.post(BACK_END_BASE_URL + SEARCH_URL + DECLINE + "356", {
-        // TODO
-        id: e.id,
-      });
+      await axios.post(
+        BACK_END_BASE_URL + SEARCH_URL + DECLINE + searchDataRedux.id,
+        {
+          // TODO
+          id: e.id,
+        }
+      );
       getOne();
     };
     decline();
@@ -66,10 +71,13 @@ const Body = () => {
   const acceptJob = (e) => {
     console.log(e);
     const accept = async () => {
-      await axios.post(BACK_END_BASE_URL + SEARCH_URL + ACCEPT + "356", {
-        // TODO
-        id: e.id,
-      });
+      await axios.post(
+        BACK_END_BASE_URL + SEARCH_URL + ACCEPT + searchDataRedux.id,
+        {
+          // TODO
+          id: e.id,
+        }
+      );
       getOne();
     };
     accept();
@@ -114,7 +122,7 @@ const Body = () => {
           <div className="col-2 ms-1">{bg.adminDashBoard.offeredService}</div>
           <div className="col-2 ms-1">{bg.adminDashBoard.startingDate}</div>
           <div className="col-2 ms-1">{bg.adminDashBoard.endingDate}</div>
-          <div className="col-1 "></div>
+          <div className="col-1 ">callendar</div>
         </div>
       </div>
 

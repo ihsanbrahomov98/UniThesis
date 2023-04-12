@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import { CalendarCheck } from "react-bootstrap-icons";
 import { addDays } from "date-fns";
+import { useSelector } from "react-redux";
 
 import "react-datepicker/dist/react-datepicker.css";
 import bg from "../../../../assets/i18n/bg.json";
+
 import "./body.css";
 import axios from "axios";
 import {
@@ -16,6 +18,7 @@ import {
 } from "../../../../utils/Utils";
 
 const Body = () => {
+  const searchDataRedux = useSelector((state) => state.user);
   const [products, setProducts] = useState([]);
   const [data, setData] = useState({
     id: "",
@@ -36,7 +39,7 @@ const Body = () => {
 
   const getOne = async () => {
     const { data } = await axios.get(
-      BACK_END_BASE_URL + SITTERS_URL + FIND_ONE_SITTER + "356"
+      BACK_END_BASE_URL + SITTERS_URL + FIND_ONE_SITTER + searchDataRedux.id
     );
     console.log("here");
     let filtredData = data.jobs.filter((e) => e.jobStatus === "accepted");
@@ -47,10 +50,13 @@ const Body = () => {
   const declineJob = (e) => {
     const decline = async () => {
       console.log(e);
-      await axios.post(BACK_END_BASE_URL + SEARCH_URL + DECLINE + "356", {
-        // TODO
-        id: e.id,
-      });
+      await axios.post(
+        BACK_END_BASE_URL + SEARCH_URL + DECLINE + searchDataRedux.id,
+        {
+          // TODO
+          id: e.id,
+        }
+      );
       getOne();
     };
     decline();
