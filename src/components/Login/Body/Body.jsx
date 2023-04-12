@@ -11,8 +11,12 @@ import {
 import { setUser } from "../../../redux/UserSlice/UserSlice";
 import { useSelector, useDispatch } from "react-redux";
 
+import { useNavigate } from "react-router-dom";
+
 const Body = () => {
   const dispatch = useDispatch();
+  const searchDataRedux = useSelector((state) => state.user);
+  let navigate = useNavigate();
   const [data, setData] = useState({
     password: "",
     username: "",
@@ -27,7 +31,7 @@ const Body = () => {
   const loginUser = () => {
     console.log(data);
     const login = async () => {
-      const { user } = await axios
+      await axios
         .post(BACK_END_BASE_URL + AUTH_USER + USER_LOGIN, {
           password: data.password,
 
@@ -36,6 +40,9 @@ const Body = () => {
         .then((response) => {
           console.log(response.data);
           dispatch(setUser(response.data));
+          if (response.data.username) {
+            navigate("/");
+          }
         });
     };
     login();

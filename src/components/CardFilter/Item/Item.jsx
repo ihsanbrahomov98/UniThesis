@@ -283,7 +283,7 @@ const Item = () => {
           </ul>
         </div>
       </div>
-      <div className="mb-1">Въведи номер</div>
+      {/* <div className="mb-1">Въведи номер</div>
       <div
         className="input-group mb-1
       "
@@ -307,9 +307,9 @@ const Item = () => {
           />
         </div>
         <div className="mb-1">Въведи име и фамилия</div>
-      </div>
+      </div> */}
 
-      <div
+      {/* <div
         className="input-group
       "
       >
@@ -331,7 +331,7 @@ const Item = () => {
             value={data.name}
           />
         </div>
-      </div>
+      </div> */}
       <div className="mb-2">Търся услуга</div>
       <div
         onClick={() => setToggleCalendar(true)}

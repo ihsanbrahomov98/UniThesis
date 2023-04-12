@@ -7,8 +7,9 @@ import {
   BACK_END_BASE_URL,
   USER_REGISTER,
 } from "../../../utils/Utils";
-
+import { useNavigate } from "react-router-dom";
 const Body = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState({
     password: "",
     username: "",
@@ -27,12 +28,18 @@ const Body = () => {
     console.log(data);
     const register = async () => {
       console.log();
-      await axios.post(BACK_END_BASE_URL + AUTH_USER + USER_REGISTER, {
-        password: data.password,
-        username: data.username,
-        email: data.email,
-        telephone: data.telephone,
-      });
+      await axios
+        .post(BACK_END_BASE_URL + AUTH_USER + USER_REGISTER, {
+          password: data.password,
+          username: data.username,
+          email: data.email,
+          telephone: data.telephone,
+        })
+        .then((response) => {
+          if (response.data === "User registered successfully!") {
+            navigate("/");
+          }
+        });
     };
     register();
   };

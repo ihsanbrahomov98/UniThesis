@@ -5,6 +5,7 @@ const initialState = {
   email: "",
   telephone: "",
   role: "",
+  id: "",
 };
 export const userSlice = createSlice({
   name: "user",
@@ -16,10 +17,18 @@ export const userSlice = createSlice({
       state.email = action.payload.email;
       state.telephone = action.payload.telephone;
       state.role = action.payload.role;
+      state.id = action.payload.id;
       console.log(state);
+    },
+    logout: (state, action) => {
+      state.username = "";
+      state.email = "";
+      state.telephone = "";
+      state.role = "";
+      state.id = "";
     },
   },
 });
-export const { setUser } = userSlice.actions;
+export const { setUser, logout } = userSlice.actions;
 
 export default userSlice.reducer;

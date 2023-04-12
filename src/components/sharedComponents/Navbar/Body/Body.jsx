@@ -13,7 +13,7 @@ const Body = () => {
   const userDataRedux = useSelector((state) => state.user);
   const [hoveredNavBarItem, sethoveredNavBarItemNavBarItem] = useState("");
   const [hoveredAccount, setHoveredAccount] = useState("");
-  const [user, setUser] = useState({ username: "няма" });
+  const [user, setUser] = useState({ username: "няма2" });
   const handleMouseOverForNavbarItem = () => {
     sethoveredNavBarItemNavBarItem(true);
   };
@@ -109,7 +109,9 @@ const Body = () => {
                     {" "}
                     <Item
                       text={
-                        user.username && user.username ? user.username : "няма"
+                        userDataRedux.username && userDataRedux.username
+                          ? userDataRedux.username
+                          : "няма"
                       }
                       icon={"nqma"}
                     />{" "}

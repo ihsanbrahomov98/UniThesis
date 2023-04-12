@@ -9,12 +9,15 @@ import { FaRegMoon } from "react-icons/fa";
 import { FaMailBulk } from "react-icons/fa";
 import { FaDoorOpen } from "react-icons/fa";
 import { FaAtom } from "react-icons/fa";
-import { Link } from "react-router-dom";
-
+import { Link, redirect } from "react-router-dom";
+import { logout } from "../../../../../redux/UserSlice/UserSlice";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 const BodyDropDown = (props) => {
   const userDataRedux = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
   const [user, setUser] = useState({ username: "няма" });
   const [userState, setUserState] = useState({
     name: "NickName",
@@ -25,12 +28,12 @@ const BodyDropDown = (props) => {
     {
       leftIcon: <FaRegQuestionCircle fontSize={"1rem"} />,
       rightIcon: <FaAngleRight fontSize={"1rem"} />,
-      text: "Settings",
+      text: "Настройки",
     },
     {
       leftIcon: <FaRegMoon fontSize={"1rem"} />,
       rightIcon: <FaAngleRight fontSize={"1rem"} />,
-      text: "Night mode",
+      text: "Нощен режим",
     },
   ];
   useEffect(() => {
@@ -48,30 +51,57 @@ const BodyDropDown = (props) => {
     }
   }, [userDataRedux]);
 
+  const handleLogin = () => {
+    console.log("here");
+
+    if (userDataRedux.username) {
+      dispatch(logout(""));
+      setUser(userDataRedux);
+    }
+    if (!userDataRedux.username) {
+      navigate("/login");
+    }
+  };
+  const handleRegister = () => {
+    navigate("/register");
+  };
   return (
     <>
       {props.open ? (
         <div className="BodyDropDown_container">
           <ProfilePictureDropDownMenu
-            name={userState.name ? userState.name : "Toshko"}
+            name={userDataRedux.username ? userDataRedux.username : ""}
           />
+
           {userDataRedux.role === "SITTER" ? (
-            <DropDownItem
-              leftIcon={<FaAtom fontSize={"1rem"} />}
-              rightIcon={<FaAngleRight fontSize={"1rem"} />}
+            <Link
+              className="BodyDropDown_TextDecorationNone"
+              to={`/sitterdashboard/pending/:${userDataRedux.id}`}
             >
-              {"Контролен панел"}
-            </DropDownItem>
+              <DropDownItem
+                className="BodyDropDown_TextDecorationNone"
+                leftIcon={<FaAtom fontSize={"1rem"} />}
+                rightIcon={<FaAngleRight fontSize={"1rem"} />}
+              >
+                {"Контролен панел"}
+              </DropDownItem>
+            </Link>
           ) : (
             ""
           )}
           {userDataRedux.role === "ADMIN" ? (
-            <DropDownItem
-              leftIcon={<FaAtom fontSize={"1rem"} />}
-              rightIcon={<FaAngleRight fontSize={"1rem"} />}
+            <Link
+              className="BodyDropDown_TextDecorationNone"
+              to={`/admindashboard/sitters/:${userDataRedux.id}`}
             >
-              {"Контролен панел"}
-            </DropDownItem>
+              <DropDownItem
+                className="BodyDropDown_TextDecorationNone"
+                leftIcon={<FaAtom fontSize={"1rem"} />}
+                rightIcon={<FaAngleRight fontSize={"1rem"} />}
+              >
+                {"Контролен панел"}
+              </DropDownItem>
+            </Link>
           ) : (
             ""
           )}
@@ -82,25 +112,29 @@ const BodyDropDown = (props) => {
               </DropDownItem>
             );
           })}
-          {userState.user ? (
+          {userDataRedux.username ? (
             ""
           ) : (
-            <DropDownItem
-              leftIcon={<FaMailBulk fontSize={"1rem"} />}
-              rightIcon={""}
-              linkToComponent={"/register"}
-            >
-              {userState.user ? "" : "Register"}
-            </DropDownItem>
+            <div onClick={() => handleRegister()} className="">
+              <DropDownItem
+                leftIcon={<FaMailBulk fontSize={"1rem"} />}
+                rightIcon={""}
+                linkToComponent={"/register"}
+              >
+                {userDataRedux.username ? "" : "Регистрирай се"}
+              </DropDownItem>
+            </div>
           )}
 
-          <DropDownItem
-            leftIcon={<FaDoorOpen fontSize={"1rem"} />}
-            rightIcon={""}
-            linkToComponent={"/login"}
-          >
-            {userState.isLoggedIn ? "Log out" : "Log in"}
-          </DropDownItem>
+          <div onClick={() => handleLogin()} className="">
+            <DropDownItem
+              leftIcon={<FaDoorOpen fontSize={"1rem"} />}
+              rightIcon={""}
+              linkToComponent={"/login"}
+            >
+              {userDataRedux.username ? "Изход" : "Влез"}
+            </DropDownItem>
+          </div>
           <div className="BodyDropDown_Text">
             Поверителност · Условия · Избор за реклами · Бисквитки · Рекламиране
             · Условия · Избор за реклами · Условия · Възможност за работа

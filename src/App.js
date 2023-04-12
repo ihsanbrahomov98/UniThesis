@@ -61,7 +61,7 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/admindashboard/admins",
+    path: "/admindashboard/admins/:id",
     element: <AdminDashBoardAdminsPage />,
     errorElement: <ErrorPage />,
   },
@@ -71,12 +71,12 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/admindashboard/sitters",
+    path: "/admindashboard/sitters/:id",
     element: <AdminDashBoardSittersPage />,
     errorElement: <ErrorPage />,
   },
   {
-    path: "/sitterdashboard/pending",
+    path: "/sitterdashboard/pending/:id",
     element: <SitterDashBoardPendingPage />,
     errorElement: <ErrorPage />,
   },
