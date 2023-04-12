@@ -20,7 +20,6 @@ const Calendar = () => {
       <div className="d-flex justify-content-center ">
         <DatePicker
           selected={startDate}
-          onChange={onChange}
           startDate={startDate}
           endDate={endDate}
           excludeDates={[
@@ -29,14 +28,13 @@ const Calendar = () => {
             addDays(new Date(), 2),
             addDays(new Date(), 4),
           ]}
-          selectsRange
           selectsDisabledDaysInRange
           inline
         />
       </div>
       <div className="d-flex justify-content-center ">
         <div className="d-flex justify-content-center mt-2">
-          <div className="d-flex">
+          {/* <div className="d-flex">
             <div className="d-flex">
               <div className="SitterCalendarLegendsBoxAvailable ms-3"></div>
               <div className="ms-2">Свободни дни</div>
@@ -49,7 +47,7 @@ const Calendar = () => {
               <div className="SitterCalendarLegendsBoxUnAvailable ms-3"></div>
               <div className="ms-2">Заети дни</div>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="d-flex justify-content-center">
           <div className={"container"}>

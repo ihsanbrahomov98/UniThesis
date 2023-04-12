@@ -2,8 +2,6 @@ import React from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "./map.css";
 function Map() {
-  const position = [51.505, -0.09]; // default position to center the map
-
   return (
     <div
       style={{
@@ -13,7 +11,7 @@ function Map() {
       }}
     >
       <MapContainer
-        center={[51.505, -0.09]}
+        center={[42.141854, 24.74993]}
         zoom={13}
         scrollWheelZoom={true}
         style={{ width: "100%", height: "100vh" }}
@@ -22,7 +20,22 @@ function Map() {
           url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
-        <Marker position={[51.505, -0.09]}>
+        <Marker position={[42.1418544, 24.74993]}>
+          <Popup>
+            A pretty CSS3 popup. <br /> Easily customizable.
+          </Popup>
+        </Marker>
+        <Marker position={[42.1418444, 24.77593]}>
+          <Popup>
+            A pretty CSS3 popup. <br /> Easily customizable.
+          </Popup>
+        </Marker>
+        <Marker position={[42.1318444, 24.74593]}>
+          <Popup>
+            A pretty CSS3 popup. <br /> Easily customizable.
+          </Popup>
+        </Marker>
+        <Marker position={[42.1218444, 24.74593]}>
           <Popup>
             A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>

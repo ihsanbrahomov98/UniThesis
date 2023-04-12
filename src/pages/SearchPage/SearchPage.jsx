@@ -8,7 +8,9 @@ const SearchPage = () => {
     <>
       <Navbar />
       <div className="d-flex mt-4">
-        <SearchFilters />
+        <div className="d-flex flex-column">
+          <SearchFilters />
+        </div>
         <Map />
       </div>
     </>

@@ -5,7 +5,7 @@ import Button from "./../../../CardFilter/Button/Button";
 const CalendarLegend = () => {
   return (
     <>
-      <div className="d-flex justify-content-center mt-2">
+      {/* <div className="d-flex justify-content-center mt-2">
         <div className="d-flex  w-50">
           <div className="d-flex">
             <div className="SitterCalendarLegendsBoxAvailable ms-3"></div>
@@ -20,7 +20,7 @@ const CalendarLegend = () => {
             <div className="ms-2">Заети дни</div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

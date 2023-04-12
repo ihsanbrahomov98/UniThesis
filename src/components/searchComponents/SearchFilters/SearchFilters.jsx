@@ -15,8 +15,12 @@ const SearchFilters = () => {
     <div style={{ width: "40vw" }} className="">
       <div className="container"></div>
       <CardFilter isHeaderHidden={true} />
-      {sittersForMapping &&
-        sittersForMapping.map((item) => <Sitters item={item} />)}
+
+      <div className="mt-2">
+        {" "}
+        {sittersForMapping &&
+          sittersForMapping.map((item) => <Sitters item={item} />)}
+      </div>
     </div>
   );
 };
