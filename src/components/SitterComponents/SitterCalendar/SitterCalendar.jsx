@@ -2,10 +2,10 @@ import React from "react";
 import Calendar from "./Calendar/Calendar";
 import CalendarLegend from "./CalendarLegend/CalendarLegend";
 
-const SitterCalendar = () => {
+const SitterCalendar = ({ item }) => {
   return (
     <>
-      <Calendar />
+      <Calendar item={item} />
     </>
   );
 };

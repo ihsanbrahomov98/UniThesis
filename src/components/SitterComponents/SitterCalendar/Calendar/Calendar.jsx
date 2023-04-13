@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import { addDays } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
@@ -7,13 +7,42 @@ import "./calendar.css";
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import Button from "./../../../CardFilter/Button/Button";
 
-const Calendar = () => {
+const Calendar = ({ item }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(null);
   const onChange = (dates) => {
     const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
+  };
+  useEffect(() => {
+    console.log(item);
+  }, []);
+  const calculateTakenDates = (takenDates) => {
+    console.log(takenDates);
+    let arrayOfTakenDate = [];
+    let firstTakenDate;
+    let lastTakenDate;
+
+    let endDatCasted;
+    let dateCasted;
+    let firstIndex = takenDates && takenDates.split("|");
+    if (firstIndex) {
+      for (let index = 1; index < firstIndex.length; index++) {
+        firstTakenDate = firstIndex[index].split(";")[0];
+        lastTakenDate = firstIndex[index].split(";")[1];
+
+        dateCasted = new Date(firstTakenDate);
+        endDatCasted = new Date(lastTakenDate);
+        while (dateCasted <= endDatCasted) {
+          console.log("date:", dateCasted);
+          arrayOfTakenDate.push(new Date(dateCasted));
+          dateCasted.setDate(dateCasted.getDate() + 1);
+        }
+      }
+    }
+
+    return arrayOfTakenDate;
   };
   return (
     <>
@@ -22,12 +51,7 @@ const Calendar = () => {
           selected={startDate}
           startDate={startDate}
           endDate={endDate}
-          excludeDates={[
-            addDays(new Date(), 1),
-            addDays(new Date(), 5),
-            addDays(new Date(), 2),
-            addDays(new Date(), 4),
-          ]}
+          excludeDates={calculateTakenDates(item.takenDates)}
           selectsDisabledDaysInRange
           inline
         />
