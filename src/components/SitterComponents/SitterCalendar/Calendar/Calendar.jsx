@@ -58,20 +58,17 @@ const Calendar = ({ item }) => {
       </div>
       <div className="d-flex justify-content-center ">
         <div className="d-flex justify-content-center mt-2">
-          {/* <div className="d-flex">
+          <div className="d-flex">
             <div className="d-flex">
               <div className="SitterCalendarLegendsBoxAvailable ms-3"></div>
               <div className="ms-2">Свободни дни</div>
             </div>
-            <div className="d-flex">
-              <div className="SitterCalendarLegendsBoxSelected ms-3"></div>
-              <div className="ms-2">Избрани от вас дни</div>
-            </div>{" "}
+
             <div className="d-flex">
               <div className="SitterCalendarLegendsBoxUnAvailable ms-3"></div>
               <div className="ms-2">Заети дни</div>
             </div>
-          </div> */}
+          </div>
         </div>
         <div className="d-flex justify-content-center">
           <div className={"container"}>

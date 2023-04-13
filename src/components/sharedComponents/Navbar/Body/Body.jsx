@@ -7,7 +7,7 @@ import { Telephone } from "react-bootstrap-icons";
 import "./body.css";
 import ButtonDropDown from "./../NavbarDropDownMenu/ButtonDropDown/ButtonDropDown";
 import { Link } from "react-router-dom";
-
+import kuche from "../../../../assets/Images/kuche.png";
 import { useSelector, useDispatch } from "react-redux";
 const Body = () => {
   const userDataRedux = useSelector((state) => state.user);
@@ -65,9 +65,10 @@ const Body = () => {
             <Link className="NavbarBodyTextDecorationNone" to={"/"}>
               <div className="">
                 <img
-                  style={{ width: "4rem", height: "4rem" }}
+                  className="NavbarBodyImage"
+                  style={{ width: "5.5rem", height: "4rem" }}
                   alt="logo"
-                  src="https://static.vecteezy.com/system/resources/previews/005/484/042/original/dog-logo-illustration-free-vector.jpg"
+                  src={kuche}
                 />
               </div>
             </Link>
@@ -184,7 +185,7 @@ const Body = () => {
                 <div className="">Тренировка за твоето куче</div>
               </div>
             </Link>
-            <Link className="NavbarBodyTextDecorationNone" to={"/walking"}>
+            <Link className="NavbarBodyTextDecorationNone" to={"/sitting"}>
               <div className="d-flex flex-column align-items-center ">
                 <img
                   className="NavbarBodyImage"

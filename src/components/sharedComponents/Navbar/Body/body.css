@@ -23,6 +23,7 @@
   width: 4rem;
   height: 4rem;
   border-radius: 0;
+  background-image: url("../../../../assets/Images/kuche.png");
 }
 .NavbarBodyTextDecorationNone {
   text-decoration: none !important;

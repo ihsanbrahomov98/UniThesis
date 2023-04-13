@@ -19,6 +19,7 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import RegisterSitterPage from "./pages/RegisterSitterPage/RegisterSitterPage";
 import LoginSitterPage from "./pages/LoginSitterPage/LoginSitterPage";
 import LoginAdminPage from "./pages/LoginAdminPage/LoginAdminPage";
+import DogTraingingPage from "./pages/DogTrainingPage/DogTraingingPage";
 
 export const router = createBrowserRouter([
   {
@@ -54,7 +55,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/training",
-    element: <DogBoardingPage />,
+    element: <DogTraingingPage />,
     errorElement: <ErrorPage />,
   },
   {

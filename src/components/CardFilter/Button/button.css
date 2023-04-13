@@ -1,10 +1,9 @@
 .CardFilterButton {
-  background-color: #02c39a;
   color: white;
   border-radius: 10px;
 }
 
 .CardFilterButton:hover {
-  background-color: #60d8a2;
   color: white;
+  cursor: pointer;
 }

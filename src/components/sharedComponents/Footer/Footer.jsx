@@ -243,18 +243,11 @@ const Footer = () => {
             </span>
           </div>
           <div className="mt-2 mb-2">
-            © Argos Limited 2022. All Rights Reserved.
+            © RazhodiMe Limited 2023. Всички права запазени.
           </div>
           <div className="text-center" style={{ fontSize: "0.65rem" }}>
-            Argos Limited is authorised and regulated by the Financial Conduct
-            Authority as a credit broker (713206) and works exclusively with the
-            lender, Home Retail Group Card Services Limited trading as Argos
-            Financial Services, who is authorised and regulated by the Financial
-            Conduct Authority to provide credit (716148). Home Retail Group Card
-            Services Limited is registered in England (04007072) at Avebury,
-            489-499 Avebury Boulevard, Milton Keynes, United Kingdom. MK9 2NW.
-            es, United Kingdom. MK9 2NW.es, United Kingdom. MK9 2NW.es, United
-            Kingdom. MK9 2NW.
+            Съдържанието на този уеб сайт и технологиите, използвани в него, са
+            под закрила на Закона за авторското право и сродните му права.
           </div>
         </div>
       </div>
