@@ -9,7 +9,7 @@ import "./mainPage.css";
 const MainPage = () => {
   return (
     <>
-      <div className="MainPageBackGround" style={{ height: "120vh" }}>
+      <div className="MainPageBackGround" style={{ height: "100vh" }}>
         <Navbar />
         <CardFilter />
       </div>

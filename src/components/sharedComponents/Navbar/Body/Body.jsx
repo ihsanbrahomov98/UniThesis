@@ -111,7 +111,7 @@ const Body = () => {
                       text={
                         userDataRedux.username && userDataRedux.username
                           ? userDataRedux.username
-                          : "няма"
+                          : ""
                       }
                       icon={"nqma"}
                     />{" "}

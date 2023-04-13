@@ -34,7 +34,7 @@ const UserReviews = ({ isSitter }) => {
         <div className="carousel-inner">
           <div className="carousel-item active">
             <img
-              src="https://www.princeton.edu/sites/default/files/styles/scale_1440/public/images/2022/02/KOA_Nassau_2697x1517.jpg?itok=lA8UuoHt"
+              src="https://nypost.com/wp-content/uploads/sites/2/2018/07/180723-women-prefer-hanging-with-dogs-than-lover-feature.jpg?quality=75&strip=all"
               className={`d-block w-100 ${
                 isSitter
                   ? "UserReviewsImageSitterPage"
@@ -43,15 +43,17 @@ const UserReviews = ({ isSitter }) => {
               alt="..."
             />
             <div className="carousel-caption d-none d-md-block UserReviews">
-              <h5>First slide label</h5>
-              <p>
-                Some representative placeholder content for the first slide.
+              <h2>Мария за Елена</h2>
+              <p className="fw-bolder fs-5">
+                Елена е прекрасна.За първи път използвах нейните услуги и двама
+                с моето куче бяхме притеснени. Всички протече идеално и моето
+                куче се върна удома щастливо. Благодаря ти Ели!
               </p>
             </div>
           </div>
           <div className="carousel-item">
             <img
-              src="https://www.princeton.edu/sites/default/files/styles/scale_1440/public/images/2022/02/KOA_Nassau_2697x1517.jpg?itok=lA8UuoHt"
+              src="https://img.freepik.com/free-photo/back-view-young-man-with-dog-seaside_23-2148885061.jpg"
               className={`d-block w-100 ${
                 isSitter
                   ? "UserReviewsImageSitterPage"
@@ -60,15 +62,17 @@ const UserReviews = ({ isSitter }) => {
               alt="..."
             />
             <div className="carousel-caption d-none d-md-block UserReviews">
-              <h5>Second slide label</h5>
-              <p>
-                Some representative placeholder content for the second slide.
+              <h2>Стефан за Иван</h2>
+              <p className="fw-bolder fs-5">
+                Иван е чудесен.За първи път използвах неговите услуги и двама с
+                моето куче бяхме притеснени. Всички протече идеално и моето куче
+                се върна удома щастливо. Благодаря ти Ванка!
               </p>
             </div>
           </div>
           <div className="carousel-item">
             <img
-              src="https://www.princeton.edu/sites/default/files/styles/scale_1440/public/images/2022/02/KOA_Nassau_2697x1517.jpg?itok=lA8UuoHt"
+              src="https://images.unsplash.com/photo-1522276498395-f4f68f7f8454?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFuJTIwd2l0aCUyMGRvZ3xlbnwwfHwwfHw%3D&w=1000&q=80"
               className={`d-block w-100 ${
                 isSitter
                   ? "UserReviewsImageSitterPage"
@@ -77,9 +81,11 @@ const UserReviews = ({ isSitter }) => {
               alt="..."
             />
             <div className="carousel-caption d-none d-md-block UserReviews">
-              <h5>Third slide label</h5>
-              <p>
-                Some representative placeholder content for the third slide.
+              <h2>Теодор за Георги</h2>
+              <p className="fw-bolder fs-5">
+                Георги е чудесен.За първи път използвах неговите услуги и двама
+                с моето куче бяхме притеснени. Всички протече идеално и моето
+                куче се върна удома щастливо. Благодаря ти Гоше!
               </p>
             </div>
           </div>

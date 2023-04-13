@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./footer.css";
 const Footer = () => {
   return (
     <>
@@ -9,41 +9,41 @@ const Footer = () => {
       >
         <div className="container d-flex f-row justify-content-between align-items-around fw-bold fs-5">
           <div className="container col3 p-5">
-            <div>Need help?</div>
-            <div className="fs-6 mt-3 fw-normal">Advice & inspiration</div>
-            <div className="fs-6 mt-3 fw-normal">Advice & inspiration</div>
-            <div className="fs-6 mt-3 fw-normal">Advice & inspiration</div>
-            <div className="fs-6 mt-3 fw-normal">Advice & inspiration</div>
-            <div className="fs-6 mt-3 fw-normal">Advice & inspiration</div>
+            <div className="">Тряба Ви помощ?</div>
+            <div className="fs-6 mt-3 fw-normal">Свържете с нас!</div>
+            <div className="fs-6 mt-3 fw-normal">Свържете с нас!</div>
+            <div className="fs-6 mt-3 fw-normal">Свържете с нас!</div>
+            <div className="fs-6 mt-3 fw-normal">Свържете с нас!</div>
+            <div className="fs-6 mt-3 fw-normal">Свържете с нас!</div>
           </div>
           <div className="container col3 p-5">
             <div className="container col3 ">
-              <div>Need help?</div>
-              <div className="fs-6 mt-3 fw-normal">Advice & inspiration</div>
-              <div className="fs-6 mt-3 fw-normal">Advice & inspiration</div>
-              <div className="fs-6 mt-3 fw-normal">Advice & inspiration</div>
-              <div className="fs-6 mt-3 fw-normal">Advice & inspiration</div>
-              <div className="fs-6 mt-3 fw-normal">Advice & inspiration</div>
+              <div>Търсите работа?</div>
+              <div className="fs-6 mt-3 fw-normal">Започнете при нас!</div>
+              <div className="fs-6 mt-3 fw-normal">Започнете при нас!</div>
+              <div className="fs-6 mt-3 fw-normal">Започнете при нас!</div>
+              <div className="fs-6 mt-3 fw-normal">Започнете при нас!</div>
+              <div className="fs-6 mt-3 fw-normal">Започнете при нас!</div>
             </div>
           </div>
           <div className="container col3 p-5">
             <div className="container col3 ">
-              <div>Need help?</div>
-              <div className="fs-6 mt-3 fw-normal">Advice & inspiration</div>
-              <div className="fs-6 mt-3 fw-normal">Advice & inspiration</div>
-              <div className="fs-6 mt-3 fw-normal">Advice & inspiration</div>
-              <div className="fs-6 mt-3 fw-normal">Advice & inspiration</div>
-              <div className="fs-6 mt-3 fw-normal">Advice & inspiration</div>
+              <div>Имате оплакване?</div>
+              <div className="fs-6 mt-3 fw-normal">Пишете или ни звъннете!</div>
+              <div className="fs-6 mt-3 fw-normal">Пишете или ни звъннете!</div>
+              <div className="fs-6 mt-3 fw-normal">Пишете или ни звъннете!</div>
+              <div className="fs-6 mt-3 fw-normal">Пишете или ни звъннете!</div>
+              <div className="fs-6 mt-3 fw-normal">Пишете или ни звъннете!</div>
             </div>
           </div>
           <div className="container col3 p-5">
             <div className="container col3 ">
-              <div>Need help?</div>
-              <div className="fs-6 mt-3 fw-normal">Advice & inspiration</div>
-              <div className="fs-6 mt-3 fw-normal">Advice & inspiration</div>
-              <div className="fs-6 mt-3 fw-normal">Advice & inspiration</div>
-              <div className="fs-6 mt-3 fw-normal">Advice & inspiration</div>
-              <div className="fs-6 mt-3 fw-normal">Advice & inspiration</div>
+              <div>Отмяна на услуга?</div>
+              <div className="fs-6 mt-3 fw-normal">Да, по всяко време!</div>
+              <div className="fs-6 mt-3 fw-normal">Да, по всяко време!</div>
+              <div className="fs-6 mt-3 fw-normal">Да, по всяко време!</div>
+              <div className="fs-6 mt-3 fw-normal">Да, по всяко време!</div>
+              <div className="fs-6 mt-3 fw-normal">Да, по всяко време!</div>
             </div>
           </div>
         </div>
@@ -52,13 +52,13 @@ const Footer = () => {
         <div className=" border container col-6 d-flex flex-column justify-content-center align-items-center">
           <div className="">
             <div className="fw-bold d-flex flex-column justify-content-center align-items-center mt-4">
-              Returning an item
+              Искате да прекратите усулга?
             </div>
             <div className="fw-normal mt-2 d-flex flex-column justify-content-center align-items-center">
-              We've extended our returns policy for Christmas.
+              Може да го направите по всякое време!
             </div>
             <div className="d-flex flex-column justify-content-center align-items-center mb-4">
-              Learn more here
+              Кликни тук за да разбреш как!
             </div>
           </div>
         </div>
@@ -66,14 +66,14 @@ const Footer = () => {
           <div className="">
             <div className="">
               <div className="fw-bold d-flex flex-row justify-content-center align-items-center mt-4 mb-1">
-                Payment methods:
+                Методи за разплащане
               </div>
 
               <div className="d-flex flex-row justify-content-center align-items-center">
                 <img
                   src="./v1.webp"
                   alt="logo"
-                  className="figure-img img-fluid rounded m-2"
+                  className="figure-img img-fluid rounded m-2 FooterImage1"
                   style={{ height: "1.5rem", width: "2rem" }}
                 ></img>
                 <img
@@ -142,13 +142,14 @@ const Footer = () => {
         <div className=" border container col-6 d-flex flex-column justify-content-center align-items-center">
           <div className="">
             <div className="fw-bold d-flex flex-column justify-content-center align-items-center mt-4">
-              Follow us
+              Последвайте ни!
             </div>
             <div className="fw-normal mt-2 d-flex flex-column justify-content-center align-items-center">
-              We've extended our returns policy for Christmas.
+              До края на месеца имаме намаление за тези, който ни последват
+              сега!
             </div>
             <div className="d-flex flex-column justify-content-center align-items-center mb-4">
-              Learn more here
+              Кликни тук за да разбреш как!
             </div>
           </div>
         </div>
@@ -156,7 +157,7 @@ const Footer = () => {
           <div className="">
             <div className="">
               <div className="fw-bold d-flex flex-row justify-content-center align-items-center mt-4 mb-1">
-                Download our app
+                Изтеглете приложението!
               </div>
 
               <div className="d-flex flex-row justify-content-center align-items-center">
@@ -218,30 +219,26 @@ const Footer = () => {
           <div className="mt-2 mb-2">
             {" "}
             <span>
-              Accessibility&ensp;<span style={{ color: "lightgray" }}>|</span>
+              Достъпност&ensp;<span style={{ color: "lightgray" }}>|</span>
             </span>
             <span>
-              &ensp;Privacy hub&ensp;
+              &ensp;Център за поверителностy&ensp;
               <span style={{ color: "lightgray" }}>|</span>
             </span>
             <span>
-              &ensp; Privacy policy&ensp;
+              &ensp;Списък с политики за бисквитки&ensp;
               <span style={{ color: "lightgray" }}>|</span>
             </span>
             <span>
-              &ensp; Cookies policyList&ensp;
+              &ensp;Списък с бисквитки&ensp;
               <span style={{ color: "lightgray" }}>|</span>
             </span>
             <span>
-              &ensp;List of cookies&ensp;
+              &ensp;Предпочитания за бисквитки&ensp;
               <span style={{ color: "lightgray" }}>|</span>
             </span>
             <span>
-              &ensp;Cookie preferences&ensp;
-              <span style={{ color: "lightgray" }}>|</span>
-            </span>
-            <span>
-              &ensp;Terms & conditions&ensp;
+              &ensp;Правила и условия&ensp;
               <span style={{ color: "lightgray" }}>|</span>
             </span>
           </div>

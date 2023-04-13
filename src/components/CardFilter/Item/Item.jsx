@@ -426,7 +426,7 @@ const Item = () => {
         </span>
       </div>
       <div onClick={() => getSitters()} className="container">
-        <div className="d-flex justify-content-center mt-3 pe-3 ps-3 py-2 CardFilterButton ">
+        <div className="d-flex justify-content-center mt-3 pe-3 ps-3 py-2 CardFilterButton bg-primary ">
           търси
         </div>
       </div>

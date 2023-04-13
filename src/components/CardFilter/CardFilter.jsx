@@ -9,8 +9,8 @@ const CardFilter = ({ isHeaderHidden }) => {
       <div className={isHeaderHidden ? "" : "mt-1"}>
         {" "}
         <div
-          className={`container h-50 CardFilter border p-4 ${
-            isHeaderHidden ? "" : "mt-5"
+          className={`container h-50 CardFilter  border  p-4  ${
+            isHeaderHidden ? "" : "mt-5 CardFilterMargin"
           } `}
         >
           {isHeaderHidden ? "" : <Header />}

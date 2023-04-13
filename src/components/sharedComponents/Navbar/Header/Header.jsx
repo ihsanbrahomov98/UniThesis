@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <>
       <div className="d-flex justify-content-center align-items-center bg-primary NavbarHeader">
-        <div>get all of our products in discount</div>
+        <div>Всички наши услуги днес с 15% намеление!</div>
         {/* TODO */}
       </div>
     </>

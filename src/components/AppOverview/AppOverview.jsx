@@ -13,9 +13,17 @@ const AppOverview = () => {
             <Label />
           </div>
           <div className="d-flex justify-content-start align-items-start  ">
-            <Item number={"1"} text={"Поплъни полетата"} title={"Поплъни"} />
+            <Item
+              number={"1"}
+              text={"Регистрай се в нашето приложение"}
+              title={"Регистрай се"}
+            />
             <Item number={"2"} text={"Поплъни полетата"} title={"Поплъни"} />
-            <Item number={"3"} text={"Поплъни полетата"} title={"Поплъни"} />
+            <Item
+              number={"3"}
+              text={"Избери подходящ гледач за теб"}
+              title={"Избери  гледач"}
+            />
           </div>
         </div>
 
@@ -26,9 +34,21 @@ const AppOverview = () => {
             <Label />
           </div>
           <div className="d-flex justify-content-start align-items-start ">
-            <Item number={"1"} text={"Поплъни полетата"} title={"Поплъни"} />
-            <Item number={"2"} text={"Поплъни полетата"} title={"Поплъни"} />
-            <Item number={"3"} text={"Поплъни полетата"} title={"Поплъни"} />
+            <Item
+              number={"1"}
+              text={"Никой не се грижа така за домашните любимци както ние"}
+              title={"Специална грижа за вашето куче"}
+            />
+            <Item
+              number={"2"}
+              text={"Пълна застраховка покриваща всички непредвидени ситуации"}
+              title={"Застраховка"}
+            />
+            <Item
+              number={"3"}
+              text={"Хиляди доволни клиенти и щастилви домашни любимци"}
+              title={"Дългогодишен опит"}
+            />
           </div>
         </div>
       </div>
