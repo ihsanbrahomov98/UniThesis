@@ -48,7 +48,7 @@ const Item = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const searchDataRedux = useSelector((state) => state.search);
-
+  const userDataRedux = useSelector((state) => state.user);
   const filterSearchData = (dataInfo, dataType) => {
     setData((prevState) => ({
       ...prevState,
@@ -65,29 +65,33 @@ const Item = () => {
   };
 
   const getSitters = () => {
-    const { sitters } = axios
-      .post(
-        BACK_END_BASE_URL + SEARCH_URL + "/all",
-        {
-          city: data.city,
-          startingDate: data.startingDate,
-          endingDate: data.endingDate,
-          offeredServices: data.offeredServices,
-        }
-        // `/getAll//${
-        //   data.city
-        // }/${data.startingDate.toString()}/${data.endingDate.toString()}/${
-        //   data.offeredServices
-        // }`
-      )
-      .then((response) => {
-        dispatch(setSitters(response.data));
-      });
-    console.log(sitters);
-    dispatch(addSearchParams(data));
-    navigate(`/search`);
-    dispatch(setSitters(sitters));
-    console.log(sitters);
+    if (userDataRedux.email || userDataRedux.username) {
+      const { sitters } = axios
+        .post(
+          BACK_END_BASE_URL + SEARCH_URL + "/all",
+          {
+            city: data.city,
+            startingDate: data.startingDate,
+            endingDate: data.endingDate,
+            offeredServices: data.offeredServices,
+          }
+          // `/getAll//${
+          //   data.city
+          // }/${data.startingDate.toString()}/${data.endingDate.toString()}/${
+          //   data.offeredServices
+          // }`
+        )
+        .then((response) => {
+          dispatch(setSitters(response.data));
+        });
+      console.log(sitters);
+      dispatch(addSearchParams(data));
+      navigate(`/search`);
+      dispatch(setSitters(sitters));
+      console.log(sitters);
+    } else {
+      navigate("/register");
+    }
   };
   useEffect(() => {
     if (searchDataRedux) {
