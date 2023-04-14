@@ -1,14 +1,14 @@
 import React from "react";
 import Button from "../../CardFilter/Button/Button";
 import "./body.css";
-
+import dogWalking from "../../../assets/Images/dogWalking.jpg";
 const Body = () => {
   return (
     <>
       <div className="border bg-black">
         <img
           className="DogWalkingImage"
-          src="https://www.nerdwallet.com/assets/blog/wp-content/uploads/2020/04/GettyImages-1202899105-Side-Hustle-Much-You-Might-Have-the-Wrong-Credit-Card-FB-770x462.jpeg"
+          src={dogWalking}
           alt="Snow"
           style={{ width: "100%", height: "85vh" }}
         />

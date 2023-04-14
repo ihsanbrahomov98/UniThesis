@@ -8,7 +8,7 @@ const Body = () => {
       <div className="">
         <img
           className="DogBoardingImage"
-          src="https://www.nerdwallet.com/assets/blog/wp-content/uploads/2020/04/GettyImages-1202899105-Side-Hustle-Much-You-Might-Have-the-Wrong-Credit-Card-FB-770x462.jpeg"
+          src="https://media.istockphoto.com/id/1255917970/photo/two-sleeping-golden-retrievers-touching-heads.jpg?s=612x612&w=0&k=20&c=z1CR5RCgu2AcT51xxRxUj8imND_U2xttATjzr0ZtVHQ="
           alt="Snow"
           style={{ width: "100%", height: "85vh" }}
         />
