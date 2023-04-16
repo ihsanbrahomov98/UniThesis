@@ -77,38 +77,86 @@ const Body = () => {
       city,
     } = formState;
     const errors = {};
-    if (!name) {
-      errors.name = "Name is required";
+
+    if (!name || name.length < 4) {
+      errors.name = "Name is required and must be longer than 4 characters";
     }
-    if (!email) {
-      errors.email = "Email is required";
+    if (!email || email.length < 4) {
+      errors.email = "Email is required and must be longer than 4 characters";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       errors.email = "Email is invalid";
     }
-    if (!password) {
-      errors.password = "Password is required";
-    } else if (password.length < 8) {
-      errors.password = "Password must be at least 8 characters";
+    if (!password || password.length < 4) {
+      errors.password =
+        "Password is required and must be longer than 4 characters";
+    }
+    if (password !== confirmPassword) {
+      errors.password = "Passwords doesn't match";
+      errors.confirmPassword = "Passwords doesn't match";
+    }
+    if (!surName || name.surName < 4) {
+      errors.surName =
+        "surName is required and must be longer than 4 characters";
+    }
+    if (!image) {
+      errors.image = "There must be a image";
+    }
+    if (!description || description.length < 4) {
+      errors.description =
+        "description is required and must be longer than 4 characters";
+    }
+    if (!telephone || telephone.length < 4) {
+      errors.telephone =
+        "telephone is required and must be longer than 4 characters";
+    }
+    if (!price) {
+      errors.price = "price is required and must be longer than 4 characters";
+    }
+    if (!address || address.length < 4) {
+      errors.address =
+        "address is required and must be longer than 4 characters";
+    }
+    if (!housing) {
+      errors.housing =
+        "housing is required and must be longer than 4 characters";
     }
 
-    // Update validation state
+    if (!city) {
+      errors.city = "city is required";
+    }
+    if (city === "Населено място") {
+      errors.city = "city is required";
+    }
+    console.log(errors);
     setValidationState(errors);
 
-    // If there are no errors, submit the form
     if (Object.keys(errors).length === 0) {
       const register = async () => {
         console.log();
         await axios
           .post(BACK_END_BASE_URL + AUTH_SITTER + USER_REGISTER, {
             password: formState.password,
-            username: formState.username,
             email: formState.email,
             telephone: formState.telephone,
+            name: formState.name,
+            surName: formState.surName,
+            confirmPassword: formState.confirmPassword,
+            image: formState.image,
+            description: formState.description,
+            price: formState.price,
+            address: formState.address,
+            housing: formState.housing,
+            city: formState.city,
           })
           .then((response) => {
             if (response.data.email) {
               dispatch(setUser(response.data));
               navigate("/");
+            }
+          })
+          .catch((error) => {
+            if (error) {
+              alert("Грешни данни");
             }
           });
       };
@@ -218,28 +266,18 @@ const Body = () => {
             <div className="col-6">
               {" "}
               <div className="d-flex justify-content-start align-items-center flex-column p-4">
-                <div class="input-group mb-1  w-100">
-                  <label
-                    tabindex="0"
-                    style={{
-                      height: "37.6px",
-                      color: formState.image ? "black" : "grey",
-                    }}
-                    className={`form-control
+                <div className="mb-1 w-100">
+                  <input
+                    placeholder="Снимка"
+                    type="text"
+                    className={`form-control ${
+                      validationState.image ? "is-invalid" : ""
                     }`}
-                  >
-                    {formState.image ? formState.image : "Снимка"}
-                    <input
-                      className={`invisible form-control ${
-                        validationState.image ? "is-invalid" : ""
-                      }`}
-                      onChange={handleChange}
-                      value={formState.image}
-                      id="image"
-                      name="image"
-                      type="file"
-                    />
-                  </label>
+                    id="image"
+                    name="image"
+                    value={formState.image}
+                    onChange={handleChange}
+                  />
                 </div>
 
                 <div className="mb-1 w-100">
@@ -259,7 +297,12 @@ const Body = () => {
                 <div className="d-flex flex-row dropdown w-100 mb-1 ">
                   <button
                     type="button"
-                    className="d-flex justify-content-between btn border w-100 "
+                    className={`d-flex justify-content-between btn border w-100
+                  form-control  ${
+                    validationState.city
+                      ? "is-invalid border border-danger"
+                      : ""
+                  }   `}
                     data-bs-toggle="dropdown"
                     value={formState.city}
                     style={{ color: formState.city ? "black" : "grey" }}

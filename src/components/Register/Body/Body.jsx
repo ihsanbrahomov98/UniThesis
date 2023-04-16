@@ -14,39 +14,82 @@ import { useSelector, useDispatch } from "react-redux";
 const Body = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [data, setData] = useState({
+  const [formState, setFormState] = useState({
     password: "",
     username: "",
     email: "",
     telephone: "",
     confirmPassword: "",
   });
-  const validate = (dataInfo, dataType) => {
-    setData((prevState) => ({
-      ...prevState,
-      [dataType]: dataInfo,
-    }));
+  const [validationState, setValidationState] = useState({
+    password: "",
+    username: "",
+    email: "",
+    telephone: "",
+    confirmPassword: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormState((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const registerUser = () => {
-    console.log(data);
-    const register = async () => {
-      console.log();
-      await axios
-        .post(BACK_END_BASE_URL + AUTH_USER + USER_REGISTER, {
-          password: data.password,
-          username: data.username,
-          email: data.email,
-          telephone: data.telephone,
-        })
-        .then((response) => {
-          if (response.data.username) {
-            dispatch(setUser(response.data));
-            navigate("/");
-          }
-        });
-    };
-    register();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const { username, email, password, confirmPassword, telephone } = formState;
+    const errors = {};
+
+    if (!username || username.length < 4) {
+      errors.name = "Name is required and must be longer than 4 characters";
+    }
+    if (!email || email.length < 4) {
+      errors.email = "Email is required and must be longer than 4 characters";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errors.email = "Email is invalid";
+    }
+    if (!password || password.length < 4) {
+      errors.password =
+        "Password is required and must be longer than 4 characters";
+    }
+    if (password !== confirmPassword) {
+      errors.password = "Passwords doesn't match";
+      errors.confirmPassword = "Passwords doesn't match";
+    }
+
+    if (!telephone || telephone.length < 4) {
+      errors.telephone =
+        "telephone is required and must be longer than 4 characters";
+    }
+    console.log(errors);
+    // Update validation state
+    setValidationState(errors);
+
+    console.log(errors);
+    if (Object.keys(errors).length === 0) {
+      const register = async () => {
+        console.log();
+        await axios
+          .post(BACK_END_BASE_URL + AUTH_USER + USER_REGISTER, {
+            password: formState.password,
+            username: formState.username,
+            email: formState.email,
+            telephone: formState.telephone,
+          })
+          .then((response) => {
+            if (response.data.username) {
+              dispatch(setUser(response.data));
+              navigate("/");
+            }
+          })
+          .catch((error) => {
+            if (error) {
+              alert("Грешни данни");
+            }
+          });
+      };
+      register();
+    }
   };
 
   return (
@@ -55,51 +98,88 @@ const Body = () => {
         <div className="fw-bold fs-5">title</div>
         <div
           style={{ textAlign: "center" }}
-          className="mt-1 mb-3 d-flex justify-content-center align-items-center"
+          className="mt-1 mb-3  d-flex justify-content-center align-items-center"
         >
           hey enter your name here plase i ettitletitletitletitletitlec
         </div>
-        <input
-          onChange={(e) => validate(e.target.value, "username")}
-          type="text"
-          className="form-control mb-2"
-          placeholder="Потребителско име"
-          aria-label="Потребителс"
-        />
-        <input
-          onChange={(e) => validate(e.target.value, "password")}
-          type="password"
-          className="form-control mb-2"
-          placeholder="Парола"
-          aria-label="Парола"
-        />
-        <input
-          onChange={(e) => validate(e.target.value, "confirmPassword")}
-          type="password"
-          className="form-control mb-2"
-          placeholder="Потвърди парола"
-          aria-label="Потвърди парола"
-        />{" "}
-        <input
-          onChange={(e) => validate(e.target.value, "email")}
-          type="email"
-          className="form-control mb-2"
-          placeholder="Емайл"
-          aria-label="Емайл"
-        />{" "}
-        <input
-          onChange={(e) => validate(e.target.value, "telephone")}
-          type="text"
-          className="form-control mb-2"
-          placeholder="Телефон"
-          aria-label="Телефон"
-        />
-        <div
-          onClick={() => registerUser()}
-          className="RegisterBodyButton d-flex w-100 py-2 mt-2 fw-bold justify-content-center align-items-center"
-        >
-          Регистрирай се
-        </div>
+        <form onSubmit={handleSubmit} className="w-100">
+          {" "}
+          <div className=" d-flex justify-content-start align-items-center w-100  flex-column ">
+            <div className="mb-1 mt-1 w-100">
+              <input
+                type="text"
+                className={`form-control ${
+                  validationState.username ? "is-invalid" : ""
+                }`}
+                placeholder="Потребителско име"
+                id="username"
+                name="username"
+                value={formState.username}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-1 mt-1 w-100">
+              <input
+                placeholder="Емайл"
+                type="text"
+                className={`form-control ${
+                  validationState.email ? "is-invalid" : ""
+                }`}
+                id="email"
+                name="email"
+                value={formState.email}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-1 mt-1 w-100">
+              <input
+                placeholder="Телефонен номер"
+                type="text"
+                className={`form-control ${
+                  validationState.telephone ? "is-invalid" : ""
+                }`}
+                id="telephone"
+                name="telephone"
+                value={formState.telephone}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-1 mt-1 w-100">
+              <input
+                placeholder="Парола"
+                type="password"
+                className={`form-control ${
+                  validationState.password ? "is-invalid" : ""
+                }`}
+                id="password"
+                name="password"
+                value={formState.password}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-1 mt-1 w-100">
+              <input
+                placeholder="Потвърди паролата"
+                type="password"
+                className={`form-control ${
+                  validationState.confirmPassword ? "is-invalid" : ""
+                }`}
+                id="confirmPassword"
+                name="confirmPassword"
+                value={formState.confirmPassword}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <div className="w-100  d-flex justify-content-center">
+            <button
+              type="submit"
+              className="RegisterSitterBodyButton d-flex  mt-3 w-100 py-2  fw-bold justify-content-center align-items-center"
+            >
+              Регистрирай се
+            </button>
+          </div>
+        </form>
         <div
           style={{ textAlign: "center" }}
           className="mt-3 d-flex flex-column"

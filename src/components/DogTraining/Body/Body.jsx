@@ -1,8 +1,32 @@
 import React from "react";
 import Button from "../../CardFilter/Button/Button";
 import "./body.css";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { addSearchParams } from "../../../redux/SearchSlice/SearchSlice";
+import { setSitters } from "../../../redux/SitterSlice/SitterSlice";
+import { TRAINING } from "../../../Enums/OfferedServicesEnum/OfferedServicesEnum";
+import dogTraining from "../../../assets/Images/dogTraining.png";
 
 const Body = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const userDataRedux = useSelector((state) => state.user);
+  const checkIfUserExist = () => {
+    console.log(userDataRedux.email);
+    console.log(userDataRedux.username);
+    dispatch(
+      addSearchParams({
+        offeredServices: TRAINING,
+        selectedIcon: dogTraining,
+      })
+    );
+    if (userDataRedux.email || userDataRedux.username) {
+      navigate("/");
+    } else {
+      navigate("/register");
+    }
+  };
   return (
     <>
       <div className="">
@@ -18,7 +42,9 @@ const Body = () => {
           <div className="fw-bolder fs-2">трениъор за теб</div>
           <div className="fw-bold fs-5">Професионалисти с много опит!</div>
           <div className="fw-bold fs-5">Без почивни дни!</div>
-          <Button text={"Търси"} containerDisabled="true" />
+          <div onClick={() => checkIfUserExist()} className="">
+            <Button text={"Търси"} containerDisabled="true" />
+          </div>
         </div>
       </div>
     </>
