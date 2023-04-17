@@ -287,6 +287,7 @@ const Body = () => {
             address: formState.address,
             housing: formState.housing,
             city: formState.city,
+            role: "SITTER",
           })
           .then((response) => {
             if (response.data.email) {
@@ -377,21 +378,32 @@ const Body = () => {
     if (Object.keys(errors).length === 0) {
       console.log("data.end:", data.endingDate);
       const update = async () => {
-        await axios.put(BACK_END_BASE_URL + SITTERS_URL + `/update`, {
-          id: idOfSitter.id,
-          name: formStateUpdate.name,
-          surName: formStateUpdate.surName,
-          image: formStateUpdate.image,
-          description: formStateUpdate.description,
-          price: formStateUpdate.price,
-          email: formStateUpdate.email,
-          telephone: formStateUpdate.telephone,
-          startingDate: formStateUpdate.startingDate,
-          endingDate: formStateUpdate.endingDate,
-          address: formStateUpdate.address,
-        });
-
-        fetchItems();
+        await axios
+          .put(BACK_END_BASE_URL + SITTERS_URL + `/update`, {
+            id: idOfSitter.id,
+            name: formStateUpdate.name,
+            surName: formStateUpdate.surName,
+            image: formStateUpdate.image,
+            description: formStateUpdate.description,
+            price: formStateUpdate.price,
+            email: formStateUpdate.email,
+            telephone: formStateUpdate.telephone,
+            startingDate: formStateUpdate.startingDate,
+            endingDate: formStateUpdate.endingDate,
+            address: formStateUpdate.address,
+            password: formStateUpdate.password,
+          })
+          .then((response) => {
+            if (response.data.email) {
+              fetchItems();
+              alert("Създаден гледач");
+            }
+          })
+          .catch((error) => {
+            if (error) {
+              alert("Грешни данни");
+            }
+          });
       };
       update();
       calculateTakenDates();
