@@ -21,6 +21,48 @@ const Body = () => {
     adminId: "2",
   });
 
+  const [formState, setFormState] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    telephone: "",
+  });
+  const [validationState, setValidationState] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    telephone: "",
+  });
+  const [formStateUpdate, setFormStateUpdate] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    telephone: "",
+  });
+  const [validationStateUpdate, setValidationStateUpdate] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    telephone: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    console.log(name);
+    console.log(value);
+    setFormState((prevState) => ({ ...prevState, [name]: value }));
+  };
+  const handleChangeUpdate = (e) => {
+    const { name, value } = e.target;
+    console.log(name);
+    console.log(value);
+    setFormStateUpdate((prevState) => ({ ...prevState, [name]: value }));
+  };
+
   const fetchItems = async () => {
     const { data } = await axios.get(BACK_END_BASE_URL + ADMIN_URL + `/all`);
     setProducts(data);
@@ -79,6 +121,117 @@ const Body = () => {
     }));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const { username, email, password, confirmPassword, telephone } = formState;
+    const errors = {};
+
+    if (!username || username.length < 4) {
+      errors.username = "Name is required and must be longer than 4 characters";
+    }
+    if (!email || email.length < 4) {
+      errors.email = "Email is required and must be longer than 4 characters";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errors.email = "Email is invalid";
+    }
+    if (!password || password.length < 4) {
+      errors.password =
+        "Password is required and must be longer than 4 characters";
+    }
+    if (password !== confirmPassword) {
+      errors.password = "Passwords doesn't match";
+      errors.confirmPassword = "Passwords doesn't match";
+    }
+    if (!telephone || telephone.length < 4) {
+      errors.telephone =
+        "Telephone is required and must be longer than 4 characters";
+    }
+
+    console.log(errors);
+    setValidationState(errors);
+    if (Object.keys(errors).length === 0) {
+      const create = async () => {
+        await axios
+          .post(BACK_END_BASE_URL + ADMIN_URL + `/create`, {
+            username: formState.username,
+            email: formState.email,
+            password: formState.password,
+            telephone: formState.telephone,
+          })
+          .then((response) => {
+            if (response.data.email) {
+              fetchItems();
+              alert("Създаден админ");
+            }
+          })
+          .catch((error) => {
+            if (error) {
+              alert("Грешни данни");
+            }
+          });
+      };
+      create();
+    }
+  };
+
+  const handleSubmitUpdate = (event, idOfAdmin) => {
+    event.preventDefault();
+
+    const { username, email, password, confirmPassword, telephone } =
+      formStateUpdate;
+    const errors = {};
+
+    if (!username || username.length < 4) {
+      errors.username = "Name is required and must be longer than 4 characters";
+    }
+    if (!email || email.length < 4) {
+      errors.email = "Email is required and must be longer than 4 characters";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errors.email = "Email is invalid";
+    }
+    if (!password || password.length < 4) {
+      errors.password =
+        "Password is required and must be longer than 4 characters";
+    }
+    if (password !== confirmPassword) {
+      errors.password = "Passwords doesn't match";
+      errors.confirmPassword = "Passwords doesn't match";
+    }
+    if (!telephone || telephone.length < 4) {
+      errors.telephone =
+        "Telephone is required and must be longer than 4 characters";
+    }
+
+    console.log(errors);
+    setValidationStateUpdate(errors);
+
+    if (Object.keys(errors).length === 0) {
+      const update = async () => {
+        await axios
+          .put(BACK_END_BASE_URL + ADMIN_URL + `/update`, {
+            username: formStateUpdate.username,
+            email: formStateUpdate.email,
+            password: formStateUpdate.password,
+            telephone: formState.telephone,
+            id: idOfAdmin.id,
+          })
+          .then((response) => {
+            if (response.data.email) {
+              fetchItems();
+              alert("Променен админ");
+            }
+          })
+          .catch((error) => {
+            if (error) {
+              alert("Грешни данни");
+            }
+          });
+      };
+      update();
+    }
+  };
+
   useEffect(() => {
     fetchItems();
   }, []);
@@ -95,10 +248,10 @@ const Body = () => {
               id="flexCheckDefault"
             ></input>
           </div>
-          <div className="col-2 ms-1">23</div>
-          <div className="col-2 ms-1">Info</div>
-          <div className="col-2 ms-1">Email</div>
-          <div className="col-2 ms-1">Price</div>
+          <div className="col-2 ">ID</div>
+          <div className="col-2 ms-1">Потребителско име</div>
+          <div className="col-2 ms-1">Телефонен номер</div>
+          <div className="col-2 ms-1">Емайл</div>
           <div className="col-1 "></div>
 
           <div
@@ -130,45 +283,84 @@ const Body = () => {
                   ></button>
                 </div>
                 <div className="modal-body">
-                  <div className="modal-body">
-                    <div class="input-group mb-3">
-                      <div className="col-3 d-flex justify-content-start align-items-center">
-                        Username
-                      </div>
-                      <div className="col-9">
+                  <form onSubmit={handleSubmit} className="w-100">
+                    {" "}
+                    <div className=" d-flex justify-content-start align-items-center w-100  flex-column ">
+                      <div className="mb-1 mt-1 w-100">
                         <input
-                          onChange={(e) => validate(e.target.value, "name")}
                           type="text"
-                          class="form-control"
-                          placeholder="Username"
-                          aria-label="Username"
+                          className={`form-control ${
+                            validationState.username ? "is-invalid" : ""
+                          }`}
+                          placeholder="Потребителско име"
+                          id="username"
+                          name="username"
+                          value={formState.username}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className="mb-1 mt-1 w-100">
+                        <input
+                          placeholder="Емайл"
+                          type="text"
+                          className={`form-control ${
+                            validationState.email ? "is-invalid" : ""
+                          }`}
+                          id="email"
+                          name="email"
+                          value={formState.email}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className="mb-1 mt-1 w-100">
+                        <input
+                          placeholder="Телефонен номер"
+                          type="text"
+                          className={`form-control ${
+                            validationState.telephone ? "is-invalid" : ""
+                          }`}
+                          id="telephone"
+                          name="telephone"
+                          value={formState.telephone}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className="mb-1 mt-1 w-100">
+                        <input
+                          placeholder="Парола"
+                          type="password"
+                          className={`form-control ${
+                            validationState.password ? "is-invalid" : ""
+                          }`}
+                          id="password"
+                          name="password"
+                          value={formState.password}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className="mb-1 mt-1 w-100">
+                        <input
+                          placeholder="Потвърди паролата"
+                          type="password"
+                          className={`form-control ${
+                            validationState.confirmPassword ? "is-invalid" : ""
+                          }`}
+                          id="confirmPassword"
+                          name="confirmPassword"
+                          value={formState.confirmPassword}
+                          onChange={handleChange}
                         />
                       </div>
                     </div>
-                    <div class="input-group mb-3">
-                      <div className="col-3 d-flex justify-content-start align-items-center">
-                        Username
-                      </div>
-                      <div className="col-9">
-                        <input
-                          onChange={(e) => validate(e.target.value, "email")}
-                          type="text"
-                          class="form-control"
-                          placeholder="Username"
-                          aria-label="Username"
-                        />
-                      </div>
-                    </div>
-                    <div className="d-flex justify-content-center">
+                    <div className="w-100  d-flex justify-content-center">
                       <button
-                        onClick={() => onSubmitCreate(data)}
-                        type="button"
-                        className="btn btn-primary px-5"
+                        type="submit"
+                        className="RegisterSitterBodyButton d-flex  mt-3 w-75 py-2  fw-bold justify-content-center align-items-center"
                       >
                         Създай
                       </button>
                     </div>
-                  </div>
+                  </form>
                 </div>
                 <div className="modal-footer">
                   <button
@@ -176,7 +368,7 @@ const Body = () => {
                     className="btn btn-secondary"
                     data-bs-dismiss="modal"
                   >
-                    Close
+                    Затвори
                   </button>
                 </div>
               </div>
@@ -206,7 +398,7 @@ const Body = () => {
                   <div className="col-2 ">{e.id}</div>
                   <div className="col-2">
                     <div className="">
-                      <div className=" d-flex align-items- justify-content-start flex-row">
+                      <div className=" d-flex align-items-center justify-content-start flex-row">
                         <img
                           src={
                             e.img
@@ -216,13 +408,13 @@ const Body = () => {
                           alt="tree"
                           style={{ width: "12%", height: "7%" }}
                         />
-                        <span className="ps-3">{e.name} </span>
+                        <span className="ps-3">{e.username} </span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="col-2">placeholder</div>
-                  <div className="col-2 " style={{ color: "green" }}></div>
+                  <div className="col-2">{e.telephone}</div>
+                  <div className="col-2 ">{e.email}</div>
                   <div className="col-3">
                     <div className=" d-flex align-items- justify-content-start flex-row">
                       <span className="adminDashBoardMainBody ps-2 pe-2 me-3">
@@ -248,7 +440,7 @@ const Body = () => {
                                   className="modal-title adminDashBoardMainBodyBlackColorAndWhiteBg"
                                   id="exampleModalLabel"
                                 >
-                                  {e.id}
+                                  Промени админ
                                 </h5>
                                 <button
                                   type="button"
@@ -259,47 +451,101 @@ const Body = () => {
                               </div>
                               {/* Промени */}
                               <div className="modal-body adminDashBoardMainBodyBlackColorAndWhiteBg">
-                                <div class="input-group mb-3">
-                                  <div className="col-3 d-flex justify-content-start align-items-center">
-                                    Username
+                                <form
+                                  onSubmit={(event) =>
+                                    handleSubmitUpdate(event, e)
+                                  }
+                                >
+                                  {" "}
+                                  <div className=" d-flex justify-content-start align-items-center flex-column p-4">
+                                    <div className="mb-1 w-100">
+                                      <input
+                                        type="text"
+                                        className={`form-control ${
+                                          validationStateUpdate.username
+                                            ? "is-invalid"
+                                            : ""
+                                        }`}
+                                        placeholder="Потребителско име"
+                                        id="username"
+                                        name="username"
+                                        value={formStateUpdate.username}
+                                        onChange={handleChangeUpdate}
+                                      />
+                                    </div>
+
+                                    <div className="mb-1 w-100">
+                                      <input
+                                        placeholder="Телефонен номер"
+                                        type="text"
+                                        className={`form-control ${
+                                          validationStateUpdate.telephone
+                                            ? "is-invalid"
+                                            : ""
+                                        }`}
+                                        id="telephone"
+                                        name="telephone"
+                                        value={formStateUpdate.telephone}
+                                        onChange={handleChangeUpdate}
+                                      />
+                                    </div>
+                                    <div className="mb-1 w-100">
+                                      <input
+                                        type="email"
+                                        className={`form-control ${
+                                          validationStateUpdate.email
+                                            ? "is-invalid"
+                                            : ""
+                                        }`}
+                                        placeholder="Емайл"
+                                        id="email"
+                                        name="email"
+                                        value={formStateUpdate.email}
+                                        onChange={handleChangeUpdate}
+                                      />
+                                    </div>
+                                    <div className="mb-1 w-100">
+                                      <input
+                                        placeholder="Парола"
+                                        type="password"
+                                        className={`form-control ${
+                                          validationStateUpdate.password
+                                            ? "is-invalid"
+                                            : ""
+                                        }`}
+                                        id="password"
+                                        name="password"
+                                        value={formStateUpdate.password}
+                                        onChange={handleChangeUpdate}
+                                      />
+                                    </div>
+                                    <div className="mb-1 w-100">
+                                      <input
+                                        placeholder="Потвърди паролата"
+                                        type="password"
+                                        className={`form-control ${
+                                          validationStateUpdate.confirmPassword
+                                            ? "is-invalid"
+                                            : ""
+                                        }`}
+                                        id="confirmPassword"
+                                        name="confirmPassword"
+                                        value={formStateUpdate.confirmPassword}
+                                        onChange={handleChangeUpdate}
+                                      />
+                                    </div>
                                   </div>
-                                  <div className="col-9">
-                                    <input
-                                      onChange={(e) =>
-                                        validate(e.target.value, "username")
-                                      }
-                                      type="text"
-                                      class="form-control"
-                                      placeholder="Username"
-                                      aria-label="Username"
-                                    />
+                                  <div className="d-flex justify-content-center">
+                                    <div className="w-100 d-flex justify-content-center">
+                                      <button
+                                        type="submit"
+                                        className="RegisterSitterBodyButton d-flex  mt-3 w-75 py-2  fw-bold justify-content-center align-items-center"
+                                      >
+                                        Промени
+                                      </button>
+                                    </div>
                                   </div>
-                                </div>
-                                <div class="input-group mb-3">
-                                  <div className="col-3 d-flex justify-content-start align-items-center">
-                                    Username
-                                  </div>
-                                  <div className="col-9">
-                                    <input
-                                      onChange={(e) =>
-                                        validate(e.target.value, "email")
-                                      }
-                                      type="text"
-                                      className="form-control"
-                                      placeholder="Username"
-                                      aria-label="Username"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="d-flex justify-content-center">
-                                  <button
-                                    onClick={() => onSubmit(e.id)}
-                                    type="button"
-                                    className="btn btn-primary px-5"
-                                  >
-                                    Промени
-                                  </button>
-                                </div>
+                                </form>
                               </div>
                               <div className="modal-footer">
                                 <button
@@ -318,7 +564,7 @@ const Body = () => {
                         className="adminDashBoardRedButton ps-2 pe-2 d-flex justify-content-center align-items-center "
                         onClick={() => deleteProduct(e)}
                       >
-                        Delete{" "}
+                        Изтрий{" "}
                       </span>
                     </div>
                   </div>

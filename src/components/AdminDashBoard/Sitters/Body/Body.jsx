@@ -202,7 +202,6 @@ const Body = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const {
       name,
       email,
@@ -414,18 +413,11 @@ const Body = () => {
     <>
       <div className="container border-start border-end border-top">
         <div className="row container pb-3 pt-3 d-flex align-items-center">
-          <div className="col-1">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-            ></input>
-          </div>
-          <div className="col-2 ms-1">23</div>
-          <div className="col-2 ms-1">Info</div>
-          <div className="col-2 ms-1">Email</div>
-          <div className="col-2 ms-1">Price</div>
+          <div className="col-1"></div>
+          <div className="col-2 ">ID</div>
+          <div className="col-2 ms-1">Потребителско име</div>
+          <div className="col-2 ms-1">Телефонен номер</div>
+          <div className="col-2 ms-2">Емайл</div>
           <div className="col-1 "></div>
 
           <div
@@ -731,24 +723,25 @@ const Body = () => {
                   </div>
                   <div className="col-2 ">{e.id}</div>
                   <div className="col-2">
-                    <div className="">
-                      <div className=" d-flex align-items- justify-content-start flex-row">
-                        <img
-                          src={
-                            e.img
-                              ? e.img
-                              : "https://carducci.bg/wp-content/uploads/2021/06/2004090138_1web.jpg"
-                          }
-                          alt="tree"
-                          style={{ width: "12%", height: "7%" }}
-                        />
-                        <span className="ps-3">{e.name} </span>
-                      </div>
+                    <div className=" d-flex align-items-center justify-content-start flex-row">
+                      <img
+                        src={
+                          e.img
+                            ? e.img
+                            : "https://carducci.bg/wp-content/uploads/2021/06/2004090138_1web.jpg"
+                        }
+                        alt="tree"
+                        style={{
+                          width: "12%",
+                          height: "7%",
+                        }}
+                      />
+                      <span className="ps-3 ">{e.username} </span>
                     </div>
                   </div>
 
-                  <div className="col-2">placeholder</div>
-                  <div className="col-2 " style={{ color: "green" }}></div>
+                  <div className="col-2">{e.email}</div>
+                  <div className="col-2 ">{e.telephone}</div>
                   <div className="col-3">
                     <div className=" d-flex align-items- justify-content-start flex-row">
                       <span className="adminDashBoardMainBody ps-2 pe-2 me-3">
@@ -1135,7 +1128,7 @@ const Body = () => {
                         className="adminDashBoardRedButton ps-2 pe-2 d-flex justify-content-center align-items-center "
                         onClick={() => deleteProduct(e)}
                       >
-                        Delete{" "}
+                        Изтрий{" "}
                       </span>
                     </div>
                   </div>

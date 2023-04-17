@@ -41,7 +41,7 @@ const Body = () => {
     const errors = {};
 
     if (!username || username.length < 4) {
-      errors.name = "Name is required and must be longer than 4 characters";
+      errors.username = "Name is required and must be longer than 4 characters";
     }
     if (!email || email.length < 4) {
       errors.email = "Email is required and must be longer than 4 characters";

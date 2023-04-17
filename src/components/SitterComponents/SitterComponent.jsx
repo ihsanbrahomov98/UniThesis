@@ -9,6 +9,7 @@ import {
   FIND_ONE_SITTER,
 } from "./../../utils/Utils";
 import { useLocation } from "react-router-dom";
+import SitterWriteReview from "./SitterWriteReview/SitterWriteReview";
 
 const SitterComponent = () => {
   const [item, setItem] = useState("");
@@ -28,6 +29,7 @@ const SitterComponent = () => {
   return (
     <>
       <SitterInfo item={item} />
+      <SitterWriteReview item={item} />
       <SitterReviews item={item} />
     </>
   );
