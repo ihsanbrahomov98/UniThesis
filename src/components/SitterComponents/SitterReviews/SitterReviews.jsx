@@ -7,13 +7,13 @@ import Footer from "./../../sharedComponents/Footer/Footer";
 const SitterReviews = () => {
   return (
     <>
-      <Header />
+      {/* <Header />
       <Review />
       <Review />
       <Review />
       <Review />
       <Pagination />
-      <Footer />
+      <Footer /> */}
     </>
   );
 };

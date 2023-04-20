@@ -94,7 +94,7 @@ const Body = () => {
               </div>
               <div className="mb-2 mt-2 pb-2 pt-2">
                 {" "}
-                <Item text={"doggy@gmai.com"} />{" "}
+                <Item text={"razhodi@gmai.com"} />{" "}
               </div>
             </div>
             <div className="d-flex  flex-row justify-content-center align-items-center">

@@ -1,66 +1,54 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { BACK_END_BASE_URL } from "../../../utils/Utils";
+import { ADD, ALL, BACK_END_BASE_URL, REVIEW } from "../../../utils/Utils";
+import StarPicker from "react-star-picker";
+import Header from "../SitterReviews/Header/Header";
+import Review from "../SitterReviews/Review/Review";
+import Pagination from "../SitterReviews/Pagination/Pagination";
+import Footer from "../../sharedComponents/Footer/Footer";
+import { useLocation } from "react-router-dom";
 
-const SitterWriteReview = () => {
+const SitterWriteReview = ({ item }) => {
+  const location = useLocation();
   const [validationState, setValidationState] = useState({
-    username: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    telephone: "",
+    reviewText: "",
+    rating: "",
   });
-  const [formStateUpdate, setFormStateUpdate] = useState({
-    username: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    telephone: "",
+  const [formState, setFormState] = useState({
+    reviewText: "",
+    rating: "",
   });
+  const [reviews, setReviews] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const { username, email, password, confirmPassword, telephone } = formState;
+    const { reviewText, rating } = formState;
     const errors = {};
 
-    if (!username || username.length < 4) {
-      errors.username = "Name is required and must be longer than 4 characters";
+    if (!reviewText || reviewText.length < 4) {
+      errors.reviewText =
+        "Review is required and must be longer than 4 characters";
     }
-    if (!email || email.length < 4) {
-      errors.email = "Email is required and must be longer than 4 characters";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      errors.email = "Email is invalid";
-    }
-    if (!password || password.length < 4) {
-      errors.password =
-        "Password is required and must be longer than 4 characters";
-    }
-    if (password !== confirmPassword) {
-      errors.password = "Passwords doesn't match";
-      errors.confirmPassword = "Passwords doesn't match";
-    }
-    if (!telephone || telephone.length < 4) {
-      errors.telephone =
-        "Telephone is required and must be longer than 4 characters";
+    if (!rating) {
+      errors.reviewText =
+        "Rating is required and must be longer than 4 characters";
     }
 
-    console.log(errors);
     setValidationState(errors);
 
     if (Object.keys(errors).length === 0) {
       const create = async () => {
         await axios
-          .post(BACK_END_BASE_URL + USERS_URL + `/create`, {
-            password: formState.password,
-            username: formState.username,
-            email: formState.email,
-            telephone: formState.telephone,
+          .post(BACK_END_BASE_URL + REVIEW + ADD, {
+            reviewText: formState.reviewText,
+            rating: formState.rating,
+            id: item.id,
           })
           .then((response) => {
-            if (response.data.email) {
-              fetchItems();
-              alert("Създаден потребител");
+            if (response.data) {
+              fetchSitter();
+              alert("Създаден коментар");
             }
           })
           .catch((error) => {
@@ -79,24 +67,52 @@ const SitterWriteReview = () => {
     setFormState((prevState) => ({ ...prevState, [name]: value }));
   };
 
+  const onChange = (value, name) => {
+    setFormState((prevValues) => ({ ...prevValues, [name]: value }));
+  };
+
+  const fetchSitter = async () => {
+    let currentLocation = location.pathname.split("/")[2].split(":")[1];
+    console.log(currentLocation);
+    const { data } = await axios.post(BACK_END_BASE_URL + REVIEW + ALL, {
+      id: currentLocation,
+    });
+    console.log(data);
+    setReviews(data);
+  };
+
+  useEffect(() => {
+    fetchSitter();
+  }, []);
+
   return (
     <>
-      <div className="container d-flex justify-content-center align-items-center ">
-        <div className="w-75 bg-primary ">
-          <form onSubmit={(event) => handleSubmit(event, e)}>
-            {" "}
+      <div className=" container d-flex justify-content-center align-items-center mt-2 ">
+        <div className="container mx-5">
+          <form onSubmit={(event) => handleSubmit(event)}>
             <div className=" d-flex justify-content-start align-items-center flex-column p-4">
               <div className="mb-1 w-100">
                 <input
+                  placeholder="Напиши ревю"
+                  style={{ paddingBottom: "10rem" }}
                   type="text"
-                  className={`form-control ${
-                    validationState.username ? "is-invalid" : ""
+                  className={`form-control  align-top   ${
+                    validationState.reviewText ? "is-invalid" : ""
                   }`}
-                  placeholder="Потребителско име"
-                  id="username"
-                  name="username"
-                  value={formState.username}
+                  id="reviewText"
+                  name="reviewText"
                   onChange={handleChange}
+                />
+              </div>
+            </div>
+            <div className="d-flex justify-content-center align-items-center mb-2">
+              <div>
+                <StarPicker
+                  onChange={onChange}
+                  size={25}
+                  halfStars
+                  value={formState.rating}
+                  name="rating"
                 />
               </div>
             </div>
@@ -104,15 +120,40 @@ const SitterWriteReview = () => {
               <div className="w-100 d-flex justify-content-center">
                 <button
                   type="submit"
-                  className="RegisterSitterBodyButton d-flex  mt-3 w-75 py-2  fw-bold justify-content-center align-items-center"
+                  className="RegisterSitterBodyButton d-flex  mt-3 w-25 py-2  fw-bold justify-content-center align-items-center"
                 >
-                  Промени
+                  Напиши
                 </button>
               </div>
             </div>
           </form>
         </div>
       </div>
+      <div className="d-flex justify-content-center mt-2">
+        <div className="d-flex justify-content-between w-75 ps-2 fs-4 fw-bolder ">
+          <div className="d-flex">
+            <div className="">
+              {reviews.review && reviews.review.length
+                ? reviews.review.length
+                : "0"}
+            </div>
+            <div className="ms-2">Мнения</div>
+          </div>
+          <div className="d-flex">
+            <div className="ms-2">
+              {" "}
+              <StarPicker size={25} halfStars value={item.rating} />
+            </div>
+            {/* TODO Да се добяват звезди */}
+          </div>
+        </div>
+      </div>
+      {reviews.review &&
+        reviews.review.map((e) => {
+          return <Review info={e} />;
+        })}
+      <Pagination />
+      <Footer />
     </>
   );
 };

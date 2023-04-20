@@ -1,7 +1,7 @@
 import React from "react";
 import "./review.css";
 import StarPicker from "react-star-picker";
-const Review = () => {
+const Review = ({ info }) => {
   return (
     <div className="d-flex justify-content-center mt-2 ">
       <div className="d-flex justify-content-between w-75 border p-3">
@@ -18,16 +18,11 @@ const Review = () => {
             <div className="fs-4 ms-1 fw-bold">Ихсан</div>
             <div className="ms-1">Пловдив</div>
             <div className="ms-1">22/04/2022</div>
-            <div className="">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-              sapiente, veritatis quos asperiores, omnis provident rem
-              necessitatibus aliquam repudiandae obcaecati eligendi eveniet
-              corporis possimus, minus autem? Quia natus veritatis quo.
-            </div>
+            <div className="">{info && info.reviewText}</div>
           </div>
         </div>
         <div className="d-flex SitterReviewStarts ">
-          <StarPicker size={15} value={5} />
+          <StarPicker size={15} value={info && info.rating} />
         </div>
         {/* TODO */}
       </div>

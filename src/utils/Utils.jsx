@@ -19,6 +19,9 @@ export const USER_LOGIN = "/login";
 export const REGISTER = "/register";
 export const LOGIN = "/login";
 export const UPDATE_CALENDAR = "/update/calendar";
+export const REVIEW = "/review";
+export const ALL = "/all";
+export const ADD = "/add";
 
 export const fetchAllItems = async (URL) => {
   const { data } = await axios.get(BACK_END_BASE_URL + URL);
