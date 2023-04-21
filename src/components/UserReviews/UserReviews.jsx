@@ -1,7 +1,7 @@
 import React from "react";
 import "./userReviews.css";
 
-const UserReviews = ({ isSitter }) => {
+const UserReviews = ({ isSitter, item }) => {
   return (
     <>
       <div
@@ -43,11 +43,12 @@ const UserReviews = ({ isSitter }) => {
               alt="..."
             />
             <div className="carousel-caption d-none d-md-block UserReviews">
-              <h2>Мария за Елена</h2>
+              <h2>Мария за {item && item.name ? item.name : "Елена"}</h2>
               <p className="fw-bolder fs-5">
-                Елена е прекрасна.За първи път използвах нейните услуги и двама
-                с моето куче бяхме притеснени. Всички протече идеално и моето
-                куче се върна удома щастливо. Благодаря ти Ели!
+                {item && item.name ? item.name : "Елена"} е прекрасна.За първи
+                път използвах нейните услуги и двама с моето куче бяхме
+                притеснени. Всички протече идеално и моето куче се върна удома
+                щастливо. Благодаря ти {item && item.name ? item.name : "Ели"}!
               </p>
             </div>
           </div>
@@ -62,11 +63,12 @@ const UserReviews = ({ isSitter }) => {
               alt="..."
             />
             <div className="carousel-caption d-none d-md-block UserReviews">
-              <h2>Стефан за Иван</h2>
+              <h2>Стефан за {item && item.name ? item.name : "Иван"}</h2>
               <p className="fw-bolder fs-5">
-                Иван е чудесен.За първи път използвах неговите услуги и двама с
-                моето куче бяхме притеснени. Всички протече идеално и моето куче
-                се върна удома щастливо. Благодаря ти Ванка!
+                {item && item.name ? item.name : "Иван"} е чудесен.За първи път
+                използвах неговите услуги и двама с моето куче бяхме притеснени.
+                Всички протече идеално и моето куче се върна удома щастливо.
+                Благодаря ти {item && item.name ? item.name : "Ванка"}!
               </p>
             </div>
           </div>
@@ -81,11 +83,12 @@ const UserReviews = ({ isSitter }) => {
               alt="..."
             />
             <div className="carousel-caption d-none d-md-block UserReviews">
-              <h2>Теодор за Георги</h2>
+              <h2>Теодор за {item && item.name ? item.name : "Георги"}</h2>
               <p className="fw-bolder fs-5">
-                Георги е чудесен.За първи път използвах неговите услуги и двама
-                с моето куче бяхме притеснени. Всички протече идеално и моето
-                куче се върна удома щастливо. Благодаря ти Гоше!
+                {item && item.name ? item.name : "Георги"} е чудесен.За първи
+                път използвах неговите услуги и двама с моето куче бяхме
+                притеснени. Всички протече идеално и моето куче се върна удома
+                щастливо. Благодаря ти {item && item.name ? item.name : "Гоше"}!
               </p>
             </div>
           </div>
