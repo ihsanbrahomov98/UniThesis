@@ -94,7 +94,7 @@ const Body = () => {
               </div>
               <div className="mb-2 mt-2 pb-2 pt-2">
                 {" "}
-                <Item text={"razhodi@gmai.com"} />{" "}
+                <Item text={"dogwalkers@gmail.com"} />{" "}
               </div>
             </div>
             <div className="d-flex  flex-row justify-content-center align-items-center">
@@ -190,7 +190,7 @@ const Body = () => {
                   src="https://cdn.w600.comps.canstockphoto.com/male-sitting-with-domestic-animal-dog-clipart-vector_csp63831651.jpg"
                   alt="Snow"
                 />
-                <div className="fs-4 fw-bold">Увас</div>
+                <div className="fs-4 fw-bold">У вас</div>
                 <div className="">Наглеждане във вашият дом</div>
               </div>
             </Link>

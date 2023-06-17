@@ -52,13 +52,13 @@ const Footer = () => {
         <div className=" border container col-6 d-flex flex-column justify-content-center align-items-center">
           <div className="">
             <div className="fw-bold d-flex flex-column justify-content-center align-items-center mt-4">
-              Искате да прекратите усулга?
+              Искате да прекратите услуга?
             </div>
             <div className="fw-normal mt-2 d-flex flex-column justify-content-center align-items-center">
-              Може да го направите по всякое време!
+              Може да го направите по всяко време!
             </div>
             <div className="d-flex flex-column justify-content-center align-items-center mb-4">
-              Кликни тук за да разбреш как!
+              Кликни тук, за да разбреш как!
             </div>
           </div>
         </div>
@@ -145,11 +145,11 @@ const Footer = () => {
               Последвайте ни!
             </div>
             <div className="fw-normal mt-2 d-flex flex-column justify-content-center align-items-center">
-              До края на месеца имаме намаление за тези, който ни последват
+              До края на месеца имаме намаление за тези, които ни последват
               сега!
             </div>
             <div className="d-flex flex-column justify-content-center align-items-center mb-4">
-              Кликни тук за да разбреш как!
+              Кликни тук, за да разбереш как!
             </div>
           </div>
         </div>
@@ -222,7 +222,7 @@ const Footer = () => {
               Достъпност&ensp;<span style={{ color: "lightgray" }}>|</span>
             </span>
             <span>
-              &ensp;Център за поверителностy&ensp;
+              &ensp;Център за поверителност &ensp;
               <span style={{ color: "lightgray" }}>|</span>
             </span>
             <span>
@@ -243,7 +243,7 @@ const Footer = () => {
             </span>
           </div>
           <div className="mt-2 mb-2">
-            © RazhodiMe Limited 2023. Всички права запазени.
+            © DogWalkers Limited 2023. Всички права запазени.
           </div>
           <div className="text-center" style={{ fontSize: "0.65rem" }}>
             Съдържанието на този уеб сайт и технологиите, използвани в него, са

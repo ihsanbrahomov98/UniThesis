@@ -2,5 +2,7 @@
   background-image: url("../assets/Images/aki2.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
+  object-fit: cover;
+  object-position: center;
   background-size: 100% 100%;
 }

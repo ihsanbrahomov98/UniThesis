@@ -31,6 +31,7 @@ const Body = () => {
   const fetchItems = async () => {
     const { data } = await axios.get(BACK_END_BASE_URL + SITTERS_URL + `/all`);
     setProducts(data);
+    console.log(products);
   };
 
   const deleteProduct = (e) => {
@@ -416,8 +417,8 @@ const Body = () => {
           <div className="col-1"></div>
           <div className="col-2 ">ID</div>
           <div className="col-2 ms-1">Потребителско име</div>
-          <div className="col-2 ms-1">Телефонен номер</div>
-          <div className="col-2 ms-2">Емайл</div>
+          <div className="col-2 ms-1">Емайл</div>
+          <div className="col-2 ms-2">Телефонен номер</div>
           <div className="col-1 "></div>
 
           <div
@@ -726,8 +727,8 @@ const Body = () => {
                     <div className=" d-flex align-items-center justify-content-start flex-row">
                       <img
                         src={
-                          e.img
-                            ? e.img
+                          e.image
+                            ? e.image
                             : "https://carducci.bg/wp-content/uploads/2021/06/2004090138_1web.jpg"
                         }
                         alt="tree"
@@ -736,7 +737,9 @@ const Body = () => {
                           height: "7%",
                         }}
                       />
-                      <span className="ps-3 ">{e.username} </span>
+                      <span className="ps-3 ">
+                        {e.name} {e.surName}{" "}
+                      </span>
                     </div>
                   </div>
 

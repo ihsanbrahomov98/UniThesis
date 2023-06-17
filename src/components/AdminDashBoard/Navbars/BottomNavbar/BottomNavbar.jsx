@@ -34,7 +34,7 @@ const BottomNavbar = () => {
                         : "adminDashBoardMainBodyBlackColor ps-2  pb-3 pt-3 "
                     }
                   >
-                    Sitters
+                    Гледачи
                   </div>
                 </Link>
                 <Link
@@ -52,7 +52,7 @@ const BottomNavbar = () => {
                         : "adminDashBoardMainBodyBlackColor pb-3 pt-3   ps-2 "
                     }
                   >
-                    Users
+                    Потребители
                   </div>
                 </Link>
                 <Link
@@ -70,7 +70,7 @@ const BottomNavbar = () => {
                         : "adminDashBoardMainBodyBlackColor ps-2  pb-3 pt-3  "
                     }
                   >
-                    Admins
+                    Админи
                   </div>
                 </Link>
               </div>

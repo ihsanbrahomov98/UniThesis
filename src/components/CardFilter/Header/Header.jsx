@@ -5,9 +5,9 @@ const Header = () => {
     <>
       <div className="container">
         <div className="fw-bold fs-2">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit? Modi!
+          Намери любящи гледачи които да се грижат за твоето куче!
         </div>
-        <div className="fw-medium fs-5">consectetur adipisicing elit? Modi</div>
+        <div className="fw-medium fs-5">Не остваяй твоето куче в клетка!</div>
       </div>
     </>
   );

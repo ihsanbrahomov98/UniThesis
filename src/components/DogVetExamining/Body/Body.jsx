@@ -37,7 +37,7 @@ const Body = () => {
 
         <div className="d-flex flex-column align DogVetExaminingInformationContainer">
           <div className="fw-bolder fs-2">Намери подходящия</div>
-          <div className="fw-bolder fs-2">ветеринар за теб</div>
+          <div className="fw-bolder fs-2">ветеринар за теб!</div>
           <div className="fw-bold fs-5">Професионалисти с много опит!</div>
           <div className="fw-bold fs-5">Без почивни дни!</div>
           <div onClick={() => checkIfUserExist()} className="">

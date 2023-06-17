@@ -8,17 +8,17 @@ const AppOverview = () => {
       <div className="container mt-5">
         <div>
           <div className="d-flex justify-content-start align-items-start  ">
-            <Label text={"Как рабити нашето приложение"} />
+            <Label text={"Как работи  нашето приложение"} />
             <Label />
             <Label />
           </div>
           <div className="d-flex justify-content-start align-items-start  ">
             <Item
               number={"1"}
-              text={"Регистрай се в нашето приложение"}
-              title={"Регистрай се"}
+              text={"Регистрирай  се в нашето приложение"}
+              title={"Регистрирай  се"}
             />
-            <Item number={"2"} text={"Поплъни полетата"} title={"Поплъни"} />
+            <Item number={"2"} text={"Попълни  полетата"} title={"Попълни "} />
             <Item
               number={"3"}
               text={"Избери подходящ гледач за теб"}
@@ -46,7 +46,7 @@ const AppOverview = () => {
             />
             <Item
               number={"3"}
-              text={"Хиляди доволни клиенти и щастилви домашни любимци"}
+              text={"Хиляди доволни клиенти и щастливи домашни любимци"}
               title={"Дългогодишен опит"}
             />
           </div>

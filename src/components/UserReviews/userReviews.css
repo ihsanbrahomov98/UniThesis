@@ -9,8 +9,10 @@
 .UserReviewsImageHomePage {
   border-radius: 0;
   height: 35rem;
+  object-fit: cover;
 }
 .UserReviewsImageSitterPage {
   border-radius: 0;
   height: 22rem;
+  object-fit: cover;
 }

@@ -101,7 +101,7 @@ const Item = () => {
 
   return (
     <>
-      <div className="">Търся услуга</div>
+      <div className="">Избери услуга</div>
       <div className="d-flex flex-row dropdown mt-1">
         <div className="">
           <div className="input-group-text " id="basic-addon1">
@@ -326,7 +326,7 @@ const Item = () => {
           />
         </div>
       </div> */}
-      <div className="mb-2">Търся услуга</div>
+      <div className="mb-2">Избери период</div>
       <div
         onClick={() => setToggleCalendar(true)}
         className="d-flex flex-row position-relative dropdown "

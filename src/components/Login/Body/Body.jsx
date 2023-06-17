@@ -80,7 +80,7 @@ const Body = () => {
           style={{ textAlign: "center" }}
           className="mt-1 mb-4 mt-2 d-flex justify-content-center align-items-center loginTextFs"
         >
-          Моля въдете вашето потребителско име или телефонен номер и парола
+          Моля въдете вашето потребителско име и вашата парола
         </div>
 
         <form onSubmit={handleSubmit} className="w-100">

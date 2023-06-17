@@ -95,12 +95,12 @@ const Body = () => {
   return (
     <>
       <div className="RegisterBody d-flex justify-content-start align-items-center flex-column p-4">
-        <div className="fw-bold fs-5">title</div>
+        <div className="fw-bold fs-5">Регистрация</div>
         <div
           style={{ textAlign: "center" }}
           className="mt-1 mb-3  d-flex justify-content-center align-items-center"
         >
-          hey enter your name here plase i ettitletitletitletitletitlec
+          Въведете всички полета и се регистрирайте бързо и лесно е
         </div>
         <form onSubmit={handleSubmit} className="w-100">
           {" "}

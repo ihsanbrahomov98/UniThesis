@@ -10,7 +10,7 @@ const TopNavbar = () => {
             style={{ height: "50px" }}
             className="col-2 d-flex justify-content-center align-items-center border-end fs-4 customOrange "
           >
-            Admin Panel
+            Админ панел
           </div>
           <div
             style={{ height: "50px" }}
@@ -21,7 +21,7 @@ const TopNavbar = () => {
             style={{ textDecoration: "none", color: "orange" }}
             to="/"
           >
-            <div>Home Page</div>
+            <div>Начална страница</div>
           </Link>
         </div>
       </div>
