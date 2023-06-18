@@ -328,8 +328,6 @@ const Body = () => {
     }
     if (!email || email.length < 4) {
       errors.email = "Email is required and must be longer than 4 characters";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      errors.email = "Email is invalid";
     }
     if (!password || password.length < 4) {
       errors.password =
@@ -376,7 +374,8 @@ const Body = () => {
     setValidationStateUpdate(errors);
 
     if (Object.keys(errors).length === 0) {
-      console.log("data.end:", data.endingDate);
+      console.log("data", data);
+      console.log("formStateUpdate", formStateUpdate);
       const update = async () => {
         await axios
           .put(BACK_END_BASE_URL + SITTERS_URL + `/update`, {

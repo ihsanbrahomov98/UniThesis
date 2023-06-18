@@ -20,6 +20,7 @@ const SitterDetails = ({ item }) => {
     startingDate: "",
     endingDate: "",
     selectedIcon: "",
+    telephone: "",
   });
 
   const getSitters = () => {
@@ -28,6 +29,7 @@ const SitterDetails = ({ item }) => {
       startingDate: data.startingDate,
       endingDate: data.endingDate,
       offeredServices: data.offeredServices,
+      telepohne: data.telephone,
     });
   };
   useEffect(() => {

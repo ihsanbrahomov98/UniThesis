@@ -229,7 +229,7 @@ const Body = () => {
                     className="row border-bottom pb-3 pt-3 d-flex align-items-center"
                   >
                     <div className="col-2">
-                      <div>Името на еди кой си</div>
+                      <div>Иван Петров</div>
                     </div>
                     <div className="col-2 ">{e.telephone}</div>
                     <div className="col-2">

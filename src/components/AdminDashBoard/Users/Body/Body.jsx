@@ -177,13 +177,15 @@ const Body = () => {
     setValidationStateUpdate(errors);
 
     if (Object.keys(errors).length === 0) {
+      console.log("data", data);
+      console.log("formStateUpdate", formStateUpdate);
       const update = async () => {
         axios
           .put(BACK_END_BASE_URL + USERS_URL + `/update`, {
-            password: formState.password,
-            username: formState.username,
-            email: formState.email,
-            telephone: formState.telephone,
+            password: formStateUpdate.password,
+            username: formStateUpdate.username,
+            email: formStateUpdate.email,
+            telephone: formStateUpdate.telephone,
             id: idOfUser.id,
           })
           .then((response) => {

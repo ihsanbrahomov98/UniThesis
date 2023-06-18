@@ -155,7 +155,7 @@ const Body = () => {
                     }`}
                   >
                     <div className="col-2">
-                      <div>Името на еди кой си</div>
+                      <div>Иван Петров</div>
                     </div>
                     <div className="col-2 ">{e.telephone}</div>
                     <div className="col-2">
