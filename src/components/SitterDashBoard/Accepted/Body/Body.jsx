@@ -125,7 +125,7 @@ const Body = () => {
                     <div className="col-2">
                       <div>Иван Петров</div>
                     </div>
-                    <div className="col-2 ">{e.telephone}</div>
+                    <div className="col-2 ">089213211</div>
                     <div className="col-2">
                       <div className="">
                         <div className=" d-flex align-items- justify-content-start flex-row">
