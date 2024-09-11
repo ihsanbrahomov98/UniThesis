@@ -1,79 +1,155 @@
-.CardFilterItemImage {
-  height: 1.5rem;
-  width: 1.5rem;
-  border-radius: 0;
-}
-.CardFilterItemIcon {
-  height: 1rem;
-  width: 1rem;
-  border-radius: 0;
-}
-.CardFilterItemCursor {
+.date-picker-trigger {
   cursor: pointer;
-}
-.CardFilterItemWidth {
-  width: 90%;
-}
-.react-datepicker {
-  font-size: 1.5em;
-}
-.react-datepicker__header {
-  padding-top: 0.8em;
-}
-.react-datepicker__month {
-  margin: 0.4em 1em;
-}
-.react-datepicker__header {
-  background-color: white;
-}
-.react-datepicker__day-names {
-  font-size: 0.7em;
-}
-.react-datepicker__day-name {
-  width: 1.7em;
-  line-height: 2.9em;
-}
-.react-datepicker__day {
-  width: 2.25em;
-  background-color: white;
-  border: 1px solid black;
-}
-.react-datepicker__day--selected .react-datepicker__navigation--previous {
-  top: 1em;
-  border-right-color: #ccc;
-  left: 1em;
-  font-size: 555px;
-}
-.react-datepicker__day--selecting-range-start {
-  color: blue;
-  background-color: white !important;
-}
-.react-datepicker__day--in-range {
-  background-color: #5bb85c;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: inline-block;
 }
 
-.react-datepicker__navigation--previous {
-  border-right-color: black;
-  font-size: 2rem !important;
-  color: black;
-  left: 1em;
+.date-picker-container {
+  position: absolute;
+  z-index: 1000;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-.react-datepicker__navigation--next {
-  border-left-color: #ccc;
-  right: 1em;
+
+.custom-datepicker {
+  width: auto; /* Adjust width to fit the content */
 }
-.react-datepicker__day--disabled {
-  background-color: #f5630f;
+
+.react-datepicker {
+  display: flex !important;
+}
+
+.react-datepicker__month-container {
+  display: inline !important; /* Align months horizontally */
+}
+
+.react-datepicker__month {
+  margin: 0 5px; /* Space between months */
+  flex: 1; /* Ensure both months take equal space */
+}
+
+.react-datepicker__month--two-months .react-datepicker__month {
+  flex: 1;
+}
+
+Highlight selected range
+.react-datepicker__day--selected {
+  background-color: white !important; /* Background color for selected range */
   color: white;
-  cursor: pointer;
 }
-.react-datepicker__day--disabled:hover {
-  background-color: rgb(242, 142, 3);
-  color: black;
-  cursor: pointer;
+
+/* Highlight selected start date */
+.react-datepicker__day--selected-start {
+  background-color: #003b95 !important; /* Background color for start date */
+  color: white;
 }
-.react-datepicker__navigation {
-  font-size: 2rem !important;
+
+/* Style the selected range */
+.react-datepicker__day--selected {
+  background-color: gray; /* Background color for selected range */
+  color: white;
+}
+
+/* Style the start of the selected range */
+.react-datepicker__day--selected-start {
+  background-color: gray; /* Background color for start date */
+  color: white;
+}
+
+/* Style the end of the selected range */
+.react-datepicker__day--selected-end {
+  background-color: black !important; /* Background color for end date */
+  color: white;
+}
+
+/* Custom CSS for the first selected day */
+.react-datepicker__day--selected:first-of-type {
+  background-color: black; /* Custom color for the first selected day */
+  color: white;
+}
+/* Style the selected range */
+.react-datepicker__day--selected {
+  background-color: #ff5733 !important; 
+  color: white;
+}
+
+/* Style the start of the selected range */
+.react-datepicker__day--selected-start {
+  background-color: #ff5733 !important; 
   color: black !important;
-  margin-top: 1rem !important;
+}
+
+/* Style the end of the selected range */
+.react-datepicker__day--selected-end {
+  background-color: #ff5733 !important; 
+  color: black !important;
+}
+/* Custom CSS for the first selected day */
+.react-datepicker__day--selected:first-of-type {
+  background-color: #ff5733 !important; 
+  color: black !important;
+}
+
+
+
+/* Override the selected range background color */
+.react-datepicker__day--selected,
+.react-datepicker__day--in-range,
+.react-datepicker__day--selected-start,
+.react-datepicker__day--selected-end {
+  background-color: black !important; /* Set background color to black */
+  color: white !important; /* Set text color to white */
+}
+
+/* Optional: Style the hover state of selected days */
+.react-datepicker__day--selected:hover,
+.react-datepicker__day--in-range:hover,
+.react-datepicker__day--selected-start:hover,
+.react-datepicker__day--selected-end:hover {
+  background-color: #333 !important; /* Darker background color on hover */
+  color: white !important; /* Keep text color white on hover */
+}
+/* Style the selected range background color */
+.react-datepicker__day--selected {
+  background-color: black !important; /* Background color for selected dates */
+  color: white !important; /* Text color */
+}
+
+/* Style the start of the selected range */
+
+/* Style the end of the selected range */
+.react-datepicker__day--selected-end {
+  background-color: black !important; /* Background color for end date */
+  color: white !important; /* Text color */
+}
+
+/* Style the days between the start and end dates while dragging */
+.react-datepicker__day--in-range {
+  background-color: black !important; /* Background color for in-range days */
+  color: white !important; /* Text color */
+}
+
+/* Optional: Style the hover state of selected and in-range days */
+.react-datepicker__day--in-selecting-range {
+  background-color: gray !important ; /* Slightly lighter background color on hover */
+  color: white !important; /* Keep text color white on hover */
+}
+
+.react-datepicker__day--selected-start {
+  background-color: black !important; /* Background color for start date */
+  color: white !important; /* Text color */
+}
+.react-datepicker__day--selecting-range-end {
+  background-color: black  !important;
+  color: white !important;
+}
+
+.react-datepicker__day--selected .react-datepicker__day--today {
+  background-color: black !important;
+  color: white;
 }

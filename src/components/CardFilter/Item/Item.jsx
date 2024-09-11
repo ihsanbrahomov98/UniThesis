@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
-import DatePicker from "react-datepicker";
+import React, { useState, useEffect, useCallback } from "react";
+import DatePicker,  { registerLocale } from "react-datepicker";
+import bg from "date-fns/locale/bg";
 import { addDays } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 import { ChevronDown } from "react-bootstrap-icons";
 import { Telephone } from "react-bootstrap-icons";
 import { Building } from "react-bootstrap-icons";
 import { Person } from "react-bootstrap-icons";
+import moment from 'moment';
+import 'moment/locale/bg'; // Import the Bulgarian locale
 
 import { CalendarCheck } from "react-bootstrap-icons";
 import {
@@ -30,12 +33,14 @@ import { CityArray } from "../../../Enums/CityEnum/CityEnum";
 import dogTraining from "../../../assets/Images/dogTraining.png";
 
 const Item = () => {
+  registerLocale("bg", bg);
+  moment.locale('bg'); // Set the locale to Bulgarian
   const [toggleCalendar, setToggleCalendar] = useState(false);
   const [selectedIcon, setSelectedIcon] = useState("");
   const [selectedText, setSelectedText] = useState("Избери услуга");
   const [selectedDates, setSelectedDates] = useState("Избери дати");
   const [dateRange, setDateRange] = useState([null, null]);
-  const [startDate, endDate] = dateRange;
+  const [startDate23, endDate2] = dateRange;
   const [data, setData] = useState({
     offeredServices: "",
     city: "",
@@ -45,6 +50,50 @@ const Item = () => {
     telephone: "",
     name: "",
   });
+  const [startDate, setStartDate] = useState(new Date() );
+  const [endDate, setEndDate] = useState(null);
+  const [showDatePicker, setShowDatePicker] = useState(false);
+  const [selectingStartDate, setSelectingStartDate] = useState(true);
+  const [dragging, setDragging] = useState(false);
+
+  const handleDateChange = (date) => {
+    if (selectingStartDate) {
+      setStartDate(date);
+      setSelectingStartDate(false);
+    } else {
+      setEndDate(date);
+      setSelectingStartDate(true);
+      setShowDatePicker(false); // Optionally close the picker after selecting end date
+    }
+  };
+
+  const handleMouseDown = useCallback((date) => {
+    setDragging(true);
+    setStartDate(date);
+  }, []);
+
+  const handleMouseUp = useCallback(
+    (date) => {
+      if (dragging) {
+        setEndDate(date);
+        setDragging(false);
+      }
+    },
+    [dragging]
+  );
+
+  const handleMouseEnter = useCallback(
+    (date) => {
+      if (dragging && startDate) {
+        setEndDate(date);
+      }
+    },
+    [dragging, startDate]
+  );
+
+  const handleDateClick = () => {
+    setShowDatePicker(!showDatePicker);
+  };
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const searchDataRedux = useSelector((state) => state.search);
@@ -389,29 +438,99 @@ const Item = () => {
           </div>
         </button>
         <span
-          onMouseLeave={() => setToggleCalendar(false)}
           className="position-absolute "
         >
           {toggleCalendar ? (
             <div className="d-flex justify-content-center mt-4">
               <div className="mt-3">
-                <DatePicker
-                  selected={startDate}
-                  onChange={(update) => {
-                    console.log(update);
-
-                    filterSearchData(new Date(update[0]), "startingDate");
-                    console.log(update[0]);
-                    filterSearchData(new Date(update[1]), "endingDate");
-                    setDateRange(update);
-                  }}
-                  startDate={startDate}
-                  endDate={endDate}
-                  excludeDates={[]}
-                  selectsRange
-                  selectsDisabledDaysInRange
-                  inline
-                />
+                <div>
+                  {true && (
+                    <div>
+                      <div
+                        onClick={handleDateClick}
+                        className="date-picker-trigger"
+                      >
+                        {startDate && endDate
+                          ? `Selected range: ${startDate.toLocaleDateString()} - ${endDate.toLocaleDateString()}`
+                          : "Click here to select a date range"}
+                      </div>
+                      {showDatePicker && (
+                        <div>
+                          <div
+                            onClick={handleDateClick}
+                            className="date-picker-trigger"
+                          >
+                            {startDate && endDate
+                              ? `Selected range: ${startDate.toLocaleDateString()} - ${endDate.toLocaleDateString()}`
+                              : "Click here to select a date range"}
+                          </div>
+                          {showDatePicker && (
+                <div>
+                <div onClick={handleDateClick} className="date-picker-trigger">
+                  {startDate && endDate
+                    ? `Selected range: ${startDate.toLocaleDateString()} - ${endDate.toLocaleDateString()}`
+                    : 'Click here to select a date range'}
+                </div>
+                {showDatePicker && (
+                  <div className="date-picker-container">
+                    <DatePicker
+                      selected={endDate || startDate}
+                      onChange={handleDateChange}
+                      startDate={startDate}
+                      endDate={endDate}
+                      selectsRange
+                      inline
+                      locale="bg"
+                      monthsShown={2}
+                      className="custom-datepicker"
+                      onDayMouseDown={(date) => handleMouseDown(date)}
+                      onDayMouseUp={(date) => handleMouseUp(date)}
+                      onDayMouseEnter={(date) => handleMouseEnter(date)}
+                      renderCustomHeader={({
+                        monthDate,
+                        customHeaderCount,
+                        decreaseMonth,
+                        increaseMonth,
+                      }) => (
+                        <div className="custom-header">
+                          <button
+                            aria-label="Previous Month"
+                            className={`react-datepicker__navigation react-datepicker__navigation--previous`}
+                            style={customHeaderCount === 1 ? { visibility: "hidden" } : null}
+                            onClick={decreaseMonth}
+                          >
+                            <span className="react-datepicker__navigation-icon react-datepicker__navigation-icon--previous">
+                              {"<"}
+                            </span>
+                          </button>
+                          <span className="react-datepicker__current-month">
+                            {monthDate.toLocaleString("bg", {
+                              month: "long",
+                              year: "numeric",
+                            })}
+                          </span>
+                          <button
+                            aria-label="Next Month"
+                            className={`react-datepicker__navigation react-datepicker__navigation--next`}
+                            style={customHeaderCount === 0 ? { visibility: "hidden" } : null}
+                            onClick={increaseMonth}
+                          >
+                            <span className="react-datepicker__navigation-icon react-datepicker__navigation-icon--next">
+                              {">"}
+                            </span>
+                          </button>
+                        </div>
+                      )}
+                    />
+                  </div>
+                )}
+              </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           ) : (
