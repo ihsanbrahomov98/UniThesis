@@ -6,11 +6,11 @@ import Item from "./Item/Item";
 const CardFilter = ({ isHeaderHidden }) => {
   return (
     <>
-      <div className={isHeaderHidden ? "" : "mt-1"}>
+      <div className={isHeaderHidden ? "" : ""}>
         {" "}
         <div
-          className={`container h-50 CardFilter  border  p-4  ${
-            isHeaderHidden ? "" : "mt-5 CardFilterMargin"
+          className={`container d-flex justify-content-center align-items-center  CardFilter  border  p-4  ${
+            isHeaderHidden ? "" : " CardFilterMargin"
           } `}
         >
           {isHeaderHidden ? "" : <Header />}

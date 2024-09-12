@@ -37,7 +37,6 @@
   flex: 1;
 }
 
-Highlight selected range
 .react-datepicker__day--selected {
   background-color: white !important; /* Background color for selected range */
   color: white;
@@ -153,3 +152,8 @@ Highlight selected range
   background-color: black !important;
   color: white;
 }
+
+.react-datepicker__header {
+  background-color: white;
+}
+

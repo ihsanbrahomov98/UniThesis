@@ -1,7 +1,5 @@
 .CardFilter {
-  width: 32rem;
+  width: 42rem;
   background-color: white;
-}
-.CardFilterMargin {
-  margin-right: 11rem;
+  border-radius: 25px;
 }
